@@ -11,7 +11,7 @@ Steps of Execution
 2. The player will land on a space and must complete the action (buy, pay, or draw). The possible spaces include properties, chance or community chest, Taxes, and Free Spaces.
  a. If the player lands on a property (property, railroad, or utility) they will:
   I. If unowned, they will be prompted to buy the property and if the player decides not to buy the property it will go to an auction.
-  II. If it is owned the player must pay the rent. If the player cannot pay the rent with the cash on hand they must be able to sell houses and hotels or mortgage properties to pay the price of rent.
+  II. If it is owned the player must pay the rent. If the player cannot pay the rent with the cash on hand they must be able to sell houses and hotels or mortgage properties to pay the price of rent. If the player is unable to pay rent after mortgaging all properties the player is out of the game.
  b. If the player lands on Chance or Community Chest the player will draw a card from the respective deck and complete the action.
  
 
