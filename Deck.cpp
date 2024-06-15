@@ -5,31 +5,21 @@
 #include "Deck.h"
 
 void Deck::shuffle() {
-    switch(deckType) {
-        case DeckType::communityChest:
-            deck = communityChestDeck;
-            break;
-        case DeckType::chance:
-            deck = chanceDeck;
-            break;
-        default:
-        cerr << "deckType: Invalid value" << endl;
-    }
-
     int swapIndex;
-    cardList temp;
-    srand(static_cast<unsigned int>(time(nullptr)));
-    for(cardList & i : deck) {
-        swapIndex = rand() % deck.size();
-        temp = deck[swapIndex];
-        deck[swapIndex] = i;
-        i = temp;
+    Cards temp;
+    srand(time(0));
+
+    while(!discardPile.empty()) {
+        swapIndex = rand() % discardPile.size();
+        temp = discardPile[swapIndex];
+        discardPile.erase(discardPile.begin() + swapIndex);
+        drawPile.push_back(temp);
     }
 }
 
-Deck::cardList Deck::draw() {
+Deck::Cards Deck::draw() {
     // Check if deck is empty.
-    if(deck.empty()) {
+    if(drawPile.empty()) {
         shuffle();
     }
 
@@ -43,7 +33,7 @@ Deck::cardList Deck::draw() {
     std::mt19937 generator(static_cast<unsigned int>(microseconds));
 
     // Generate a random number
-    std::uniform_int_distribution<int> distribution(0, deck.size() - 1); // Example distribution
+    std::uniform_int_distribution<int> distribution(0, drawPile.size() - 1); // Example distribution
 
     int cardIndex = distribution(generator);
     cardList card = deck[cardIndex];
