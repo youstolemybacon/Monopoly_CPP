@@ -25,6 +25,7 @@ Deck::Cards Deck::draw() {
     srand(time(nullptr)); // Generate random seed for rand() function
 
     Cards cardDrawn = drawPile.back();
+    discardPile.push_back(cardDrawn);
     drawPile.pop_back();
 
     return cardDrawn;
