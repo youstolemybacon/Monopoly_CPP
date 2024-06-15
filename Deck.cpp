@@ -12,8 +12,8 @@ void Deck::shuffle() {
     while(!discardPile.empty()) {
         swapIndex = rand() % discardPile.size();
         temp = discardPile[swapIndex];
-        discardPile.erase(discardPile.begin() + swapIndex);
         drawPile.push_back(temp);
+        discardPile.erase(discardPile.begin() + swapIndex);
     }
 }
 
