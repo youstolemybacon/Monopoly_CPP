@@ -6,10 +6,10 @@
 
 void Deck::shuffle() {
     int swapIndex;
-    Cards temp;
-    srand(time(nullptr)); // Generate random seed for rand() function
+    int temp;
+    srand(time(0)); // Generate random seed for rand() function
 
-    while(!discardPile.empty()) {
+    while(drawPile.size() < 16) {
         swapIndex = rand() % discardPile.size();
         temp = discardPile[swapIndex];
         drawPile.push_back(temp);
@@ -17,14 +17,14 @@ void Deck::shuffle() {
     }
 }
 
-Deck::Cards Deck::draw() {
+int Deck::draw() {
     // Check if deck is empty.
     if(drawPile.empty()) {
         shuffle();
     }
-    srand(time(nullptr)); // Generate random seed for rand() function
+    srand(time(0)); // Generate random seed for rand() function
 
-    Cards cardDrawn = drawPile.back();
+    int cardDrawn = drawPile.back();
     discardPile.push_back(cardDrawn);
     drawPile.pop_back();
 

@@ -1,7 +1,9 @@
 #include <iostream>
+
+#include "Chance.h"
 #include "Player.h"
 #include "Property.h"
-#include "Deck.h"
+#include "Chance.h"
 
 using namespace std;
 
@@ -51,9 +53,8 @@ using namespace std;
 
 
 int main() {
-    cout << "Boardwalk rent 0: " << boardwalk.chargeRent() << endl;
-    boardwalk.build(1);
-    cout  << "Boardwalk rent 1: " << boardwalk.chargeRent() << endl;
-    boardwalk.build(4);
-    cout  << "Boardwalk rent 5: " << boardwalk.chargeRent() << endl;
+    Deck chance;
+    Deck communityChest;
+
+    return 0;
 }
