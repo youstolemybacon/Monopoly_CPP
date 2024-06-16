@@ -11,15 +11,12 @@ using namespace std;
 
 class Property {
 private:
-    string name;
     short rent[6];
     short houses = 0;
     short houseCost;
     bool isOwned = false;
-    bool isUtility;
-    bool isRailroad;
 public:
-    Property(string propertyName, short rent[6], short houseCost);
+    Property(short rent[6], short houseCost);
     void build(short buildHouses);
     int chargeRent();
     int chargeRent(int diceRoll);
