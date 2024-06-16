@@ -8,9 +8,8 @@ add_executable(Monopoly_Sim main.cpp
         Player.h
         Deck.cpp
         Deck.h
-        Board.cpp
-        Board.h
         Property.cpp
         Property.h
-        propertyDefinitions.cpp
+        Chance.cpp
+        Chance.h
 )
