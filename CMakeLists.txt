@@ -12,4 +12,6 @@ add_executable(Monopoly_Sim main.cpp
         Property.h
         Chance.cpp
         Chance.h
+        Space.cpp
+        Space.h
 )
