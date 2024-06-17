@@ -11,10 +11,10 @@ using namespace std;
 
 class Space {
 private:
-    Space(int spaceIndex, string spaceName);
     int spaceIndex;
-    string const spaceName;
+    string spaceName;
 public:
+    Space(int spaceIndex, string spaceName);
     void const landed();
 };
 
