@@ -7,6 +7,9 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <vector>
+#include "Space.h"
+
 
 using namespace std;
 
@@ -35,22 +38,7 @@ private:
     int spaceHistory[40] = {0};
     int money = 0;
     double moves = 0;
-    enum communityChest{
-        AdvanceToGo,
-        BankError,
-        DoctorsFee,
-        SellStock,
-        GetOutOfJail,
-        GoToJail,
-        HolidayFund,
-        IncomeTaxRefund,
-        Birthday,
-        LifeInsurance,
-        HospitalFees,
-        SchoolFees,
-
-    };
-    int chance[16] = {39, 0, 24, 11};
+    vector<Space> propertiesOwned;
 };
 
 
