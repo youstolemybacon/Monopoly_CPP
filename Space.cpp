@@ -10,8 +10,6 @@ using namespace std;
 Space::Space(int spaceIndex, string spaceName) {
     this->spaceIndex = spaceIndex;
     this->spaceName = spaceName;
-    cout << "Space Index: " << this->spaceIndex << endl;
-    cout << "Space Name: " << this->spaceName << endl;
 }
 
 void const Space::landed() {

@@ -20,10 +20,8 @@ int Property::chargeRent() {
 Property::Property(short rent[6], short houseCost, short spaceIndex, string spaceName) : Space(spaceIndex, spaceName){
     for(int i = 0; i < 6; i++){
         this->rent[i] = rent[i];
-        cout << "Rent: " << this->rent[i] << endl;
     }
     this->houseCost = houseCost;
-    cout << "House cost: " << this->houseCost << endl;
 }
 
 
