@@ -4,6 +4,10 @@
 
 #include "Player.h"
 
+Player::Player(string name) {
+    this->name = name;
+}
+
 int Player::getSpace() const {
     return space;
 }
