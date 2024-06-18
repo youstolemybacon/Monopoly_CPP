@@ -119,6 +119,8 @@ Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk");
 
 int main() {
 
+    Player zack("Zack");
+
     cout << "Rent is: " << mediterraneanAve.chargeRent();
     return 0;
 }
