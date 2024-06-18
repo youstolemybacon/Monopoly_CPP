@@ -4,6 +4,8 @@
 
 #include "Player.h"
 
+#include <utility>
+
 Player::Player(string name) {
     this->name = name;
 }
