@@ -1,0 +1,28 @@
+:root {
+    color-scheme: dark;
+    font-family: Verdana;
+}
+
+h1 {
+    color: #9696A0FF;
+    font-size: 4em;
+    letter-spacing: .05em;
+    font-weight: 900;
+}
+
+form {
+    text-align: left;
+}
+
+button {
+    background-color: #9696A0FF;
+    color: #a001fb;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.5em;
+}

@@ -8,41 +8,22 @@ void Property::build(short buildHouses) {
     if(houses + buildHouses > 5) {
         cout << "You are attempting to exceed the house limit cheater!" << endl;
     }
-    else if(isRailroad || isUtility) {
-        cout << "You know better... you cannot build a house here." << endl;
-    }
     else {
         houses += buildHouses;
     }
 }
 
 int Property::chargeRent() {
-    if(!isUtility) {
-        return rent[houses];
-    }
-    else {
-        cerr << "Charge Rent Error!";
-    }
-    return 0;
+    return rent[houses];
 }
 
-int Property::chargeRent(int diceRoll) {
-    if(isUtility) {
-        return rent[houses] * diceRoll;
-    }
-    else {
-        cerr << "Charge Rent Error";
-    }
-}
-
-Property::Property(string propertyName, short *rent, short houseCost) {
-    name = std::move(propertyName);
-
-    for(int i; i < 6; i++){
+Property::Property(short rent[6], short houseCost, short spaceIndex, string spaceName) : Space(spaceIndex, spaceName){
+    for(int i = 0; i < 6; i++){
         this->rent[i] = rent[i];
+        cout << "Rent: " << this->rent[i] << endl;
     }
-
     this->houseCost = houseCost;
+    cout << "House cost: " << this->houseCost << endl;
 }
 
 
