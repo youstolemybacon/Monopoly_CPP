@@ -22,7 +22,7 @@ public:
     void build(short buildHouses);
     int chargeRent();
     int chargeRent(int diceRoll);
-    short getRent(short houses);
+    short getRent();
     short getPrice();
     short getHousePrice();
     void displayPropertyInfo();

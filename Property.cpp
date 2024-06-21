@@ -17,7 +17,7 @@ int Property::chargeRent() {
     return rent[houses];
 }
 
-short Property::getRent(short houses)
+short Property::getRent()
 {
     return rent[houses];
 }
