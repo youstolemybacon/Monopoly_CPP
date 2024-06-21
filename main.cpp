@@ -117,11 +117,8 @@ Property parkPlace(rentParkPlace, 200, 37, "Park Place", 350);
 short rentBoardwalk[6] = {50, 200, 600, 1400, 1700, 2000};
 Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk", 400);
 
-int main() {
-
-    mediterraneanAve.displayPropertyInfo();
-
-    int spaceIndex;
+void board(short spaceIndex)
+{
     switch (spaceIndex) {
         case 0:
             // Go
@@ -245,6 +242,11 @@ int main() {
             // code to execute if expression == constant2
                 break;
     }
+}
+
+int main() {
+
+    mediterraneanAve.displayPropertyInfo();
 
     return 0;
 }
