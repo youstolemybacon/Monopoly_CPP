@@ -15,13 +15,15 @@ using namespace std;
 
 class Player {
 public:
+    Player(string name);
+
     int getSpace() const;
     void setSpace(int space);
 
     void roll();
     void move();
 
-    const int *getDice() const;
+    const int getDice() const;
     void setDice(int dice_1, int dice_2);
     bool compareDice();
 
@@ -36,8 +38,9 @@ private:
     int space = 0;
     int dice[2] = {0};
     int spaceHistory[40] = {0};
-    int money = 0;
+    int money = 1500;
     double moves = 0;
+    string name;
     vector<Space> propertiesOwned;
 };
 

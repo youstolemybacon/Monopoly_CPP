@@ -3,6 +3,12 @@
 //
 
 #include "Player.h"
+#include <utility>
+
+Player::Player(string name) {
+    this->name = name;
+}
+
 
 int Player::getSpace() const {
     return space;
@@ -17,8 +23,8 @@ void Player::roll() {
     dice[1] = rand() % 6 + 1;
 }
 
-const int *Player::getDice() const {
-    return dice;
+const int Player::getDice() const {
+    return dice[0] + dice[1];
 }
 
 void Player::setDice(int dice_1, int dice_2) {
@@ -31,6 +37,7 @@ bool Player::compareDice() {
 }
 
 void Player::move() {
+    roll();
     space += dice[0] + dice[1];
     space %= 40;
     spaceHistory[space]++;
