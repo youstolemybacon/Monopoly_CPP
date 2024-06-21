@@ -120,5 +120,131 @@ Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk", 400);
 int main() {
 
     mediterraneanAve.displayPropertyInfo();
+
+    int spaceIndex;
+    switch (spaceIndex) {
+        case 0:
+            // Go
+                break;
+        case 1:
+            // Mediterranean Avenue
+                break;
+        case 2:
+            // Community Chest
+                break;
+        case 3:
+            // Baltic Avenue
+            break;
+        case 4:
+            // Income Tax
+                break;
+        case 5:
+            // Reading Railroad
+                break;
+        case 6:
+            // Oriental Avenue
+                break;
+        case 7:
+            // Chance
+                break;
+        case 8:
+            // Vermont Avenue
+                break;
+        case 9:
+            // Connecticut
+                break;
+        case 10:
+            // Jail
+                break;
+        case 11:
+            // Saint Charles Place
+                break;
+        case 12:
+            // code to execute if expression == constant2
+                break;
+        case 13:
+            // code to execute if expression == constant2
+                break;
+        case 14:
+            // code to execute if expression == constant2
+                break;
+        case 15:
+            // code to execute if expression == constant2
+                break;
+        case 16:
+            // code to execute if expression == constant2
+                break;
+        case 17:
+            // code to execute if expression == constant2
+                break;
+        case 18:
+            // code to execute if expression == constant2
+                break;
+        case 19:
+            // code to execute if expression == constant2
+                break;
+        case 20:
+            // code to execute if expression == constant2
+                break;
+        case 21:
+            // code to execute if expression == constant2
+                break;
+        case 23:
+            // code to execute if expression == constant2
+                break;
+        case 24:
+            // code to execute if expression == constant2
+                break;
+        case 25:
+            // code to execute if expression == constant2
+                break;
+        case 26:
+            // code to execute if expression == constant2
+                break;
+        case 27:
+            // code to execute if expression == constant2
+                break;
+        case 28:
+            // code to execute if expression == constant2
+                break;
+        case 29:
+            // code to execute if expression == constant2
+                break;
+        case 30:
+            // code to execute if expression == constant2
+                break;
+        case 31:
+            // code to execute if expression == constant2
+                break;
+        case 32:
+            // code to execute if expression == constant2
+                break;
+        case 33:
+            // code to execute if expression == constant2
+                break;
+        case 34:
+            // code to execute if expression == constant2
+                break;
+        case 35:
+            // code to execute if expression == constant2
+                break;
+        case 36:
+            // code to execute if expression == constant2
+                break;
+        case 37:
+            // code to execute if expression == constant2
+                break;
+        case 38:
+            // code to execute if expression == constant2
+                break;
+        case 39:
+            // code to execute if expression == constant2
+                break;
+        default:
+            cerr << "Invalid Space";
+            // code to execute if expression == constant2
+                break;
+    }
+
     return 0;
 }
