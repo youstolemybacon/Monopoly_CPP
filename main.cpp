@@ -52,73 +52,73 @@ using namespace std;
 
 // Defining Property Objects
 short rentMediterraneanAve[6] = {2, 10, 30, 90, 160, 250};
-Property mediterraneanAve(rentMediterraneanAve, 50, 1, "Mediterranean Avenue");
+Property mediterraneanAve(rentMediterraneanAve, 50, 1, "Mediterranean Avenue", 60);
 
 short rentBalticAve[6] = {4, 20, 60, 180, 320, 450};
-Property balticAve(rentBalticAve, 50, 3, "Baltic Avenue");
+Property balticAve(rentBalticAve, 50, 3, "Baltic Avenue", 60);
 
 short rentOrientalAve[6] = {6, 30, 90, 270, 400, 550};
-Property orientalAve(rentOrientalAve, 50, 6, "Oriental Avenue");
+Property orientalAve(rentOrientalAve, 50, 6, "Oriental Avenue", 100);
 
 short rentVermontAve[6] = {6, 30, 90, 270, 400, 550};
-Property vermontAve(rentVermontAve, 50, 8, "Vermont Avenue");
+Property vermontAve(rentVermontAve, 50, 8, "Vermont Avenue", 100);
 
 short rentConnecticutAve[6] = {8, 40, 100, 300, 450, 600};
-Property connecticutAve(rentConnecticutAve, 50, 9, "Connecticut Avenue");
+Property connecticutAve(rentConnecticutAve, 50, 9, "Connecticut Avenue", 120);
 
 short rentStCharlesPlace[6] = {10, 50, 150, 450, 625, 750};
-Property stCharlesPlace(rentStCharlesPlace, 100, 11, "St. Charles Place");
+Property stCharlesPlace(rentStCharlesPlace, 100, 11, "St. Charles Place", 140);
 
 short rentStatesAve[6] = {10, 50, 150, 450, 625, 750};
-Property statesAve(rentStatesAve, 100, 13, "States Avenue");
+Property statesAve(rentStatesAve, 100, 13, "States Avenue", 140);
 
 short rentVirginiaAve[6] = {12, 60, 180, 500, 700, 900};
-Property virginiaAve(rentVirginiaAve, 100, 14, "Virginia Avenue");
+Property virginiaAve(rentVirginiaAve, 100, 14, "Virginia Avenue", 160);
 
 short rentStJamesPlace[6] = {14, 70, 200, 550, 750, 950};
-Property stJamesPlace(rentStJamesPlace, 100, 16, "St. James Place");
+Property stJamesPlace(rentStJamesPlace, 100, 16, "St. James Place", 180);
 
 short rentTennesseeAve[6] = {14, 70, 200, 550, 750, 950};
-Property tennesseeAve(rentTennesseeAve, 100, 18, "Tennessee Avenue");
+Property tennesseeAve(rentTennesseeAve, 100, 18, "Tennessee Avenue", 180);
 
 short rentNewYorkAve[6] = {16, 80, 220, 600, 800, 1000};
-Property newYorkAve(rentNewYorkAve, 100, 19, "New York Avenue");
+Property newYorkAve(rentNewYorkAve, 100, 19, "New York Avenue", 200);
 
 short rentKentuckyAve[6] = {18, 90, 250, 700, 875, 1050};
-Property kentuckyAve(rentKentuckyAve, 150, 21, "Kentucky Avenue");
+Property kentuckyAve(rentKentuckyAve, 150, 21, "Kentucky Avenue", 220);
 
 short rentIndianaAve[6] = {18, 90, 250, 700, 875, 1050};
-Property indianaAve(rentIndianaAve, 150, 23, "Indiana Avenue");
+Property indianaAve(rentIndianaAve, 150, 23, "Indiana Avenue", 220);
 
 short rentIllinoisAve[6] = {20, 100, 300, 750, 925, 1100};
-Property illinoisAve(rentIllinoisAve, 150, 24, "Illinois Avenue");
+Property illinoisAve(rentIllinoisAve, 150, 24, "Illinois Avenue", 240);
 
 short rentAtlanticAve[6] = {22, 110, 330, 800, 975, 1150};
-Property atlanticAve(rentAtlanticAve, 150, 26, "Atlantic Avenue");
+Property atlanticAve(rentAtlanticAve, 150, 26, "Atlantic Avenue", 260);
 
 short rentVentnorAve[6] = {22, 110, 330, 800, 975, 1150};
-Property ventnorAve(rentVentnorAve, 150, 27, "Ventnor Avenue");
+Property ventnorAve(rentVentnorAve, 150, 27, "Ventnor Avenue", 260);
 
 short rentMarvinGardens[6] = {24, 120, 360, 850, 1025, 1200};
-Property marvinGardens(rentMarvinGardens, 150, 29, "Marvin Gardens");
+Property marvinGardens(rentMarvinGardens, 150, 29, "Marvin Gardens", 280);
 
 short rentPacificAve[6] = {26, 130, 390, 900, 1100, 1275};
-Property pacificAve(rentPacificAve, 200, 31, "Pacific Avenue");
+Property pacificAve(rentPacificAve, 200, 31, "Pacific Avenue", 300);
 
 short rentNorthCarolinaAve[6] = {26, 130, 390, 900, 1100, 1275};
-Property northCarolinaAve(rentNorthCarolinaAve, 200, 32, "North Carolina Avenue");
+Property northCarolinaAve(rentNorthCarolinaAve, 200, 32, "North Carolina Avenue", 300);
 
 short rentPennsylvaniaAve[6] = {28, 150, 450, 1000, 1200, 1400};
-Property pennsylvaniaAve(rentPennsylvaniaAve, 200, 34, "Pennsylvania Avenue");
+Property pennsylvaniaAve(rentPennsylvaniaAve, 200, 34, "Pennsylvania Avenue", 320);
 
 short rentParkPlace[6] = {35, 175, 500, 1100, 1300, 1500};
-Property parkPlace(rentParkPlace, 200, 37, "Park Place");
+Property parkPlace(rentParkPlace, 200, 37, "Park Place", 350);
 
 short rentBoardwalk[6] = {50, 200, 600, 1400, 1700, 2000};
-Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk");
+Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk", 400);
 
 int main() {
 
-    cout << "Rent is: " << mediterraneanAve.chargeRent();
+    mediterraneanAve.displayPropertyInfo();
     return 0;
 }

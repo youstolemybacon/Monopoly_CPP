@@ -14,13 +14,18 @@ class Property : public Space{
 private:
     short rent[6];
     short houses = 0;
-    short houseCost;
+    short housePrice;
+    short price;
     bool isOwned = false;
 public:
-    Property(short rent[6], short houseCost, short spaceIndex, string spaceName);
+    Property(short rent[6], short houseCost, short spaceIndex, string spaceName, short price);
     void build(short buildHouses);
     int chargeRent();
     int chargeRent(int diceRoll);
+    short getRent(short houses);
+    short getPrice();
+    short getHousePrice();
+    void displayPropertyInfo();
 };
 
 

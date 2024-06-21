@@ -15,7 +15,7 @@ private:
     string spaceName;
 public:
     Space(int spaceIndex, string spaceName);
-    void const landed();
+    string getSpaceName();
 };
 
 

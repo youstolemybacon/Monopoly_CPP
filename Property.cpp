@@ -17,13 +17,42 @@ int Property::chargeRent() {
     return rent[houses];
 }
 
-Property::Property(short rent[6], short houseCost, short spaceIndex, string spaceName) : Space(spaceIndex, spaceName){
+short Property::getRent(short houses)
+{
+    return rent[houses];
+}
+
+short Property::getPrice()
+{
+    return price;
+}
+
+short Property::getHousePrice()
+{
+    return housePrice;
+}
+
+void Property::displayPropertyInfo() {
+    cout << endl << getSpaceName() << endl;
+    cout << endl;
+    cout << "  RENT $" << getRent(0) << endl;
+    cout << "  With 1 House... $" << getRent(1) << endl;
+    cout << "  With 2 House... $" << getRent(2) << endl;
+    cout << "  With 3 House... $" << getRent(3) << endl;
+    cout << "  With 4 House... $" << getRent(4) << endl;
+    cout << "  With HOTEL $" << getRent(5) << endl;
+    cout << endl;
+    cout << "  Mortgage Value $" << getPrice() / 2 << endl;
+    cout << "  Houses cost $" << getHousePrice() << " each" << endl;
+    cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
+}
+
+Property::Property(short rent[6], short housePrice, short spaceIndex, string spaceName, short price) : Space(spaceIndex, spaceName){
     for(int i = 0; i < 6; i++){
         this->rent[i] = rent[i];
-        cout << "Rent: " << this->rent[i] << endl;
     }
-    this->houseCost = houseCost;
-    cout << "House cost: " << this->houseCost << endl;
+    this->housePrice = housePrice;
+    this->price = price;
 }
 
 
