@@ -23,7 +23,7 @@ public:
     void roll();
     void move();
 
-    const int *getDice() const;
+    const int getDice() const;
     void setDice(int dice_1, int dice_2);
     bool compareDice();
 
