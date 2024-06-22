@@ -16,6 +16,10 @@ using namespace std;
 class Player {
 public:
     Player(string name);
+    Player() = default;
+
+    string getName() const;
+    void setName(string name);
 
     int getSpace() const;
     void setSpace(int space);
