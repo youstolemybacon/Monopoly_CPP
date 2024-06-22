@@ -244,9 +244,44 @@ void board(short spaceIndex)
     }
 }
 
+void playerSetup(vector<Player>& players);
+
 int main() {
+    vector<Player> players;
+    playerSetup(players);
 
-    mediterraneanAve.displayPropertyInfo();
-
+    //mediterraneanAve.displayPropertyInfo();
+    //cout << mediterraneanAve.getRent() << endl;
+    //mediterraneanAve.build(5);
+    //cout << mediterraneanAve.getRent() << endl;
     return 0;
+}
+
+void playerSetup(vector<Player>& players)
+{
+    short numberOfPlayers;
+    cout << "How many players will be playing: " << endl;
+    cin >> numberOfPlayers;
+    players.resize(numberOfPlayers);
+
+    for(int i = 0; i < numberOfPlayers; i++)
+    {
+        string name;
+        cout << "Player " << i + 1 << " enter your name: " << endl;
+        cin >> name;
+        players[i].setName(name);
+    }
+
+    cout << "Welcome " << players[0].getName();
+    for(int i = 1; i < players.size() - 1; i++)
+    {
+            cout << ", " << players[i].getName();
+    }
+    cout << " and " << players[players.size() - 1].getName() << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
+
+    for(int i = 0; i < players.size(); i++)
+    {
+        players[i].roll();
+        cout << players[i].getName() << " you rolled " << players[i].getDice() << endl;
+    }
 }
