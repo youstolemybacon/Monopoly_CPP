@@ -11,6 +11,19 @@ void Property::build(short buildHouses) {
     else {
         houses += buildHouses;
     }
+    if(houses == 1)
+    {
+        cout << "There is now " << houses << " house on " << this->getSpaceName() << endl;
+    }
+    else if(houses == 5)
+    {
+        cout << "There is now 1 hotel on " << this->getSpaceName() << endl;
+    }
+    else
+    {
+        cout << "There are now " << houses << " houses on " << this->getSpaceName() << endl;
+    }
+
 }
 
 int Property::chargeRent() {
@@ -35,12 +48,12 @@ short Property::getHousePrice()
 void Property::displayPropertyInfo() {
     cout << endl << getSpaceName() << endl;
     cout << endl;
-    cout << "  RENT $" << getRent(0) << endl;
-    cout << "  With 1 House... $" << getRent(1) << endl;
-    cout << "  With 2 House... $" << getRent(2) << endl;
-    cout << "  With 3 House... $" << getRent(3) << endl;
-    cout << "  With 4 House... $" << getRent(4) << endl;
-    cout << "  With HOTEL $" << getRent(5) << endl;
+    cout << "  RENT $" << rent[0] << endl;
+    cout << "  With 1 House... $" << rent[1] << endl;
+    cout << "  With 2 House... $" << rent[2] << endl;
+    cout << "  With 3 House... $" << rent[3] << endl;
+    cout << "  With 4 House... $" << rent[4] << endl;
+    cout << "  With HOTEL $" << rent[5] << endl;
     cout << endl;
     cout << "  Mortgage Value $" << getPrice() / 2 << endl;
     cout << "  Houses cost $" << getHousePrice() << " each" << endl;
