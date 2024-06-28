@@ -37,8 +37,8 @@ public:
     void displaySpaceHistory() const;
 
 
-    bool payPlayer(const short cost, Player& beneficiary);
-    bool payBank(const short cost);
+    bool pay(const short cost, Player& beneficiary);
+    bool pay(const short cost);
     bool buy(Property& propertyForSell);
 
     int money = 1500;

@@ -65,15 +65,30 @@ const int *Player::getSpaceHistory() const {
     return spaceHistory;
 }
 
-bool Player::payPlayer(const short cost, Player& beneficiary)
+bool Player::pay(const short cost, Player& beneficiary)
 {
     if (money > cost)
     {
         this->money -= cost;
         beneficiary.money += cost;
 
-        cout << "The payment was made successfully! " << this->name << "now has: $" << this->money << endl;
+        cout << "The payment was made successfully! "  << endl;
+        cout << this->name << "now has: $" << this->money << endl;
         cout << beneficiary.name << " now has: $" << beneficiary.money << endl;
+        return true; // Player can afford
+    }
+    cout << this->name << " is short: $" << cost - this->money << endl;
+    return false; // Player cannot afford
+}
+
+bool Player::pay(const short cost)
+{
+    if (money > cost)
+    {
+        this->money -= cost;
+
+        cout << "The payment was made successfully!" << endl;
+        cout << this->name << "now has: $" << this->money << endl;
         return true; // Player can afford
     }
     cout << this->name << " is short: $" << cost - this->money << endl;
