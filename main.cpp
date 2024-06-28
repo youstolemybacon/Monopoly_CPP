@@ -270,6 +270,7 @@ void playerSetup(vector<Player>& players)
         cout << "Player " << i + 1 << " enter your name: " << endl;
         cin >> name;
         players[i].setName(name);
+        players[i].roll(); // The player rolls here to avoid all players having same seed
     }
 
     cout << "Welcome " << players[0].getName();
@@ -281,7 +282,6 @@ void playerSetup(vector<Player>& players)
 
     for(int i = 0; i < players.size(); i++)
     {
-        players[i].roll();
         cout << players[i].getName() << " you rolled " << players[i].getDice() << endl;
     }
 }
