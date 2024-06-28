@@ -26,7 +26,7 @@ void Property::build(short buildHouses) {
 
 }
 
-int Property::chargeRent() {
+int Property::chargeRent(Player& player) {
     return rent[houses];
 }
 
@@ -58,6 +58,16 @@ void Property::displayPropertyInfo() {
     cout << "  Mortgage Value $" << getPrice() / 2 << endl;
     cout << "  Houses cost $" << getHousePrice() << " each" << endl;
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
+}
+
+bool Property::isOwned()
+{
+    return owner == nullptr;
+}
+
+void Property::changeOwner(Player* newOwner)
+{
+    owner = newOwner;
 }
 
 Property::Property(short rent[6], short housePrice, short spaceIndex, string spaceName, short price) : Space(spaceIndex, spaceName){
