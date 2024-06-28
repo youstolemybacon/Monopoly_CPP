@@ -4,6 +4,7 @@
 
 #include "Player.h"
 #include <utility>
+#include "Player.h"
 
 Player::Player(string name) {
     this->name = name;
@@ -54,7 +55,7 @@ const int *Player::getSpaceHistory() const {
 
 bool Player::pay(const short cost, Player& beneficiary)
 {
-    if (money > cost)
+    if (this->money > cost)
     {
         this->money -= cost;
         beneficiary.money += cost;
@@ -80,6 +81,17 @@ bool Player::pay(const short cost)
     }
     cout << this->name << " is short: $" << cost - this->money << endl;
     return false; // Player cannot afford
+}
+
+bool Player::buyProperty(const short& cost, Property& property)
+{
+    if(pay(cost))
+    {
+        propertiesOwned.push_back(property);
+        property.changeOwner(this);
+        return true;
+    }
+    return false;
 }
 
 void Player::displaySpaceHistory() const {

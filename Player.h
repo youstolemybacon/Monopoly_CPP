@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <vector>
+#include "Property.h"
 #include "Space.h"
 
 
@@ -33,6 +34,8 @@ public:
 
     bool pay(const short cost, Player& beneficiary);
     bool pay(const short cost);
+
+    bool buyProperty(const short& cost, Property& property);
 
     int money = 1500;
     string name;
