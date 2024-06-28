@@ -21,7 +21,6 @@ private:
 public:
     Property(short rent[6], short houseCost, short spaceIndex, string spaceName, short price);
     void build(short buildHouses);
-    int chargeRent(Player& player);
     short getRent();
     short getPrice();
     short getHousePrice();
@@ -31,4 +30,4 @@ public:
 };
 
 
-#endif //MONOPOLY_SIM_PROPERTY_H
+#endif
