@@ -269,19 +269,19 @@ void playerSetup(vector<Player>& players)
         string name;
         cout << "Player " << i + 1 << " enter your name: " << endl;
         cin >> name;
-        players[i].setName(name);
+        players[i].name = name;
         players[i].roll(); // The player rolls here to avoid all players having same seed
     }
 
-    cout << "Welcome " << players[0].getName();
+    cout << "Welcome " << players[0].name;
     for(int i = 1; i < players.size() - 1; i++)
     {
-            cout << ", " << players[i].getName();
+            cout << ", " << players[i].name;
     }
-    cout << " and " << players[players.size() - 1].getName() << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
+    cout << " and " << players[players.size() - 1].name << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
 
     for(int i = 0; i < players.size(); i++)
     {
-        cout << players[i].getName() << " you rolled " << players[i].getDice() << endl;
+        cout << players[i].name << " you rolled " << players[i].getDice() << endl;
     }
 }
