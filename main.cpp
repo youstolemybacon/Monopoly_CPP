@@ -280,8 +280,8 @@ void playerSetup(vector<Player>& players)
     }
     cout << " and " << players[players.size() - 1].name << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
 
-    for(int i = 0; i < players.size(); i++)
+    for(Player& player : players)
     {
-        cout << players[i].name << " you rolled " << players[i].getDice() << endl;
+        cout << player.name << " you rolled " << player.getDice() << endl;
     }
 }
