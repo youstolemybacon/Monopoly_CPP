@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <iostream>
 #include <vector>
+
+#include "Property.h"
 #include "Space.h"
 
 
@@ -35,16 +37,17 @@ public:
     void displaySpaceHistory() const;
 
 
-    void setMoney(int money);
-    const int getMoney();
+    bool payPlayer(const short cost, Player& beneficiary);
+    bool payBank(const short cost);
+    bool buy(Property& propertyForSell);
 
+    int money = 1500;
+    string name;
 private:
     int space = 0;
     int dice[2] = {0};
     int spaceHistory[40] = {0};
-    int money = 1500;
     double moves = 0;
-    string name;
     vector<Space> propertiesOwned;
 };
 

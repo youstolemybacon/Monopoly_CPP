@@ -3,6 +3,8 @@
 //
 
 #include "Player.h"
+
+#include <emmintrin.h>
 #include <utility>
 
 Player::Player(string name) {
@@ -29,6 +31,7 @@ void Player::setSpace(int space) {
 }
 
 void Player::roll() {
+    srand(time(0));
     dice[0] = rand() % 6 + 1;
     dice[1] = rand() % 6 + 1;
 }
@@ -62,12 +65,19 @@ const int *Player::getSpaceHistory() const {
     return spaceHistory;
 }
 
-void Player::setMoney(int money) {
-    this->money = money;
-}
+bool Player::payPlayer(const short cost, Player& beneficiary)
+{
+    if (money > cost)
+    {
+        this->money -= cost;
+        beneficiary.money += cost;
 
-int const Player::getMoney() {
-    return money;
+        cout << "The payment was made successfully! " << this->name << "now has: $" << this->money << endl;
+        cout << beneficiary.name << " now has: $" << beneficiary.money << endl;
+        return true; // Player can afford
+    }
+    cout << this->name << " is short: $" << cost - this->money << endl;
+    return false; // Player cannot afford
 }
 
 void Player::displaySpaceHistory() const {
