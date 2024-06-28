@@ -5,11 +5,8 @@
 #ifndef MONOPOLY_SIM_PLAYER_H
 #define MONOPOLY_SIM_PLAYER_H
 
-#include <cstdlib>
 #include <iostream>
 #include <vector>
-
-#include "Property.h"
 #include "Space.h"
 
 
@@ -19,9 +16,6 @@ class Player {
 public:
     Player(string name);
     Player() = default;
-
-    string getName() const;
-    void setName(string name);
 
     int getSpace() const;
     void setSpace(int space);
@@ -39,7 +33,6 @@ public:
 
     bool pay(const short cost, Player& beneficiary);
     bool pay(const short cost);
-    bool buy(Property& propertyForSell);
 
     int money = 1500;
     string name;

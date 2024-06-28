@@ -3,24 +3,11 @@
 //
 
 #include "Player.h"
-
-#include <emmintrin.h>
 #include <utility>
 
 Player::Player(string name) {
     this->name = name;
 }
-
-string Player::getName() const
-{
-    return name;
-}
-
-void Player::setName(string name)
-{
-    this->name = name;
-}
-
 
 int Player::getSpace() const {
     return space;
