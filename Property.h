@@ -7,7 +7,8 @@
 
 #include <iostream>
 #include "Space.h"
-#include "Player.h"
+
+class Player; // Forward declaration
 
 using namespace std;
 
@@ -30,4 +31,4 @@ public:
 };
 
 
-#endif
+#endif // MONOPOLY_SIM_PROPERTY_H
