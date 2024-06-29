@@ -280,6 +280,27 @@ void playerSetup(vector<Player>& players)
     }
     cout << " and " << players[players.size() - 1].name << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
 
+    bool ordered = false;
+
+    for(short i = 0; i < players.size(); i++)
+    {
+        short largestIndex = 0;
+        short largestRoll = 0;
+        for(short j = i; j < players.size(); j++)
+        {
+            if(players[j].getDice() > largestRoll)
+            {
+                largestRoll = players[j].getDice();
+                largestIndex = j;
+            }
+        }
+        if(largestIndex != i)
+        {
+            swap(players[i], players[largestIndex]);
+        }
+    }
+
+
     for(Player& player : players)
     {
         cout << player.name << " you rolled " << player.getDice() << endl;
