@@ -61,8 +61,8 @@ bool Player::pay(const short cost, Player& beneficiary)
         beneficiary.money += cost;
 
         cout << "The payment was made successfully! "  << endl;
-        cout << this->name << "now has: $" << this->money << endl;
-        cout << beneficiary.name << " now has: $" << beneficiary.money << endl;
+        this->printMoney();
+        beneficiary.printMoney();
         return true; // Player can afford
     }
     cout << this->name << " is short: $" << cost - this->money << endl;
@@ -76,7 +76,7 @@ bool Player::pay(const short cost)
         this->money -= cost;
 
         cout << "The payment was made successfully!" << endl;
-        cout << this->name << "now has: $" << this->money << endl;
+        this->printMoney();
         return true; // Player can afford
     }
     cout << this->name << " is short: $" << cost - this->money << endl;
@@ -135,4 +135,22 @@ void Player::displaySpaceHistory() const {
     cout << "Park Place: " << spaceHistory[37] / moves << "%" << endl;
     cout << "Luxury Tax: " << spaceHistory[38] / moves << "%" << endl;
     cout << "Boardwalk: " << spaceHistory[39] / moves << "%" << endl;
+}
+
+void Player::printMoney() const
+{
+    cout << this->name << " you have $" << this->money << endl;
+}
+
+void Player::printProperties()
+{
+    if (!propertiesOwned.empty())
+    {
+        cout << "You own the following properties: ";
+        for(Property& property : propertiesOwned)
+        {
+            cout << "\"" << property.getSpaceName() << "\" ";
+        }
+    }
+
 }

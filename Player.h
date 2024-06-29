@@ -31,11 +31,13 @@ public:
     const int *getSpaceHistory() const;
     void displaySpaceHistory() const;
 
+    void printMoney() const;
+    void printProperties();
 
     bool pay(const short cost, Player& beneficiary);
     bool pay(const short cost);
 
-    bool buyProperty(const short& cost, Property& property);
+    bool buyProperty(Property& property);
 
     int money = 1500;
     string name;
@@ -44,8 +46,6 @@ private:
     int dice[2] = {0};
     int spaceHistory[40] = {0};
     double moves = 0;
-    vector<Space> propertiesOwned;
+    vector<Property> propertiesOwned;
 };
-
-
 #endif //MONOPOLY_SIM_PLAYER_H
