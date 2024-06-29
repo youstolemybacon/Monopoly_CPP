@@ -250,6 +250,17 @@ int main() {
     vector<Player> players;
     playerSetup(players);
 
+    players[0].printMoney();
+    players[0].buyProperty(mediterraneanAve);
+    players[0].printProperties();
+
+    players[0].printMoney();
+    players[0].buyProperty(boardwalk);
+    players[0].printProperties();
+
+
+
+
     //mediterraneanAve.displayPropertyInfo();
     //cout << mediterraneanAve.getRent() << endl;
     //mediterraneanAve.build(5);
@@ -284,8 +295,8 @@ void playerSetup(vector<Player>& players)
 
     for(short i = 0; i < players.size(); i++)
     {
-        short largestIndex = 0;
-        short largestRoll = 0;
+        short largestIndex = 0; // Store Player with highest roll
+        short largestRoll = 0; // Store the largest roll
         for(short j = i; j < players.size(); j++)
         {
             if(players[j].getDice() > largestRoll)
@@ -299,7 +310,6 @@ void playerSetup(vector<Player>& players)
             swap(players[i], players[largestIndex]);
         }
     }
-
 
     for(Player& player : players)
     {
