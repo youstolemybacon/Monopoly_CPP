@@ -1,10 +1,10 @@
-Monopoly
+# Monopoly #
 
-USE CASE Description
+## USE CASE Description ##
 
 1. Players will play a game of Monopoly. Players will purchase properties and develop the properties. When players land on an opposing player's property they must pay rent. The last player remaining with money is the winner.
 
-Steps of Execution
+## Steps of Execution ##
 
 1. A player will roll a dice and the player's piece will move.
 
