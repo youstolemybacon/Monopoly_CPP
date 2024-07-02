@@ -16,3 +16,8 @@ string Space::getSpaceName()
 {
     return spaceName;
 }
+
+short Space::getSpaceIndex()
+{
+    return spaceIndex;
+}

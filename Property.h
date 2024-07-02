@@ -25,7 +25,7 @@ public:
     short getRent();
     short getPrice();
     short getHousePrice();
-    void displayPropertyInfo();
+    void displayInfo();
     bool isOwned();
     void changeOwner(Player* newOwner);
 };

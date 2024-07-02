@@ -41,7 +41,7 @@ short Property::getHousePrice()
     return housePrice;
 }
 
-void Property::displayPropertyInfo() {
+void Property::displayInfo() {
     cout << endl << getSpaceName() << endl;
     cout << endl;
     cout << "  RENT $" << rent[0] << endl;

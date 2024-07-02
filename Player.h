@@ -8,7 +8,6 @@
 #include <iostream>
 #include <vector>
 #include "Property.h"
-#include "Space.h"
 
 
 using namespace std;
@@ -16,7 +15,7 @@ using namespace std;
 class Player {
 public:
     Player(string name);
-    Player() = default;
+    Player();
 
     int getSpace() const;
     void setSpace(int space);

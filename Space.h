@@ -9,13 +9,21 @@
 
 using namespace std;
 
+
 class Space {
 private:
-    int spaceIndex;
+    short spaceIndex;
     string spaceName;
+
 public:
+    virtual ~Space() = default;
+    virtual void displayInfo() = 0;
+
+
     Space(int spaceIndex, string spaceName);
     string getSpaceName();
+
+    short getSpaceIndex();
 };
 
 
