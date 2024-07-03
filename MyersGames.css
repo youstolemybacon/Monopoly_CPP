@@ -17,6 +17,13 @@ form {
 button {
     background-color: #9696A0FF;
     color: #434147;
+    border-radius: 5px;
+}
+
+button:hover {
+    font-weight: 600;
+    text-decoration: underline;
+    font-size: large;
 }
 
 a {
