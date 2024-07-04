@@ -3,7 +3,6 @@
 #include "Property.h"
 #include <vector>
 #include <variant>
-
 #include "Railroad.h"
 
 using namespace std;
@@ -118,11 +117,11 @@ Property parkPlace(rentParkPlace, 200, 37, "Park Place", 350);
 short rentBoardwalk[6] = {50, 200, 600, 1400, 1700, 2000};
 Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk", 400);
 
-Railroad boRailroad(5, "B. & O. Railroad");
+//Railroad boRailroad(5, "B. & O. Railroad");
 
-using SpaceVarient = variant<Property&, Railroad&>;
+//using SpaceVarient = variant<Property&, Railroad&>;
 
-vector<SpaceVarient> board = {};
+//vector<SpaceVarient> board = {};
 
 void boarda(short spaceIndex)
 {

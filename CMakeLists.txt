@@ -1,17 +1,19 @@
 cmake_minimum_required(VERSION 3.28)
-project(Monopoly)
+project(Monopoly_Sim)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(Monopoly main.cpp
-        Deck.cpp
-        Deck.h
+add_executable(Monopoly_Sim main.cpp
         Player.cpp
         Player.h
+        Deck.cpp
+        Deck.h
         Property.cpp
         Property.h
+        Chance.cpp
+        Chance.h
         Space.cpp
         Space.h
-        Railroad.cpp
         Railroad.h
+        Railroad.cpp
 )
