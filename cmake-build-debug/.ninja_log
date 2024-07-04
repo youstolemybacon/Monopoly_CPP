@@ -1,0 +1,7 @@
+# ninja log v6
+88	1757	7417253331474299	CMakeFiles/Monopoly.dir/Space.cpp.obj	ba0e25db8410683d
+83	1760	7417253331424271	CMakeFiles/Monopoly.dir/Property.cpp.obj	571508e1b61309e
+9	996	7415958584968465	CMakeFiles/Monopoly.dir/Deck.cpp.obj	6022d0b782b0f594
+78	1833	7417253331383782	CMakeFiles/Monopoly.dir/Player.cpp.obj	c333bd6fcf8dca3
+41	1925	7417253331006467	CMakeFiles/Monopoly.dir/main.cpp.obj	ffb80b5dd9f95a06
+1925	2317	7417253349846249	Monopoly.exe	d8e56bdead37a802
