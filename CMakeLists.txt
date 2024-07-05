@@ -16,4 +16,6 @@ add_executable(Monopoly_Sim main.cpp
         Space.h
         Railroad.h
         Railroad.cpp
+        Board.cpp
+        Board.h
 )
