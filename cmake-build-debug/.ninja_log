@@ -1,8 +1,0 @@
-# ninja log v5
-5	486	7368220997105594	build.ninja	570c6e45d2cdb7e1
-2659	2881	7363838757368131	Monopoly_Sim.exe	4d8f3cb6358b32c5
-7	2658	7363838755185466	CMakeFiles/Monopoly_Sim.dir/main.cpp.obj	6e5ee5a329dde826
-52	1124	7363774506123613	CMakeFiles/Monopoly_Sim.dir/Player.cpp.obj	55b32c32bcb56d25
-22	147	7363838442035206	CMakeFiles/Monopoly_Sim.dir/Board.cpp.obj	3d636ebadde80323
-30	839	7363838448983072	CMakeFiles/Monopoly_Sim.dir/propertyDefinitions.cpp.obj	edaafc008b880d43
-39	912	7363838449701198	CMakeFiles/Monopoly_Sim.dir/Property.cpp.obj	c154d1c924a1121e

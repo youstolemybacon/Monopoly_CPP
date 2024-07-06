@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.27)
+cmake_minimum_required(VERSION 3.28)
 project(Monopoly_Sim)
 
 set(CMAKE_CXX_STANDARD 23)
@@ -14,4 +14,6 @@ add_executable(Monopoly_Sim main.cpp
         Chance.h
         Space.cpp
         Space.h
+        Railroad.h
+        Railroad.cpp
 )

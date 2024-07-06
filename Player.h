@@ -15,7 +15,7 @@ using namespace std;
 class Player {
 public:
     Player(string name);
-    Player();
+    Player() = default;
 
     int getSpace() const;
     void setSpace(int space);

@@ -1,9 +1,9 @@
 #include <iostream>
-
-#include "Chance.h"
 #include "Player.h"
 #include "Property.h"
-#include "Chance.h"
+#include <vector>
+#include <variant>
+#include "Railroad.h"
 
 using namespace std;
 
@@ -117,7 +117,13 @@ Property parkPlace(rentParkPlace, 200, 37, "Park Place", 350);
 short rentBoardwalk[6] = {50, 200, 600, 1400, 1700, 2000};
 Property boardwalk(rentBoardwalk, 200, 39, "Boardwalk", 400);
 
-void board(short spaceIndex)
+//Railroad boRailroad(5, "B. & O. Railroad");
+
+//using SpaceVarient = variant<Property&, Railroad&>;
+
+//vector<SpaceVarient> board = {};
+
+void boarda(short spaceIndex)
 {
     switch (spaceIndex) {
         case 0:
@@ -250,8 +256,8 @@ int main() {
     vector<Player> players;
     playerSetup(players);
 
+    vector<Space*> spaces = {&mediterraneanAve, &balticAve};
     players[0].printMoney();
-    players[0].buyProperty(mediterraneanAve);
     players[0].printProperties();
 
     players[0].printMoney();

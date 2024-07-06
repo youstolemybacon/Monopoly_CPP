@@ -1,3 +1,0 @@
-C:/Users/zacka/CLionProjects/Monopoly_CPP/cmake-build-debug/CMakeFiles/Monopoly_Sim.dir
-C:/Users/zacka/CLionProjects/Monopoly_CPP/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/zacka/CLionProjects/Monopoly_CPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir

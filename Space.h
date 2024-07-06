@@ -16,6 +16,7 @@ private:
     string spaceName;
 
 public:
+    Space() = default;
     virtual ~Space() = default;
     virtual void displayInfo() = 0;
 
