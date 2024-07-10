@@ -7,15 +7,13 @@
 
 #include "Space.h"
 
-class Railroad : Space {
+class Railroad : public Space {
 private:
     short rent = 25;
     short price = 200;
-    short spaceIndex;
-    string spaceName;
-
 public:
     Railroad(short spaceIndex, string spaceName);
+    Railroad() = default;
     void displayInfo() override;
 };
 

@@ -3,3 +3,8 @@
 //
 
 #include "Board.h"
+
+void Board::print(short spaceIndex)
+{
+    cout << spaces[spaceIndex]->getSpaceName();
+}

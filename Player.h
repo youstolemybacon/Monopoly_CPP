@@ -8,6 +8,7 @@
 #include <iostream>
 #include <vector>
 #include "Property.h"
+#include "Railroad.h"
 
 
 using namespace std;

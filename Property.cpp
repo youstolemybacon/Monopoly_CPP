@@ -4,6 +4,12 @@
 
 #include "Property.h"
 
+Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice,
+    short spaceIndex, string spaceName, short price) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6}, housePrice(housePrice), Space(spaceIndex, spaceName), price(price)
+{
+
+}
+
 void Property::build(short buildHouses) {
     if(houses + buildHouses > 5) {
         cout << "You are attempting to exceed the house limit cheater!" << endl;
@@ -65,13 +71,3 @@ void Property::changeOwner(Player* newOwner)
 {
     this->owner = newOwner;
 }
-
-Property::Property(short rent[6], short housePrice, short spaceIndex, string spaceName, short price) : Space(spaceIndex, spaceName){
-    for(int i = 0; i < 6; i++){
-        this->rent[i] = rent[i];
-    }
-    this->housePrice = housePrice;
-    this->price = price;
-}
-
-
