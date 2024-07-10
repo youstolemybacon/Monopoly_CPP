@@ -19,6 +19,7 @@ public:
     Board();
     void print(short spaceIndex);
     Space* getSpace(short spaceIndex) const;
+    void getOwnedProperties(const shared_ptr<Player>& player);
 };
 
 
