@@ -37,7 +37,7 @@ public:
     bool pay(const short cost, Player& beneficiary);
     bool pay(const short cost);
 
-    bool buyProperty(Property& property);
+    bool buyProperty(Property* property);
 
     int money = 1500;
     string name;
@@ -46,6 +46,5 @@ private:
     int dice[2] = {0};
     int spaceHistory[40] = {0};
     double moves = 0;
-    vector<Property> propertiesOwned;
 };
 #endif //MONOPOLY_SIM_PLAYER_H
