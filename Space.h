@@ -18,11 +18,8 @@ public:
     Space() = default;
     virtual ~Space() = default;
     virtual void displayInfo() = 0;
-
-
     Space(int spaceIndex, string spaceName);
     string getSpaceName();
-
     short getSpaceIndex();
 };
 
