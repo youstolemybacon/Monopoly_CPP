@@ -12,9 +12,8 @@ using namespace std;
 
 class Space {
 private:
-    short spaceIndex;
+    short spaceIndex{};
     string spaceName;
-
 public:
     Space() = default;
     virtual ~Space() = default;

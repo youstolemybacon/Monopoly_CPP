@@ -54,6 +54,10 @@ int main() {
     vector<Space*> board;
     Property property(2,10,30,90,160,250,50,1,"Mediterranean Avenue", 60);
     Railroad railroad(5, "Reading Railroad");
+    board.push_back(&property);
+    board.push_back(&railroad);
+    dynamic_cast<Property*>(board[0])->build(1);
+    cout << dynamic_cast<Property*>(board[0])->getRent();
 
 
 
