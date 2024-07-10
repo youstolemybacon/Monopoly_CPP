@@ -21,7 +21,7 @@ private:
     Player* owner = nullptr;
 public:
     Property(short rent_1,short rent_2,short rent_3,short rent_4,short rent_5,short rent_6,short housePrice,short spaceIndex,string spaceName,short price);
-    Property() = default;
+    Property();
     void build(short buildHouses);
     short getRent();
     short getPrice();
@@ -29,6 +29,7 @@ public:
     void displayInfo();
     bool isOwned();
     void changeOwner(Player* newOwner);
+    Player* getOwner() const;
 };
 
 

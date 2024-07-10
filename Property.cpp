@@ -71,3 +71,8 @@ void Property::changeOwner(Player* newOwner)
 {
     this->owner = newOwner;
 }
+
+Player* Property::getOwner() const
+{
+    return this->owner;
+}
