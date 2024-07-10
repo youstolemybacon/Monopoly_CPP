@@ -25,6 +25,8 @@ Board::Board()
     board.push_back(&statesAvenue);
     Property virginiaAvenue(14, 70, 200, 550, 750, 950, 100, 14, "Virginia Avenue", 80);
     board.push_back(&virginiaAvenue);
+    Railroad pennsylvania_railroad(15, "Pennsylvania Railroad");
+    board.push_back(&pennsylvania_railroad);
     Property saintJamesPlace(14, 70, 200, 550, 750, 950, 100, 16, "St. James Place", 90);
     board.push_back(&saintJamesPlace);
     Property tennesseeAvenue(16, 80, 220, 600, 800, 1000, 100, 18, "Tennessee Avenue", 90);
@@ -37,6 +39,8 @@ Board::Board()
     board.push_back(&indianaAvenue);
     Property illinoisAvenue(22, 110, 330, 800, 975, 1150, 240, 24, "Illinois Avenue", 120);
     board.push_back(&illinoisAvenue);
+    Railroad bAndORailroad(25, "B. & O. Railroad");
+    board.push_back(&bAndORailroad);
     Property atlanticAvenue(22, 110, 330, 800, 975, 1150, 260, 26, "Atlantic Avenue", 130);
     board.push_back(&atlanticAvenue);
     Property ventnorAvenue(24, 120, 360, 850, 1025, 1200, 260, 27, "Ventnor Avenue", 130);
@@ -49,6 +53,8 @@ Board::Board()
     board.push_back(&northCarolinaAvenue);
     Property pennsylvanuaAvenue(28, 150, 450, 1000, 1200, 1400, 320, 34, "Pennsylvania Avenue", 160);
     board.push_back(&pennsylvanuaAvenue);
+    Railroad shortLine(35, "Short Line Railroad");
+    board.push_back(&shortLine);
     Property parkPlace(35, 175, 500, 1100, 1300, 1500, 350, 37, "Park Place", 350);
     board.push_back(&parkPlace);
     Property boardwalk(50, 200, 600, 1400, 1700, 2000, 400, 39, "Boardwalk", 400);
