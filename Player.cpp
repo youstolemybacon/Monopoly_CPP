@@ -4,7 +4,6 @@
 
 #include "Player.h"
 #include <utility>
-#include "Player.h"
 
 Player::Player(string name) {
     this->name = name;
@@ -87,7 +86,6 @@ bool Player::buyProperty(Property& property)
 {
     if(pay(property.getPrice()))
     {
-        propertiesOwned.push_back(property);
         property.changeOwner(this);
         return true;
     }
@@ -140,17 +138,4 @@ void Player::displaySpaceHistory() const {
 void Player::printMoney() const
 {
     cout << this->name << " you have $" << this->money << endl;
-}
-
-void Player::printProperties()
-{
-    if (!propertiesOwned.empty())
-    {
-        cout << "You own the following properties: ";
-        for(Property& property : propertiesOwned)
-        {
-            cout << "\"" << property.getSpaceName() << "\" ";
-        }
-    }
-
 }
