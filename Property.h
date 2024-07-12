@@ -8,11 +8,9 @@
 #include <iostream>
 #include "Space.h"
 
-class Player; // Forward declaration
-
 using namespace std;
 
-class Property : public Space{
+class Property : public Space {
 private:
     short rent[6];
     short houses = 0;
