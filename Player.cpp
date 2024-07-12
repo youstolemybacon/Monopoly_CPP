@@ -97,6 +97,11 @@ bool Player::buy(Railroad* railroad)
     if(pay(railroad->getPrice()))
     {
         railroad->changeOwner(this);
+        vector<Railroad*> railroads = board.getOwnedRailroads(this);
+        for(Railroad* railroad : railroads)
+        {
+            railroad->setRent(railroads.size());
+        }
         return true;
     }
     return false;

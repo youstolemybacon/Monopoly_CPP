@@ -10,11 +10,11 @@
 
 class Railroad : public OwnableSpaces {
 private:
-    short rent = 25;
-    Player* owner = nullptr;
+    short rent{};
 public:
     Railroad(short spaceIndex, string spaceName);
     short getRent() override;
+    void setRent(short railroadsOwned);
     void displayInfo() override;
 
 };
