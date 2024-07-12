@@ -82,11 +82,21 @@ bool Player::pay(const short cost)
     return false; // Player cannot afford
 }
 
-bool Player::buyProperty(Property* property)
+bool Player::buy(Property* property)
 {
     if(pay(property->getPrice()))
     {
         property->changeOwner(this);
+        return true;
+    }
+    return false;
+}
+
+bool Player::buy(Railroad* railroad)
+{
+    if(pay(railroad->getPrice()))
+    {
+        railroad->changeOwner(this);
         return true;
     }
     return false;

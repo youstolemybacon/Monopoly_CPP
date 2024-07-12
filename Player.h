@@ -37,7 +37,8 @@ public:
     bool pay(const short cost, Player& beneficiary);
     bool pay(const short cost);
 
-    bool buyProperty(Property* property);
+    bool buy(Property* property);
+    bool buy(Railroad* railroad);
 
     int money = 1500;
     string name;
