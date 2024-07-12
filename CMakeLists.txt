@@ -18,4 +18,6 @@ add_executable(Monopoly_Sim main.cpp
         Railroad.cpp
         Board.cpp
         Board.h
+        Players.cpp
+        Players.h
 )
