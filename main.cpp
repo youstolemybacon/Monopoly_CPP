@@ -48,26 +48,19 @@ using namespace std;
 //     Boardwalk = 39
 // };
 
-void playerSetup(vector<Player>& players);
+void playerSetup(vector<Player*> &players);
 
 int main() {
-    vector<Space*> board;
-    Property property(2,10,30,90,160,250,50,1,"Mediterranean Avenue", 60);
-    Railroad railroad(5, "Reading Railroad");
-    board.push_back(&property);
-    board.push_back(&railroad);
-    dynamic_cast<Property*>(board[0])->build(1);
-    cout << dynamic_cast<Property*>(board[0])->getRent();
-
-
-
-
-    vector<Player> players;
+    vector<Player*> players;
     playerSetup(players);
+    Board board;
 
-    players[0].printMoney();
+    Property* test = dynamic_cast<Property*>(board.getSpace(0));
+    test->displayInfo();
+    players[0]->buyProperty(dynamic_cast<Property*>(board.getSpace(1)));
+    board.getOwnedProperties(players[0]);
+    players[0]->printMoney();
     //players[0].buyProperty();
-    players[0].printProperties();
 
 
 
@@ -79,28 +72,29 @@ int main() {
     return 0;
 }
 
-void playerSetup(vector<Player>& players)
+void playerSetup(vector<Player*> &players)
 {
-    short numberOfPlayers;
+    short numberOfPlayers = 2;
     cout << "How many players will be playing: " << endl;
-    cin >> numberOfPlayers;
+    //cin >> numberOfPlayers;
     players.resize(numberOfPlayers);
 
     for(int i = 0; i < numberOfPlayers; i++)
     {
-        string name;
+        players[i] = new Player;
+        string name = "Zack" + i;
         cout << "Player " << i + 1 << " enter your name: " << endl;
-        cin >> name;
-        players[i].name = name;
-        players[i].roll(); // The player rolls here to avoid all players having same seed
+        //cin >> name;
+        players[i]->name = name;
+        players[i]->roll(); // The player rolls here to avoid all players having same seed
     }
 
-    cout << "Welcome " << players[0].name;
+    cout << "Welcome " << players[0]->name;
     for(int i = 1; i < players.size() - 1; i++)
     {
-            cout << ", " << players[i].name;
+            cout << ", " << players[i]->name;
     }
-    cout << " and " << players[players.size() - 1].name << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
+    cout << " and " << players[players.size() - 1]->name << " we hope you enjoy the game! Let us begin by rolling for the order of play!" << endl;
 
     bool ordered = false;
 
@@ -110,9 +104,9 @@ void playerSetup(vector<Player>& players)
         short largestRoll = 0; // Store the largest roll
         for(short j = i; j < players.size(); j++)
         {
-            if(players[j].getDice() > largestRoll)
+            if(players[j]->getDice() > largestRoll)
             {
-                largestRoll = players[j].getDice();
+                largestRoll = players[j]->getDice();
                 largestIndex = j;
             }
         }
@@ -122,8 +116,8 @@ void playerSetup(vector<Player>& players)
         }
     }
 
-    for(Player& player : players)
+    for(Player* player : players)
     {
-        cout << player.name << " you rolled " << player.getDice() << endl;
+        cout << player->name << " you rolled " << player->getDice() << endl;
     }
 }
