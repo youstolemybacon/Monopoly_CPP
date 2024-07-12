@@ -13,3 +13,18 @@ void Railroad::displayInfo()
 {
 
 }
+
+Player* Railroad::getOwner()
+{
+    return this->owner;
+}
+
+short Railroad::getPrice()
+{
+    return price;
+}
+
+void Railroad::changeOwner(Player* newOwner)
+{
+    this->owner = newOwner;
+}
