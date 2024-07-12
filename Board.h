@@ -8,18 +8,16 @@
 #include "Property.h"
 #include "Railroad.h"
 #include <vector>
-#include <memory>
-
 
 class Board {
 private:
-    vector<Space*> board;
-
 public:
     Board();
+    ~Board();
+    vector<Space*> board;
     void print(short spaceIndex);
     Space* getSpace(short spaceIndex) const;
-    void getOwnedProperties(const shared_ptr<Player>& player);
+    void getOwnedProperties(const Player* player);
 };
 
 
