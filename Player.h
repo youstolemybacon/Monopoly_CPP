@@ -38,7 +38,7 @@ public:
     bool pay(short cost);
 
     bool buy(Property* property);
-    bool buy(Railroad* railroad);
+    bool buy(Railroad* purchasingRailroad);
 
     int money = 1500;
     string name;

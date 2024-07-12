@@ -92,11 +92,11 @@ bool Player::buy(Property* property)
     return false;
 }
 
-bool Player::buy(Railroad* railroad)
+bool Player::buy(Railroad* purchasingRailroad)
 {
-    if(pay(railroad->getPrice()))
+    if(pay(purchasingRailroad->getPrice()))
     {
-        railroad->changeOwner(this);
+        purchasingRailroad->changeOwner(this);
         vector<Railroad*> railroads = board.getOwnedRailroads(this);
         for(Railroad* railroad : railroads)
         {
