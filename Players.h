@@ -10,8 +10,10 @@
 
 
 class Players {
-    vector<Player*> players;
-
+private:
+public:
+    Players();
+    vector<Player*> playerList;
 };
 
 
