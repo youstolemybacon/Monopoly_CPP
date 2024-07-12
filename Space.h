@@ -16,14 +16,12 @@ private:
     short spaceIndex{};
     string spaceName;
 public:
+    Space(short spaceIndex, string spaceName);
     Space() = default;
     virtual ~Space() = default;
     virtual void displayInfo() = 0;
-    Space(int spaceIndex, string spaceName);
     string getSpaceName();
     short getSpaceIndex();
 };
-
-
 
 #endif //SPACE_H

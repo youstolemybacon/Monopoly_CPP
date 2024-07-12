@@ -4,12 +4,14 @@
 
 #include "Space.h"
 #include <iostream>
+#include <utility>
 
 using namespace std;
 
-Space::Space(int spaceIndex, string spaceName) {
+Space::Space(short spaceIndex, string spaceName) : spaceIndex(spaceIndex), spaceName(spaceName)
+{
     this->spaceIndex = spaceIndex;
-    this->spaceName = spaceName;
+    this->spaceName = std::move(spaceName);
 }
 
 string Space::getSpaceName()

@@ -6,7 +6,7 @@
 #define MONOPOLY_SIM_PLAYER_H
 
 #include <iostream>
-#include <vector>
+#include "Board.h"
 #include "Property.h"
 #include "Railroad.h"
 
@@ -34,14 +34,15 @@ public:
     void printMoney() const;
     void printProperties();
 
-    bool pay(const short cost, Player& beneficiary);
-    bool pay(const short cost);
+    bool pay(short cost, Player& beneficiary);
+    bool pay(short cost);
 
     bool buy(Property* property);
     bool buy(Railroad* railroad);
 
     int money = 1500;
     string name;
+    static Board board;
 private:
     int space = 0;
     int dice[2] = {0};

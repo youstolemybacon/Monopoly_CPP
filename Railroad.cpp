@@ -4,27 +4,17 @@
 
 #include "Railroad.h"
 
-Railroad::Railroad(short spaceIndex, string spaceName) : Space(spaceIndex, spaceName)
+#include <utility>
+
+Railroad::Railroad(short spaceIndex, string spaceName) : OwnableSpaces(200, spaceIndex, std::move(spaceName)) {}
+
+short Railroad::getRent()
 {
 
+    return 0;
 }
 
 void Railroad::displayInfo()
 {
 
-}
-
-Player* Railroad::getOwner()
-{
-    return this->owner;
-}
-
-short Railroad::getPrice()
-{
-    return price;
-}
-
-void Railroad::changeOwner(Player* newOwner)
-{
-    this->owner = newOwner;
 }

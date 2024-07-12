@@ -5,21 +5,18 @@
 #ifndef RAILROAD_H
 #define RAILROAD_H
 
+#include "OwnableSpaces.h"
 #include "Space.h"
 
-class Railroad : public Space {
+class Railroad : public OwnableSpaces {
 private:
     short rent = 25;
-    short price = 200;
     Player* owner = nullptr;
 public:
     Railroad(short spaceIndex, string spaceName);
-    Railroad() = default;
+    short getRent() override;
     void displayInfo() override;
-    Player* getOwner();
 
-    short getPrice();
-    void changeOwner(Player* newOwner);
 };
 
 

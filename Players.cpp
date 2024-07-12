@@ -4,6 +4,8 @@
 
 #include "Players.h"
 
+Board Player::board;
+
 Players::Players()
 {
     short numberOfPlayers = 2;
