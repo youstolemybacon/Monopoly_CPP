@@ -51,9 +51,18 @@ void Board::getOwnedProperties(const Player* player)
 {
     for(Space* space : board)
     {
-        if(dynamic_cast<Property*>(space)->getOwner() == player)
+        Property* property = dynamic_cast<Property*>(space);
+        if(property && property->getOwner() == player)
         {
-            cout << "You own: " << dynamic_cast<Property*>(space)->getSpaceName() << endl;
+            cout << "You own: " << property->getSpaceName() << endl;
+        }
+        else
+        {
+            Railroad* railroad = dynamic_cast<Railroad*>(space);
+            if(railroad && railroad->getOwner() == player)
+            {
+                cout << "You own: " << railroad->getSpaceName() << endl;
+            }
         }
     }
 }
