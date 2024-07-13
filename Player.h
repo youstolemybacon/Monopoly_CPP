@@ -9,6 +9,7 @@
 #include "Board.h"
 #include "Property.h"
 #include "Railroad.h"
+#include "Utility.h"
 
 
 using namespace std;
@@ -38,7 +39,8 @@ public:
     bool pay(short cost);
 
     bool buy(Property* property);
-    bool buy(Railroad* purchasingRailroad);
+    bool buy(Railroad* railroad);
+    bool buy(Utility* utility);
 
     int money = 1500;
     string name;

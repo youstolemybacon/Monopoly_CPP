@@ -92,15 +92,30 @@ bool Player::buy(Property* property)
     return false;
 }
 
-bool Player::buy(Railroad* purchasingRailroad)
+bool Player::buy(Railroad* railroad)
 {
-    if(pay(purchasingRailroad->getPrice()))
+    if(pay(railroad->getPrice()))
     {
-        purchasingRailroad->changeOwner(this);
+        railroad->changeOwner(this);
         vector<Railroad*> railroads = board.getOwnedRailroads(this);
-        for(Railroad* railroad : railroads)
+        for(Railroad* currentRailroad : railroads)
         {
-            railroad->setRent(railroads.size());
+            currentRailroad->setRent(railroads.size());
+        }
+        return true;
+    }
+    return false;
+}
+
+bool Player::buy(Utility* utility)
+{
+    if(pay(utility->getPrice()))
+    {
+        utility->changeOwner(this);
+        vector<Utility*> railroads = board.getOwnedUtilities(this);
+        for(Railroad* currentRailroad : railroads)
+        {
+            currentRailroad->setRent(railroads.size());
         }
         return true;
     }

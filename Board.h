@@ -9,6 +9,9 @@
 #include "Railroad.h"
 #include <vector>
 
+#include "Player.h"
+#include "Utility.h"
+
 class Board {
 private:
 public:
@@ -18,6 +21,7 @@ public:
     Space* getSpace(short spaceIndex) const;
     void getOwnedProperties(const Player* player);
     vector<Railroad*> getOwnedRailroads(const Player* player);
+    vector<Utility*> getOwnedUtilities(const Player* player);
 };
 
 

@@ -73,3 +73,18 @@ vector<Railroad*> Board::getOwnedRailroads(const Player* player)
     }
     return railroads;
 }
+
+vector<Utility*> Board::getOwnedUtilities(const Player* player)
+{
+    vector<Utility*> utilities;
+    for(Space* space : board)
+    {
+        Utility* utility = dynamic_cast<Utility*>(space);
+        if(utility && utility->getOwner() == player)
+        {
+            cout << "You own: " << utility->getSpaceName() << endl;
+            utilities.push_back(utility);
+        }
+    }
+    return utilities;
+}

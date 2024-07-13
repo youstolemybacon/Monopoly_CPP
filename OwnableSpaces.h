@@ -5,8 +5,6 @@
 #ifndef OWNABLESPACES_H
 #define OWNABLESPACES_H
 
-#include <variant>
-
 #include "Space.h"
 
 
