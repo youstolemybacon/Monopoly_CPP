@@ -112,10 +112,10 @@ bool Player::buy(Utility* utility)
     if(pay(utility->getPrice()))
     {
         utility->changeOwner(this);
-        vector<Utility*> railroads = board.getOwnedUtilities(this);
-        for(Railroad* currentRailroad : railroads)
+        vector<Utility*> utilities = board.getOwnedUtilities(this);
+        for(Utility* currentUtility : utilities)
         {
-            currentRailroad->setRent(railroads.size());
+            currentUtility->setRent(utilities.size());
         }
         return true;
     }
