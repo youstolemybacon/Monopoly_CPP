@@ -4,6 +4,7 @@
 
 #include "Utility.h"
 
+#include "Dice.h"
 #include "Player.h"
 
 void Utility::setRent(short ownedUtilities)
@@ -33,16 +34,20 @@ short Utility::getRent()
         cout << "You landed on a utility! " << getOwner()->name << " owns both Utilities increasing the rent. Rent is determined by roll x 10." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
-        getOwner()->roll;
-        rent = getOwner()->getDice() * 10;
+        Dice::rollDice();
+        rent = Dice::getRoll() * 10;
     }
     else
     {
         cout << "You landed on a utility! Rent is determined by roll x 4." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
-        getOwner()->roll;
-        rent = getOwner()->getDice() * 4;
+        Dice::rollDice();
+        rent = Dice::getRoll() * 4;
     }
     return rent;
+}
+
+void Utility::displayInfo()
+{
 }

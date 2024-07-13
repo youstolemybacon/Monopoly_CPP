@@ -24,4 +24,6 @@ add_executable(Monopoly_Sim main.cpp
         OwnableSpaces.h
         Utility.cpp
         Utility.h
+        Dice.cpp
+        Dice.h
 )

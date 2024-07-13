@@ -13,7 +13,7 @@ public:
     Utility(short spaceIndex, string spaceName) : OwnableSpaces(150, spaceIndex, std::move(spaceName)) {}
     void setRent(short ownedUtilities);
     short getRent();
-    void displayInfo();
+    void displayInfo() override;
 };
 
 
