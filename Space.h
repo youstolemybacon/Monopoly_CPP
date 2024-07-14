@@ -19,7 +19,7 @@ public:
     Space(short spaceIndex, string spaceName);
     Space() = default;
     virtual ~Space() = default;
-    virtual void displayInfo() = 0;
+    virtual void spaceMenu(Player* player);
     string getSpaceName();
     short getSpaceIndex();
 };
