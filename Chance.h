@@ -7,62 +7,16 @@
 
 #include <vector>
 #include "Deck.h"
+#include "Space.h"
 
 using namespace std;
 
-class Chance {
+class Chance : public Space {
 private:
-    enum CardList {
-        AdvanceToGo,
-        BankError,
-        DoctorsFee,
-        SellStock,
-        GetOutOfJail,
-        GoToJail,
-        HolidayFund,
-        IncomeTaxRefund,
-        Birthday,
-        LifeInsurance,
-        HospitalFees,
-        SchoolFees,
-        ReceiveConsultancyFee,
-        StreetRepair,
-        SecondPlaceBeautyContest,
-        Inherit,
-        AdvanceToBoardwalk,
-        AdvanceToIllinoisAve,
-        AdvanceToStCharlesPlace,
-        AdvanceToRailroad,
-        AdvanceToUtility,
-        BankPaysDividend,
-        GoBackThree,
-        GeneralRepairs,
-        SpeedingFine,
-        AdvanceToReadingRailroad,
-        ElectedChairman,
-        BuildingLoanMatures
-    };
-
-    vector<CardList> ChadrawPile;
-    vector<CardList> chanceDiscard {
-        AdvanceToBoardwalk,
-        AdvanceToGo,
-        AdvanceToIllinoisAve,
-        AdvanceToStCharlesPlace,
-        AdvanceToRailroad,
-        AdvanceToRailroad,
-        AdvanceToUtility,
-        BankPaysDividend,
-        GetOutOfJail,
-        GoBackThree,
-        GoToJail,
-        GeneralRepairs,
-        SpeedingFine,
-        AdvanceToReadingRailroad,
-        ElectedChairman,
-        BuildingLoanMatures
-    };
 public:
+    Chance(short spaceIndex);
+    static Deck chanceDeck;
+    void spaceMenu(Player* player) override;
 
 };
 

@@ -3,3 +3,5 @@
 //
 
 #include "Chance.h"
+
+Chance::Chance(const short spaceIndex) : Space(spaceIndex, "Chace") {};
