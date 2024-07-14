@@ -28,22 +28,23 @@ void Utility::setRent(short ownedUtilities)
 
 short Utility::getRent()
 {
-    short rent;
+    Dice dice;
+    short rent = 0;
     if(monopoloy)
     {
         cout << "You landed on a utility! " << getOwner()->name << " owns both Utilities increasing the rent. Rent is determined by roll x 10." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
-        Dice::rollDice();
-        rent = Dice::getRoll() * 10;
+        dice.rollDice();
+        rent = dice.getRoll() * 10;
     }
     else
     {
         cout << "You landed on a utility! Rent is determined by roll x 4." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
-        Dice::rollDice();
-        rent = Dice::getRoll() * 4;
+        dice.rollDice();
+        rent = dice.getRoll() * 4;
     }
     return rent;
 }

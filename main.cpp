@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Board.h"
+#include "Dice.h"
 #include "Players.h"
 
 using namespace std;
@@ -7,6 +8,9 @@ using namespace std;
 
 int main() {
     Players players;
+    Dice dice;
+    dice.rollDice();
+    cout << dice.getRoll();
     players.playerList[0]->buy(dynamic_cast<Property*>(Player::board.getSpace(1)));
     players.playerList[0]->buy(dynamic_cast<Property*>(Player::board.getSpace(0)));
     players.playerList[0]->buy(dynamic_cast<Railroad*>(Player::board.getSpace(2)));

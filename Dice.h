@@ -9,10 +9,10 @@
 
 class Dice {
 private:
-    static short roll;
+    short roll;
 public:
-    static bool rollDice();
-    static short getRoll();
+    bool rollDice();
+    short getRoll();
 };
 
 
