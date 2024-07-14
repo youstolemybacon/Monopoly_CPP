@@ -11,6 +11,7 @@ int main() {
     Dice dice;
     dice.rollDice();
     cout << dice.getRoll();
+    cout << "Rent is: " << dynamic_cast<Utility*>(Player::board.getSpace(7))->getRent() << endl;
     players.playerList[0]->buy(dynamic_cast<Property*>(Player::board.getSpace(1)));
     players.playerList[0]->buy(dynamic_cast<Property*>(Player::board.getSpace(0)));
     players.playerList[0]->buy(dynamic_cast<Railroad*>(Player::board.getSpace(2)));
