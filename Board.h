@@ -8,8 +8,7 @@
 #include "Property.h"
 #include "Railroad.h"
 #include <vector>
-
-//#include "Player.h"
+#include "Go.h"
 #include "Utility.h"
 
 class Board {

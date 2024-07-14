@@ -6,6 +6,7 @@
 
 Board::Board()
 {
+    board.push_back(new Go());
     board.push_back(new Property(2,10,30,90,160,250,50,1,"Mediterranean Avenue", 60));
     board.push_back(new Property(4, 20, 60, 180, 320, 450, 50, 3, "Baltic Avenue", 60));
     board.push_back(new Railroad(5, "Reading Railroad"));
@@ -13,6 +14,7 @@ Board::Board()
     board.push_back(new Property(6, 30, 90, 270, 400, 550, 50, 8, "Vermont Avenue", 100));
     board.push_back(new Property(8, 40, 100, 300, 450, 600, 50, 9, "Connecticut Avenue", 120));
     board.push_back(new Property(10, 50, 150, 450, 625, 750, 100, 11, "St. Charles Place", 70));
+    board.push_back(new Utility(12, "Electric Company"));
     board.push_back(new Property(12, 60, 180, 500, 700, 900, 100, 13, "States Avenue", 70));
     board.push_back(new Property(14, 70, 200, 550, 750, 950, 100, 14, "Virginia Avenue", 80));
     board.push_back(new Railroad(15, "Pennsylvania Railroad"));
@@ -25,6 +27,7 @@ Board::Board()
     board.push_back(new Railroad(25, "B. & O. Railroad"));
     board.push_back(new Property(22, 110, 330, 800, 975, 1150, 260, 26, "Atlantic Avenue", 130));
     board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 260, 27, "Ventnor Avenue", 130));
+    board.push_back(new Utility(28, "Water Works"));
     board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 280, 29, "Marvin Gardens", 140));
     board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 31, "Pacific Avenue", 150));
     board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 32, "North Carolina Avenue", 150));
