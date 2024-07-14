@@ -26,4 +26,6 @@ add_executable(Monopoly_Sim main.cpp
         Utility.h
         Dice.cpp
         Dice.h
+        Go.cpp
+        Go.h
 )
