@@ -3,3 +3,16 @@
 //
 
 #include "IncomeTax.h"
+
+#include "Player.h"
+
+IncomeTax::IncomeTax() : Space(4, "Luxury Tax") {}
+
+bool IncomeTax::payTaxes(Player* taxPayer)
+{
+    if(taxPayer->pay(200))
+    {
+        return true;
+    }
+    return false;
+}

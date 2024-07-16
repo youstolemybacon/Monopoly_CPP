@@ -4,11 +4,12 @@
 
 #ifndef INCOMETAX_H
 #define INCOMETAX_H
+#include "Space.h"
 
 
-
-class IncomeTax {
-
+class IncomeTax : public Space {
+    IncomeTax();
+    bool payTaxes(Player* taxPayer);
 };
 
 
