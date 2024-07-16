@@ -6,7 +6,9 @@
 
 #include "Chance.h"
 #include "CommunityChest.h"
+#include "GoToJail.h"
 #include "Jail.h"
+#include "LuxuryTax.h"
 
 Board::Board()
 {
@@ -39,6 +41,7 @@ Board::Board()
     board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 260, 27, "Ventnor Avenue", 130));
     board.push_back(new Utility(28, "Water Works"));
     board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 280, 29, "Marvin Gardens", 140));
+    board.push_back(new GoToJail());
     board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 31, "Pacific Avenue", 150));
     board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 32, "North Carolina Avenue", 150));
     board.push_back(new CommunityChest(33));
@@ -46,6 +49,7 @@ Board::Board()
     board.push_back(new Railroad(35, "Short Line Railroad"));
     board.push_back(new Chance(36));
     board.push_back(new Property(35, 175, 500, 1100, 1300, 1500, 350, 37, "Park Place", 350));
+    board.push_back(new LuxuryTax());
     board.push_back(new Property(50, 200, 600, 1400, 1700, 2000, 400, 39, "Boardwalk", 400));
 }
 

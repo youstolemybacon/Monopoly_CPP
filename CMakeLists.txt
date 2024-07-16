@@ -32,4 +32,10 @@ add_executable(Monopoly_Sim main.cpp
         CommunityChest.h
         Jail.cpp
         Jail.h
+        GoToJail.cpp
+        GoToJail.h
+        LuxuryTax.cpp
+        LuxuryTax.h
+        IncomeTax.cpp
+        IncomeTax.h
 )
