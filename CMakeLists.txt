@@ -28,4 +28,8 @@ add_executable(Monopoly_Sim main.cpp
         Dice.h
         Go.cpp
         Go.h
+        CommunityChest.cpp
+        CommunityChest.h
+        Jail.cpp
+        Jail.h
 )
