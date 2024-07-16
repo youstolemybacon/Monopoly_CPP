@@ -17,6 +17,13 @@ void Player::setSpace(int space) {
     this->space = space;
 }
 
+short Player::getJailSentence()
+{
+    return jailSentence;
+}
+
+void Player::setJailSentence(short jailSentence) : jailSentence(jailSentence){}
+
 void Player::roll() {
     srand(time(0));
     dice[0] = rand() % 6 + 1;

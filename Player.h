@@ -21,6 +21,8 @@ public:
 
     int getSpace() const;
     void setSpace(int space);
+    short getJailSentence();
+    void setJailSentence(short jailSentence);
 
     void roll();
     void move();
@@ -46,6 +48,7 @@ public:
     string name;
     static Board board;
 private:
+    short jailSentence{};
     int space = 0;
     int dice[2] = {0};
     int spaceHistory[40] = {0};
