@@ -3,12 +3,12 @@
 //
 
 #include "Board.h"
-
 #include "Chance.h"
 #include "CommunityChest.h"
 #include "GoToJail.h"
 #include "Jail.h"
 #include "LuxuryTax.h"
+#include "Go.h"
 
 Board::Board()
 {

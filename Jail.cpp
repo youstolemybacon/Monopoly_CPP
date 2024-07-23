@@ -18,3 +18,8 @@ void Jail::release(Player* prisoner)
 {
     prisoner->setJailSentence(0);
 }
+
+void Jail::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

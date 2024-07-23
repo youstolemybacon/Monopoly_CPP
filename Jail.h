@@ -14,6 +14,7 @@ public:
     Jail();
     void bail(Player* prisoner);
     void release(Player* prisoner);
+    void spaceMenu(Player* player);
 };
 
 

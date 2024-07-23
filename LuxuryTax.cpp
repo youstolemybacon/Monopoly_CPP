@@ -16,3 +16,8 @@ bool LuxuryTax::payTaxes(Player* taxPayer)
     }
     return false;
 }
+
+void LuxuryTax::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

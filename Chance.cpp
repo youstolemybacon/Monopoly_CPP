@@ -4,4 +4,9 @@
 
 #include "Chance.h"
 
-Chance::Chance(const short spaceIndex) : Space(spaceIndex, "Chance") {};
+Chance::Chance(const short spaceIndex) : Space(spaceIndex, "Chance") {}
+
+void Chance::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

@@ -11,7 +11,7 @@ class Go : public Space{
 private:
 public:
     Go();
-    void spaceMenu(Player player*) override;
+    void spaceMenu(Player* player) override;
 };
 
 

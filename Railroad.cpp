@@ -38,3 +38,8 @@ void Railroad::displayInfo()
 {
 
 }
+
+void Railroad::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

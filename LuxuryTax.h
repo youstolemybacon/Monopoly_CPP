@@ -11,6 +11,7 @@ class LuxuryTax : public Space {
 public:
     LuxuryTax();
     bool payTaxes(Player* taxPayer);
+    void spaceMenu(Player* player);
 };
 
 

@@ -52,3 +52,8 @@ short Utility::getRent()
 void Utility::displayInfo()
 {
 }
+
+void Utility::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

@@ -4,8 +4,6 @@
 
 #include "OwnableSpaces.h"
 
-#include <utility>
-
 OwnableSpaces::OwnableSpaces(short price, short spaceIndex, string spaceName)
     : Space(spaceIndex, std::move(spaceName))
 {

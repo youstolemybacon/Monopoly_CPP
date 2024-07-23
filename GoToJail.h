@@ -11,7 +11,7 @@ class GoToJail : public Space {
 public:
     GoToJail();
     void arrest(Player* suspect);
-
+    void spaceMenu(Player* player);
 };
 
 

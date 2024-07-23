@@ -22,7 +22,10 @@ short Player::getJailSentence()
     return jailSentence;
 }
 
-void Player::setJailSentence(short jailSentence) : jailSentence(jailSentence){}
+void Player::setJailSentence(short jailSentence)
+{
+    this->jailSentence = jailSentence;
+}
 
 void Player::roll() {
     srand(time(0));

@@ -8,8 +8,6 @@ add_executable(Monopoly_Sim main.cpp
         Player.h
         Deck.cpp
         Deck.h
-        Property.cpp
-        Property.h
         Chance.cpp
         Chance.h
         Space.cpp
@@ -38,4 +36,8 @@ add_executable(Monopoly_Sim main.cpp
         LuxuryTax.h
         IncomeTax.cpp
         IncomeTax.h
+        Property.cpp
+        Property.h
+        PropertyNew.cpp
+        PropertyNew.h
 )

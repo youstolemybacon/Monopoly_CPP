@@ -16,3 +16,8 @@ bool IncomeTax::payTaxes(Player* taxPayer)
     }
     return false;
 }
+
+void IncomeTax::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}

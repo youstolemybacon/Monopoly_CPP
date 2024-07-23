@@ -6,9 +6,7 @@
 #define MONOPOLY_SIM_PROPERTY_H
 
 #include <iostream>
-
 #include "OwnableSpaces.h"
-#include "Space.h"
 
 using namespace std;
 
@@ -23,6 +21,7 @@ public:
     short getHousePrice();
     short getRent() override;
     void displayInfo() override;
+    void spaceMenu(Player* player);
 };
 
 

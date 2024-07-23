@@ -14,3 +14,8 @@ void GoToJail::arrest(Player* suspect)
     suspect->setSpace(10);
     cout << "You have been arrested!" << endl;
 }
+
+void GoToJail::spaceMenu(Player* player)
+{
+    cout << "Placeholder";
+}
