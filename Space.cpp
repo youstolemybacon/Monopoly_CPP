@@ -40,7 +40,7 @@ short Space::getSpaceIndex()
     return spaceIndex;
 }
 
-Space::SpaceTypes Space::getType(Space* space)
+Space::SpaceType Space::getType(Space* space)
 {
     if (dynamic_cast<Property*>(space) != nullptr)
     {

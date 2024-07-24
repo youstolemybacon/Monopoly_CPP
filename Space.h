@@ -16,7 +16,7 @@ private:
     short spaceIndex{};
     string spaceName;
 public:
-    enum SpaceTypes
+    enum SpaceType
     {
         SPACE,
         PROPERTY,
@@ -36,7 +36,7 @@ public:
     virtual void spaceMenu(Player* player);
     string getSpaceName();
     short getSpaceIndex();
-    static SpaceTypes getType(Space* space);
+    static SpaceType getType(Space* space);
 };
 
 #endif //SPACE_H
