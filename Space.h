@@ -16,12 +16,26 @@ private:
     short spaceIndex{};
     string spaceName;
 public:
+    enum SpaceTypes
+    {
+        SPACE,
+        PROPERTY,
+        RAILROAD,
+        UTILITY,
+        CHANCE,
+        COMMUNITY_CHEST,
+        GO,
+        GO_TO_JAIL,
+        JAIL,
+        INCOME_TAX,
+        LUXURY_TAX,
+    };
+
     Space(short spaceIndex, string spaceName);
-    Space() = default;
-    virtual ~Space() = default;
     virtual void spaceMenu(Player* player);
     string getSpaceName();
     short getSpaceIndex();
+    SpaceTypes getType(Space* space);
 };
 
 #endif //SPACE_H
