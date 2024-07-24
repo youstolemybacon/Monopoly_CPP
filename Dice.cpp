@@ -7,7 +7,6 @@
 
 bool Dice::rollDice()
 {
-    srand(time(0));
     bool doubles = false;
     short dice1 = rand() % 6 + 1;
     short dice2 = rand() % 6 + 1;

@@ -7,7 +7,6 @@
 void Deck::shuffle() {
     int swapIndex;
     int temp;
-    srand(time(0)); // Generate random seed for rand() function
 
     while(drawPile.size() < 16) {
         swapIndex = rand() % discardPile.size();
@@ -22,7 +21,6 @@ int Deck::draw() {
     if(drawPile.empty()) {
         shuffle();
     }
-    srand(time(0)); // Generate random seed for rand() function
 
     int cardDrawn = drawPile.back();
     discardPile.push_back(cardDrawn);

@@ -8,12 +8,8 @@ add_executable(Monopoly_Sim main.cpp
         Player.h
         Deck.cpp
         Deck.h
-        Chance.cpp
-        Chance.h
         Space.cpp
         Space.h
-        Railroad.h
-        Railroad.cpp
         Board.cpp
         Board.h
         Players.cpp
@@ -38,6 +34,8 @@ add_executable(Monopoly_Sim main.cpp
         IncomeTax.h
         Property.cpp
         Property.h
-        PropertyNew.cpp
-        PropertyNew.h
+        Railroad.h
+        Railroad.cpp
+        Chance.cpp
+        Chance.h
 )

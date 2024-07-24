@@ -20,6 +20,7 @@ public:
     Player* getOwner() const;
     virtual short getRent() = 0;
     virtual void displayInfo() = 0;
+    void spaceMenu(Player* player) override;
 };
 
 

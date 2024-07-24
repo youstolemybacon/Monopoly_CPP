@@ -29,3 +29,8 @@ Player* OwnableSpaces::getOwner() const
 {
     return this->owner;
 }
+
+void OwnableSpaces::spaceMenu(Player* player)
+{
+    cout << "This is a placeholder!";
+}

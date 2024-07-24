@@ -1,9 +1,9 @@
 //
-// Created by Zack on 5/2/2024.
+// Created by zacka on 7/22/2024.
 //
 
-#ifndef MONOPOLY_SIM_PROPERTY_H
-#define MONOPOLY_SIM_PROPERTY_H
+#ifndef MONOPOLY_SIM_PropertyNew_H
+#define MONOPOLY_SIM_PropertyNew_H
 
 #include <iostream>
 #include "OwnableSpaces.h"
@@ -25,4 +25,4 @@ public:
 };
 
 
-#endif // MONOPOLY_SIM_PROPERTY_H
+#endif // MONOPOLY_SIM_PropertyNew_H

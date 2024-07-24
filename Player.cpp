@@ -28,7 +28,6 @@ void Player::setJailSentence(short jailSentence)
 }
 
 void Player::roll() {
-    srand(time(0));
     dice[0] = rand() % 6 + 1;
     dice[1] = rand() % 6 + 1;
 }
