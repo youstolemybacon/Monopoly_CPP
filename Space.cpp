@@ -91,4 +91,7 @@ Space::SpaceTypes Space::getType(Space* space)
     {
         return LUXURY_TAX;
     }
+
+    cerr << "No type matches the object provided" << endl;
+    return OTHER; // Does not match a type
 }

@@ -29,13 +29,14 @@ public:
         JAIL,
         INCOME_TAX,
         LUXURY_TAX,
+        OTHER
     };
 
     Space(short spaceIndex, string spaceName);
     virtual void spaceMenu(Player* player);
     string getSpaceName();
     short getSpaceIndex();
-    SpaceTypes getType(Space* space);
+    static SpaceTypes getType(Space* space);
 };
 
 #endif //SPACE_H
