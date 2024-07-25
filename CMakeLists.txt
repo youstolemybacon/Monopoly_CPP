@@ -38,4 +38,6 @@ add_executable(Monopoly_Sim main.cpp
         Railroad.cpp
         Chance.cpp
         Chance.h
+        Gameplay.cpp
+        Gameplay.h
 )
