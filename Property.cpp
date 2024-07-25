@@ -4,9 +4,11 @@
 
 #include "Property.h"
 
+#include "Player.h"
+
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice,
-                         short spaceIndex, string spaceName, short price) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6},
-                                                                            housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName) {}
+                   short spaceIndex, string spaceName, short price) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6},
+                                                                      housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName) {}
 
 void Property::build(short buildHouses) {
     if(houses + buildHouses > 5) {
@@ -55,7 +57,93 @@ void Property::displayInfo() {
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
 }
 
-void Property::spaceMenu(Player* player)
+void Property::spaceMenu(Player* currentPlayer)
 {
-    cout << "Placeholder";
+    Player* propertyOwner = getOwner();
+
+    cout << "You landed on " << getSpaceName() << ". ";
+    if(propertyOwner == nullptr)
+    {
+        unownedMenu(currentPlayer);
+    }
+    else if(propertyOwner != currentPlayer)
+    {
+        ownedMenu(currentPlayer, propertyOwner);
+    }
+    else if(propertyOwner == currentPlayer)
+    {
+        cout << "Enjoy your free parking!" << endl;
+    }
+    else
+    {
+        cerr << "Could not determine ownder of property.";
+    }
+}
+
+void Property::unownedMenu(Player* currentPlayer)
+{
+    short menuSelection = 0;
+
+    while(static_cast<UnownedMenuOptions>(menuSelection) != UnownedMenuOptions::END_TURN) {
+        cout << "This property is unowned. The following actions are available: \n"
+        "   [1] Buy\n"
+        "   [2] Auction\n"
+        "   [3] Mortgage\n"
+        "   [4] End Turn\n";
+        cin >> menuSelection;
+
+        auto menuSelectionEnum = static_cast<UnownedMenuOptions>(menuSelection);
+        if(menuSelectionEnum == UnownedMenuOptions::BUY)
+        {
+            currentPlayer->buy(this);
+            menuSelection = 4; // End turn
+            cout << "Ending turn" << endl;
+        }
+        else if(menuSelectionEnum == UnownedMenuOptions::AUCTION)
+        {
+            cout << "Auctions are not implemented." << endl;
+        }
+        else if (menuSelectionEnum == UnownedMenuOptions::MORTGAGE)
+        {
+            cout << "Mortgages are not implemented." << endl;
+        }
+        else if(menuSelectionEnum == UnownedMenuOptions::END_TURN)
+        {
+            cout << "Ending turn" << endl;
+        }
+        else
+        {
+            cerr << "Invalid input!" << endl;
+        }
+    }
+}
+
+void Property::ownedMenu(Player* currentPlayer, const Player* propertyOwner)
+{
+    short menuSelection = 0;
+
+    while(static_cast<OwnedMenuOptions>(menuSelection) != OwnedMenuOptions::END_TURN)
+    {
+        cout << "This property is owned by " << propertyOwner->name << ". The cost of rent is " << getRent() << ".\n "
+                    "The following actions are available: \n"
+                    "   [1] Pay\n"
+                    "   [2] Mortgage\n"
+                    "   [3] End Turn\n";
+        cin >> menuSelection;
+
+        switch(static_cast<OwnedMenuOptions>(menuSelection))
+        {
+        case OwnedMenuOptions::PAY:
+            currentPlayer->buy(this);
+            break;
+        case OwnedMenuOptions::MORTGAGE:
+            cout << "Mortgages are not implemented." << endl;
+            break;
+        case OwnedMenuOptions::END_TURN:
+            cout << "Ending turn" << endl;
+            break;
+        default:
+            cerr << "Invalid input!" << endl;
+        }
+    }
 }

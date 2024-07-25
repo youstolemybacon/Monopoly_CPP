@@ -11,6 +11,11 @@
 #include "Railroad.h"
 #include "Utility.h"
 
+class Board;
+class Property;
+class Railroad;
+class Utility;
+
 
 using namespace std;
 

@@ -8,6 +8,7 @@
 
 
 class IncomeTax : public Space {
+public:
     IncomeTax();
     bool payTaxes(Player* taxPayer);
     void spaceMenu(Player* player);

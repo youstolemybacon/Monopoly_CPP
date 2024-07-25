@@ -87,7 +87,6 @@ vector<Railroad*> Board::getOwnedRailroads(const Player* player)
         Railroad* railroad = dynamic_cast<Railroad*>(space);
         if(railroad && railroad->getOwner() == player)
         {
-            cout << "You own: " << railroad->getSpaceName() << endl;
             railroads.push_back(railroad);
         }
     }

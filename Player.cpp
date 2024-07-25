@@ -96,6 +96,7 @@ bool Player::buy(Property* property)
     if(pay(property->getPrice()))
     {
         property->changeOwner(this);
+        cout << "Congratulations, you are the proud ownder of " << property->getSpaceName() << "!" << endl;
         return true;
     }
     return false;
@@ -111,6 +112,7 @@ bool Player::buy(Railroad* railroad)
         {
             currentRailroad->setRent(railroads.size());
         }
+        cout << "Congratulations, you are the proud ownder of " << railroad->getSpaceName() << "!" << endl;
         return true;
     }
     return false;
@@ -126,6 +128,7 @@ bool Player::buy(Utility* utility)
         {
             currentUtility->setRent(utilities.size());
         }
+        cout << "Congratulations, you are the proud ownder of " << utility->getSpaceName() << "!" << endl;
         return true;
     }
     return false;
