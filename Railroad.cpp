@@ -43,3 +43,8 @@ void Railroad::spaceMenu(Player* player)
 {
     cout << "Placeholder";
 }
+
+void Railroad::buy(Player* buyer)
+{
+    buyer->buy(this);
+}

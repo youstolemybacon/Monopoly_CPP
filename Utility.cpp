@@ -53,6 +53,11 @@ void Utility::displayInfo()
 {
 }
 
+void Utility::buy(Player* buyer)
+{
+    buyer->buy(this);
+}
+
 void Utility::spaceMenu(Player* player)
 {
     cout << "Placeholder";

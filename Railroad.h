@@ -17,6 +17,7 @@ public:
     void setRent(short railroadsOwned);
     void displayInfo() override;
     void spaceMenu(Player* player) override;
+    void buy(Player* buyer) override;
 
 };
 

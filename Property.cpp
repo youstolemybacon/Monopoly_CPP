@@ -57,6 +57,11 @@ void Property::displayInfo() {
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
 }
 
+void Property::buy(Player* buyer)
+{
+    buyer->buy(this);
+}
+
 void Property::spaceMenu(Player* currentPlayer)
 {
     Player* propertyOwner = getOwner();

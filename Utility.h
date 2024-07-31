@@ -14,6 +14,7 @@ public:
     void setRent(short ownedUtilities);
     short getRent();
     void displayInfo() override;
+    void buy(Player* buyer) override;
     void spaceMenu(Player* player);
 };
 
