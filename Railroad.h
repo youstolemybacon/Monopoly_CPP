@@ -6,7 +6,8 @@
 #define RAILROAD_H
 
 #include "OwnableSpaces.h"
-#include "Space.h"
+
+class OwnableSpaces;
 
 class Railroad : public OwnableSpaces {
 private:
@@ -17,8 +18,7 @@ public:
     void setRent(short railroadsOwned);
     void displayInfo() override;
     void spaceMenu(Player* player) override;
-    void buy(Player* buyer) override;
-
+    void buy(Player* buyer, short price) override;
 };
 
 

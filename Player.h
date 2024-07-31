@@ -6,16 +6,11 @@
 #define MONOPOLY_SIM_PLAYER_H
 
 #include <iostream>
-#include "Board.h"
-#include "Property.h"
-#include "Railroad.h"
-#include "Utility.h"
 
 class Board;
 class Property;
 class Railroad;
 class Utility;
-
 
 using namespace std;
 
@@ -46,8 +41,11 @@ public:
     bool pay(short cost);
 
     bool buy(Property* property);
+    bool buy(Property* property, short price);
     bool buy(Railroad* railroad);
+    bool buy(Railroad* railroad, short price);
     bool buy(Utility* utility);
+    bool buy(Utility* utility, short price);
 
     int money = 1500;
     string name;

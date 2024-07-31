@@ -3,7 +3,11 @@
 //
 
 #include "Player.h"
-#include <utility>
+#include "Board.h"
+#include "Property.h"
+#include "Railroad.h"
+#include "Utility.h"
+
 
 Player::Player(string name) {
     this->name = name;
@@ -102,6 +106,17 @@ bool Player::buy(Property* property)
     return false;
 }
 
+bool Player::buy(Property* property, const short price)
+{
+    if(pay(price))
+    {
+        property->changeOwner(this);
+        cout << "Congratulations, you are the proud ownder of " << property->getSpaceName() << "!" << endl;
+        return true;
+    }
+    return false;
+}
+
 bool Player::buy(Railroad* railroad)
 {
     if(pay(railroad->getPrice()))
@@ -118,9 +133,41 @@ bool Player::buy(Railroad* railroad)
     return false;
 }
 
+bool Player::buy(Railroad* railroad, short price)
+{
+    if(pay(price))
+    {
+        railroad->changeOwner(this);
+        vector<Railroad*> railroads = board.getOwnedRailroads(this);
+        for(Railroad* currentRailroad : railroads)
+        {
+            currentRailroad->setRent(railroads.size());
+        }
+        cout << "Congratulations, you are the proud ownder of " << railroad->getSpaceName() << "!" << endl;
+        return true;
+    }
+    return false;
+}
+
 bool Player::buy(Utility* utility)
 {
     if(pay(utility->getPrice()))
+    {
+        utility->changeOwner(this);
+        vector<Utility*> utilities = board.getOwnedUtilities(this);
+        for(Utility* currentUtility : utilities)
+        {
+            currentUtility->setRent(utilities.size());
+        }
+        cout << "Congratulations, you are the proud ownder of " << utility->getSpaceName() << "!" << endl;
+        return true;
+    }
+    return false;
+}
+
+bool Player::buy(Utility* utility, short price)
+{
+    if(pay(price))
     {
         utility->changeOwner(this);
         vector<Utility*> utilities = board.getOwnedUtilities(this);

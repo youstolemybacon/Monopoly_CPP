@@ -3,7 +3,6 @@
 //
 
 #include "Property.h"
-
 #include "Player.h"
 
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice,
@@ -57,9 +56,9 @@ void Property::displayInfo() {
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
 }
 
-void Property::buy(Player* buyer)
+void Property::buy(Player* buyer, short price)
 {
-    buyer->buy(this);
+    buyer->buy(this, price);
 }
 
 void Property::spaceMenu(Player* currentPlayer)
@@ -93,9 +92,9 @@ void Property::unownedMenu(Player* currentPlayer)
         cout << "This property is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
-        "   [3] Mortgage\n"
-        "   [4] End Turn\n";
+        "   [3] Mortgage\n";
         cin >> menuSelection;
+        cin.clear();
 
         auto menuSelectionEnum = static_cast<UnownedMenuOptions>(menuSelection);
         if(menuSelectionEnum == UnownedMenuOptions::BUY)
@@ -106,15 +105,13 @@ void Property::unownedMenu(Player* currentPlayer)
         }
         else if(menuSelectionEnum == UnownedMenuOptions::AUCTION)
         {
-            cout << "Auctions are not implemented." << endl;
+            this->auction(Players::playerList);
+            menuSelection = 4; // End turn
+            cout << "Ending turn" << endl;
         }
         else if (menuSelectionEnum == UnownedMenuOptions::MORTGAGE)
         {
             cout << "Mortgages are not implemented." << endl;
-        }
-        else if(menuSelectionEnum == UnownedMenuOptions::END_TURN)
-        {
-            cout << "Ending turn" << endl;
         }
         else
         {
@@ -132,8 +129,7 @@ void Property::ownedMenu(Player* currentPlayer, const Player* propertyOwner)
         cout << "This property is owned by " << propertyOwner->name << ". The cost of rent is " << getRent() << ".\n "
                     "The following actions are available: \n"
                     "   [1] Pay\n"
-                    "   [2] Mortgage\n"
-                    "   [3] End Turn\n";
+                    "   [2] Mortgage\n";
         cin >> menuSelection;
 
         switch(static_cast<OwnedMenuOptions>(menuSelection))
@@ -143,9 +139,6 @@ void Property::ownedMenu(Player* currentPlayer, const Player* propertyOwner)
             break;
         case OwnedMenuOptions::MORTGAGE:
             cout << "Mortgages are not implemented." << endl;
-            break;
-        case OwnedMenuOptions::END_TURN:
-            cout << "Ending turn" << endl;
             break;
         default:
             cerr << "Invalid input!" << endl;

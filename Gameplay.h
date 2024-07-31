@@ -5,8 +5,9 @@
 #ifndef GAMEPLAY_H
 #define GAMEPLAY_H
 
-#include "Space.h"
 #include "Player.h"
+
+class Space;
 
 class Gameplay {
 public:

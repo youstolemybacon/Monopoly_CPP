@@ -8,12 +8,13 @@
 #include <vector>
 #include "Player.h"
 
+class Player;
 
 class Players {
 private:
 public:
     Players();
-    vector<Player*> playerList;
+    static std::vector<Player*> playerList;
 };
 
 

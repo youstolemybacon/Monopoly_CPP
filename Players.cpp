@@ -3,8 +3,11 @@
 //
 
 #include "Players.h"
+#include "Board.h"
 
 Board Player::board;
+
+std::vector<Player*> Players::playerList;
 
 Players::Players()
 {

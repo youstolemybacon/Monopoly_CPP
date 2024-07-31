@@ -8,6 +8,9 @@
 #include "Players.h"
 #include "Space.h"
 
+class Players;
+class Space;
+
 
 class OwnableSpaces : public Space {
 private:
@@ -15,15 +18,15 @@ private:
     Player* owner = nullptr;
 public:
     OwnableSpaces(short price, short spaceIndex, string spaceName);
-    void auction(Players* players);
+    void auction(vector<Player*> players);
     short getPrice();
     bool isOwned();
     void changeOwner(Player* newOwner);
     Player* getOwner() const;
     virtual short getRent() = 0;
     virtual void displayInfo() = 0;
-    virtual void buy(Player* buyer) = 0;
-    void spaceMenu(Player* player) override;
+    virtual void buy(Player* buyer, short price) = 0;
+    void spaceMenu(Player* playerList) override;
 };
 
 

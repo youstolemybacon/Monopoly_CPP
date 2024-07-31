@@ -4,8 +4,8 @@
 
 #ifndef UTILITY_H
 #define UTILITY_H
-#include "OwnableSpaces.h"
 
+#include "OwnableSpaces.h"
 
 class Utility : public OwnableSpaces {
     bool monopoloy = false;
@@ -14,7 +14,7 @@ public:
     void setRent(short ownedUtilities);
     short getRent();
     void displayInfo() override;
-    void buy(Player* buyer) override;
+    void buy(Player* buyer, short price) override;
     void spaceMenu(Player* player);
 };
 

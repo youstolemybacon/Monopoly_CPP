@@ -4,8 +4,6 @@
 
 #include "Railroad.h"
 
-#include "Player.h"
-
 Railroad::Railroad(short spaceIndex, string spaceName) : OwnableSpaces(200, spaceIndex, std::move(spaceName)) {}
 
 short Railroad::getRent()
@@ -44,7 +42,7 @@ void Railroad::spaceMenu(Player* player)
     cout << "Placeholder";
 }
 
-void Railroad::buy(Player* buyer)
+void Railroad::buy(Player* buyer, short price)
 {
     buyer->buy(this);
 }

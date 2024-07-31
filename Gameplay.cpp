@@ -11,6 +11,10 @@
 #include "IncomeTax.h"
 #include "Jail.h"
 #include "LuxuryTax.h"
+#include "Property.h"
+#include "Railroad.h"
+#include "Utility.h"
+
 
 
 void Gameplay::getSpaceMenu(Player* player, Space* space)

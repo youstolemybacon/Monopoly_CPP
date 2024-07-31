@@ -3,6 +3,7 @@
 //
 
 #include "OwnableSpaces.h"
+#include <limits>
 
 OwnableSpaces::OwnableSpaces(short price, short spaceIndex, string spaceName)
     : Space(spaceIndex, std::move(spaceName))
@@ -10,12 +11,11 @@ OwnableSpaces::OwnableSpaces(short price, short spaceIndex, string spaceName)
     this->price = price;
 }
 
-void OwnableSpaces::auction(Players* players)
+void OwnableSpaces::auction(vector<Player*> playerList)
 {
     cout << "Welcome to the auction for " << this->getSpaceName() << ". Each player will be prompted for their bid." << endl;
     cout << "To drop out of the bid simply enter in 0. " << endl;
 
-    auto playerList = players->playerList;
     short highestBid = 0;
     short currentBid = 0;
     Player* highestBidder = nullptr;
@@ -27,10 +27,19 @@ void OwnableSpaces::auction(Players* players)
         {
             Player* player = playerList[i];
 
-            cout << player->name << " The highest bid is " << highestBid << "Enter your bid: " << endl;
+            cout << player->name << ", the highest bid is " << highestBid << ". You currently have $" << player->money << endl << "Enter your bid: " << endl;
             cin >> currentBid;
 
-            if(currentBid > highestBid && !cin.fail())
+            if(cin.fail())
+            {
+                cin.clear();
+                cout << "Invalid input, please try again." << endl;
+            }
+            else if(currentBid > player->money)
+            {
+                cout << "You do not have enough money to play this bet." << endl;
+            }
+            else if(currentBid > highestBid)
             {
                 highestBid = currentBid;
                 highestBidder = player;
@@ -39,21 +48,21 @@ void OwnableSpaces::auction(Players* players)
             else if(currentBid == 0)
             {
                 playerList.erase(playerList.begin() + i);
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 i++; // Increment for loop index
             }
             else
             {
-                cout << "Invalid input, please try again." << endl;
+                cout << "Invalid input, the bid is too low. Please try again." << endl;
             }
         }
     }
-
 
     if(highestBidder != nullptr)
     {
         cout << "Congratulations " << highestBidder->name << " you won the auction for " << this->getSpaceName()
         << "at a price of $" << highestBid << "." << endl;
-        this->buy(highestBidder);
+        this->buy(highestBidder, highestBid);
     }
     else
     {
