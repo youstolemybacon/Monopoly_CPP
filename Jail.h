@@ -4,9 +4,9 @@
 
 #ifndef JAIL_H
 #define JAIL_H
-#include <vector>
 
 #include "Player.h"
+#include "Space.h"
 
 
 class Jail : public Space {
