@@ -10,6 +10,8 @@
 #include "LuxuryTax.h"
 #include "Go.h"
 
+vector<Space*> Board::board;
+
 Board::Board()
 {
     board.push_back(new Go());

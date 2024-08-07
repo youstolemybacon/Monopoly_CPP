@@ -24,6 +24,10 @@ public:
     short getJailSentence();
     void setJailSentence(short jailSentence);
 
+    short getRailroadsOwned() const;
+    void incrementRailroadsOwned();
+    void decrementRailroadsOwned();
+
     void roll();
     void move();
 
@@ -37,7 +41,7 @@ public:
     void printMoney() const;
     void printProperties();
 
-    bool pay(short cost, Player& beneficiary);
+    bool pay(short cost, Player* beneficiary);
     bool pay(short cost);
 
     bool buy(Property* property);
@@ -49,8 +53,9 @@ public:
 
     int money = 1500;
     string name;
-    static Board board;
+    static Board playerBoard;
 private:
+    short railroadsOwned = 0;
     short jailSentence{};
     int space = 0;
     int dice[2] = {0};

@@ -15,11 +15,11 @@ private:
 public:
     Board();
     ~Board();
-    vector<Space*> board;
+    static vector<Space*> board;
     Space* getSpace(short spaceIndex) const;
     void getOwnedProperties(const Player* player);
-    vector<Railroad*> getOwnedRailroads(const Player* player);
-    vector<Utility*> getOwnedUtilities(const Player* player);
+    static vector<Railroad*> getOwnedRailroads(const Player* player);
+    static vector<Utility*> getOwnedUtilities(const Player* player);
 };
 
 

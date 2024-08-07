@@ -5,7 +5,7 @@
 #include "Players.h"
 #include "Board.h"
 
-Board Player::board;
+Board Player::playerBoard;
 
 std::vector<Player*> Players::playerList;
 

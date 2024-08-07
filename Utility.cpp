@@ -4,6 +4,7 @@
 
 #include "Utility.h"
 #include "Dice.h"
+#include "Player.h"
 
 void Utility::setRent(short ownedUtilities)
 {
@@ -49,11 +50,6 @@ short Utility::getRent()
 
 void Utility::displayInfo()
 {
-}
-
-void Utility::buy(Player* buyer, short price)
-{
-    buyer->buy(this, price);
 }
 
 void Utility::spaceMenu(Player* player)

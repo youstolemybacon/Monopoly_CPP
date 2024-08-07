@@ -34,10 +34,9 @@ public:
     short getHousePrice();
     short getRent() override;
     void displayInfo() override;
-    void buy(Player* buyer, short price) override;
     void spaceMenu(Player* currentPlayer);
     void unownedMenu(Player* currentPlayer);
-    void ownedMenu(Player* currentPlayer, const Player* propertyOwner);
+    void ownedMenu(Player* currentPlayer, Player* propertyOwner);
 };
 
 

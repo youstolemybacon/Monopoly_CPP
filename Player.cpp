@@ -3,11 +3,10 @@
 //
 
 #include "Player.h"
-#include "Board.h"
 #include "Property.h"
 #include "Railroad.h"
 #include "Utility.h"
-
+#include "Board.h"
 
 Player::Player(string name) {
     this->name = name;
@@ -29,6 +28,21 @@ short Player::getJailSentence()
 void Player::setJailSentence(short jailSentence)
 {
     this->jailSentence = jailSentence;
+}
+
+short Player::getRailroadsOwned() const
+{
+    return railroadsOwned;
+}
+
+void Player::incrementRailroadsOwned()
+{
+    railroadsOwned++;
+}
+
+void Player::decrementRailroadsOwned()
+{
+    railroadsOwned--;
 }
 
 void Player::roll() {
@@ -65,16 +79,16 @@ const int *Player::getSpaceHistory() const {
     return spaceHistory;
 }
 
-bool Player::pay(const short cost, Player& beneficiary)
+bool Player::pay(const short cost, Player* beneficiary)
 {
     if (this->money > cost)
     {
         this->money -= cost;
-        beneficiary.money += cost;
+        beneficiary->money += cost;
 
         cout << "The payment was made successfully! "  << endl;
         this->printMoney();
-        beneficiary.printMoney();
+        beneficiary->printMoney();
         return true; // Player can afford
     }
     cout << this->name << " is short: $" << cost - this->money << endl;
@@ -117,44 +131,12 @@ bool Player::buy(Property* property, const short price)
     return false;
 }
 
-bool Player::buy(Railroad* railroad)
-{
-    if(pay(railroad->getPrice()))
-    {
-        railroad->changeOwner(this);
-        vector<Railroad*> railroads = board.getOwnedRailroads(this);
-        for(Railroad* currentRailroad : railroads)
-        {
-            currentRailroad->setRent(railroads.size());
-        }
-        cout << "Congratulations, you are the proud ownder of " << railroad->getSpaceName() << "!" << endl;
-        return true;
-    }
-    return false;
-}
-
-bool Player::buy(Railroad* railroad, short price)
-{
-    if(pay(price))
-    {
-        railroad->changeOwner(this);
-        vector<Railroad*> railroads = board.getOwnedRailroads(this);
-        for(Railroad* currentRailroad : railroads)
-        {
-            currentRailroad->setRent(railroads.size());
-        }
-        cout << "Congratulations, you are the proud ownder of " << railroad->getSpaceName() << "!" << endl;
-        return true;
-    }
-    return false;
-}
-
 bool Player::buy(Utility* utility)
 {
     if(pay(utility->getPrice()))
     {
         utility->changeOwner(this);
-        vector<Utility*> utilities = board.getOwnedUtilities(this);
+        vector<Utility*> utilities = playerBoard.getOwnedUtilities(this);
         for(Utility* currentUtility : utilities)
         {
             currentUtility->setRent(utilities.size());
@@ -170,7 +152,7 @@ bool Player::buy(Utility* utility, short price)
     if(pay(price))
     {
         utility->changeOwner(this);
-        vector<Utility*> utilities = board.getOwnedUtilities(this);
+        vector<Utility*> utilities = playerBoard.getOwnedUtilities(this);
         for(Utility* currentUtility : utilities)
         {
             currentUtility->setRent(utilities.size());

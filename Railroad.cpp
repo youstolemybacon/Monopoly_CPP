@@ -3,33 +3,15 @@
 //
 
 #include "Railroad.h"
+#include <cmath>
+#include "Board.h"
+#include "Player.h"
 
 Railroad::Railroad(short spaceIndex, string spaceName) : OwnableSpaces(200, spaceIndex, std::move(spaceName)) {}
 
 short Railroad::getRent()
 {
-    return rent;
-}
-
-void Railroad::setRent(short railroadsOwned)
-{
-    switch (railroadsOwned)
-    {
-    case 1:
-        this->rent = 25;
-        break;
-    case 2:
-        this->rent = 50;
-        break;
-    case 3:
-        this->rent = 100;
-        break;
-    case 4:
-        this->rent = 200;
-        break;
-    default:
-        cerr << "Failed to set railroad rent";
-    }
+    return std::pow( 2, getOwner()->getRailroadsOwned()) * 25 / 2;
 }
 
 void Railroad::displayInfo()
@@ -37,12 +19,25 @@ void Railroad::displayInfo()
 
 }
 
-void Railroad::spaceMenu(Player* player)
+void Railroad::spaceMenu(Player* currentPlayer)
 {
-    cout << "Placeholder";
-}
+    Player* propertyOwner = getOwner();
 
-void Railroad::buy(Player* buyer, short price)
-{
-    buyer->buy(this);
+    cout << "You landed on " << getSpaceName() << ". ";
+    if(propertyOwner == nullptr)
+    {
+        unownedMenu(currentPlayer);
+    }
+    else if(propertyOwner != currentPlayer)
+    {
+        ownedMenu(currentPlayer, propertyOwner);
+    }
+    else if(propertyOwner == currentPlayer)
+    {
+        cout << "Enjoy your free parking!" << endl;
+    }
+    else
+    {
+        cerr << "Could not determine owner of property.";
+    }
 }

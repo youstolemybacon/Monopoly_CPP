@@ -5,10 +5,11 @@
 #ifndef OWNABLESPACES_H
 #define OWNABLESPACES_H
 
-#include "Players.h"
 #include "Space.h"
+#include <vector>
 
 class Players;
+class Player;
 class Space;
 
 
@@ -16,6 +17,19 @@ class OwnableSpaces : public Space {
 private:
     short price;
     Player* owner = nullptr;
+    enum class OwnedMenuOptions
+    {
+        PAY = 1,
+        MORTGAGE,
+        END_TURN
+    };
+    enum class UnownedMenuOptions
+    {
+        BUY = 1,
+        AUCTION,
+        MORTGAGE,
+        END_TURN
+    };
 public:
     OwnableSpaces(short price, short spaceIndex, string spaceName);
     void auction(vector<Player*> players);
@@ -25,8 +39,12 @@ public:
     Player* getOwner() const;
     virtual short getRent() = 0;
     virtual void displayInfo() = 0;
-    virtual void buy(Player* buyer, short price) = 0;
-    void spaceMenu(Player* playerList) override;
+    virtual bool buy(Player* buyer, short price);
+    virtual bool buy(Player* buyer);
+
+    void spaceMenu(Player* currentPlayer) override;
+    void unownedMenu(Player* currentPlayer);
+    void ownedMenu(Player* currentPlayer, Player* owner);
 };
 
 

@@ -4,6 +4,7 @@
 
 #include "Property.h"
 #include "Player.h"
+#include "Players.h"
 
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice,
                    short spaceIndex, string spaceName, short price) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6},
@@ -56,11 +57,6 @@ void Property::displayInfo() {
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
 }
 
-void Property::buy(Player* buyer, short price)
-{
-    buyer->buy(this, price);
-}
-
 void Property::spaceMenu(Player* currentPlayer)
 {
     Player* propertyOwner = getOwner();
@@ -89,7 +85,7 @@ void Property::unownedMenu(Player* currentPlayer)
     short menuSelection = 0;
 
     while(static_cast<UnownedMenuOptions>(menuSelection) != UnownedMenuOptions::END_TURN) {
-        cout << "This property is unowned. The following actions are available: \n"
+        cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
         "   [3] Mortgage\n";
@@ -120,7 +116,7 @@ void Property::unownedMenu(Player* currentPlayer)
     }
 }
 
-void Property::ownedMenu(Player* currentPlayer, const Player* propertyOwner)
+void Property::ownedMenu(Player* currentPlayer, Player* propertyOwner)
 {
     short menuSelection = 0;
 
@@ -135,7 +131,7 @@ void Property::ownedMenu(Player* currentPlayer, const Player* propertyOwner)
         switch(static_cast<OwnedMenuOptions>(menuSelection))
         {
         case OwnedMenuOptions::PAY:
-            currentPlayer->buy(this);
+            currentPlayer->pay(this->getRent(), propertyOwner);
             break;
         case OwnedMenuOptions::MORTGAGE:
             cout << "Mortgages are not implemented." << endl;
