@@ -69,14 +69,16 @@ Space* Board::getSpace(const short spaceIndex) const
     return board[spaceIndex];
 }
 
-void Board::getOwnedProperties(const Player* player)
+vector<Property*> Board::getOwnedProperties(const Player* player)
 {
+    vector<Property*> properties;
     for(Space* space : board)
     {
-        Property* property = dynamic_cast<Property*>(space);
+        auto* property = dynamic_cast<Property*>(space);
+        // Check if it is of type property and is owned by the current player
         if(property && property->getOwner() == player)
         {
-            cout << "You own: " << property->getSpaceName() << endl;
+            properties.push_back(property);
         }
     }
 }
