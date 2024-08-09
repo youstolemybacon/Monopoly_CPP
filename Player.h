@@ -21,6 +21,7 @@ public:
 
     int getSpace() const;
     void setSpace(int space);
+
     short getJailSentence();
     void setJailSentence(short jailSentence);
 
@@ -32,7 +33,6 @@ public:
     void move();
 
     const int getDice() const;
-    void setDice(int dice_1, int dice_2);
     bool compareDice();
 
     const int *getSpaceHistory() const;

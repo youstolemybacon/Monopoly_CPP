@@ -54,11 +54,6 @@ const int Player::getDice() const {
     return dice[0] + dice[1];
 }
 
-void Player::setDice(int dice_1, int dice_2) {
-    dice[0] = dice_1;
-    dice[1] = dice_2;
-}
-
 bool Player::compareDice() {
     return dice[0] == dice[1];
 }
@@ -81,7 +76,7 @@ const int *Player::getSpaceHistory() const {
 
 bool Player::pay(const short cost, Player* beneficiary)
 {
-    if (this->money > cost)
+    if(this->money > cost)
     {
         this->money -= cost;
         beneficiary->money += cost;
