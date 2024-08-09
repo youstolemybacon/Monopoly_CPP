@@ -12,9 +12,12 @@ class Gameplay;
 int main() {
     srand(time(nullptr));
     Players players;
+    Property boardwalk(50, 200, 600, 1400, 1700, 2000, 400, 39, "Boardwalk", 400);
+    boardwalk.displayInfo();
 
     Gameplay::getSpaceMenu(Players::playerList[0], Player::playerBoard.getSpace(1));
     Gameplay::getSpaceMenu(Players::playerList[1], Player::playerBoard.getSpace(5));
+
 
     return 0;
 }
