@@ -3,9 +3,7 @@
 //
 
 #include "Players.h"
-
 #include <algorithm>
-
 #include "Board.h"
 
 Board Player::playerBoard;
