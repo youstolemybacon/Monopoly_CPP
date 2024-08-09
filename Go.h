@@ -14,6 +14,4 @@ public:
     void spaceMenu(Player* player) override;
 };
 
-
-
 #endif //GO_H
