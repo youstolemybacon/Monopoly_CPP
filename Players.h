@@ -14,7 +14,12 @@ class Players {
 private:
 public:
     Players();
+    ~Players(); // Needs implementation
     static std::vector<Player*> playerList;
+    static void randomizePlayerOrder();
+    static void displayPlayers();
+    static void setPlayerNumber();
+    static void setPlayerNames();
 };
 
 
