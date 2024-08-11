@@ -81,6 +81,7 @@ vector<Property*> Board::getOwnedProperties(const Player* player)
             properties.push_back(property);
         }
     }
+    return properties;
 }
 
 vector<Railroad*> Board::getOwnedRailroads(const Player* player)
@@ -105,9 +106,22 @@ vector<Utility*> Board::getOwnedUtilities(const Player* player)
         Utility* utility = dynamic_cast<Utility*>(space);
         if(utility && utility->getOwner() == player)
         {
-            cout << "You own: " << utility->getSpaceName() << endl;
             utilities.push_back(utility);
         }
     }
     return utilities;
+}
+
+vector<OwnableSpaces*> Board::getOwnedSpaces(const Player* player)
+{
+    vector<OwnableSpaces*> ownableSpaces;
+    for(Space* space : board)
+    {
+        auto ownableSpace = dynamic_cast<OwnableSpaces*>(space);
+        if(ownableSpace && ownableSpace->getOwner() == player)
+        {
+            ownableSpaces.push_back(ownableSpace);
+        }
+    }
+    return ownableSpaces;
 }

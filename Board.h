@@ -20,6 +20,7 @@ public:
     static vector<Property*> getOwnedProperties(const Player* player);
     static vector<Railroad*> getOwnedRailroads(const Player* player);
     static vector<Utility*> getOwnedUtilities(const Player* player);
+    static vector<OwnableSpaces*> getOwnedSpaces(const Player* player);
 };
 
 
