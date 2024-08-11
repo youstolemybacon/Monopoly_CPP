@@ -43,6 +43,7 @@ short Property::getHousePrice()
 }
 
 void Property::displayInfo() {
+    cout << endl << "_______________________________________" << endl;
     cout << endl << getSpaceName() << endl;
     cout << endl;
     cout << "  RENT $" << rent[0] << endl;
@@ -55,6 +56,7 @@ void Property::displayInfo() {
     cout << "  Mortgage Value $" << getPrice() / 2 << endl;
     cout << "  Houses cost $" << getHousePrice() << " each" << endl;
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
+    cout << endl << "_______________________________________" << endl;
 }
 
 void Property::spaceMenu(Player* currentPlayer)
