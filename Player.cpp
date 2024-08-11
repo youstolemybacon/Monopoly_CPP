@@ -205,3 +205,14 @@ void Player::printMoney() const
 {
     cout << this->name << " you have $" << this->money << endl;
 }
+
+void Player::printSpaces() const
+{
+    short spaceNumber = 1;
+    cout << endl << "You own the following: " << endl;
+    for(const auto space : Board::getOwnedSpaces(this))
+    {
+        cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
+        spaceNumber++;
+    }
+}
