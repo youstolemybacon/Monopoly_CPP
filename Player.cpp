@@ -158,6 +158,22 @@ bool Player::buy(Utility* utility, short price)
     return false;
 }
 
+void Player::printMoney() const
+{
+    cout << this->name << " you have $" << this->money << endl;
+}
+
+void Player::printSpaces() const
+{
+    short spaceNumber = 1;
+    cout << endl << "You own the following: " << endl;
+    for(const auto space : Board::getOwnedSpaces(this))
+    {
+        cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
+        spaceNumber++;
+    }
+}
+
 void Player::displaySpaceHistory() const {
     cout << "Go: " << spaceHistory[0] / moves << "%" << endl;
     cout << "Mediterranean Avenue: " << spaceHistory[1] / moves << "%" << endl;
@@ -199,20 +215,4 @@ void Player::displaySpaceHistory() const {
     cout << "Park Place: " << spaceHistory[37] / moves << "%" << endl;
     cout << "Luxury Tax: " << spaceHistory[38] / moves << "%" << endl;
     cout << "Boardwalk: " << spaceHistory[39] / moves << "%" << endl;
-}
-
-void Player::printMoney() const
-{
-    cout << this->name << " you have $" << this->money << endl;
-}
-
-void Player::printSpaces() const
-{
-    short spaceNumber = 1;
-    cout << endl << "You own the following: " << endl;
-    for(const auto space : Board::getOwnedSpaces(this))
-    {
-        cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
-        spaceNumber++;
-    }
 }
