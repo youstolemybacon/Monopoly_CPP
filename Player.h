@@ -39,7 +39,7 @@ public:
     void displaySpaceHistory() const;
 
     void printMoney() const;
-    void printProperties();
+    void printSpaces() const;
 
     bool pay(short cost, Player* beneficiary);
     bool pay(short cost);
