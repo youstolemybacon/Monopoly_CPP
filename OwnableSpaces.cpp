@@ -134,8 +134,6 @@ void OwnableSpaces::spaceMenu(Player* currentPlayer)
     {
         cerr << "Could not determine owner." << endl;
     }
-    cout << endl << "END TURN" << endl;
-    cout << "_____________________________________________________________________________" << endl;
 }
 
 void OwnableSpaces::unownedMenu(Player* currentPlayer)
