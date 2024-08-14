@@ -5,6 +5,7 @@
 #include "Board.h"
 #include "Chance.h"
 #include "CommunityChest.h"
+#include "FreeParking.h"
 #include "GoToJail.h"
 #include "Jail.h"
 #include "LuxuryTax.h"
@@ -34,7 +35,7 @@ Board::Board()
     board.push_back(new CommunityChest(17));
     board.push_back(new Property(16, 80, 220, 600, 800, 1000, 100, 18, "Tennessee Avenue", 90));
     board.push_back(new Property(18, 90, 250, 700, 875, 1050, 100, 19, "New York Avenue", 100));
-    board.push_back(new Space(20, "Free Parking"));
+    board.push_back(new FreeParking());
     board.push_back(new Property(18, 90, 250, 700, 875, 1050, 220, 21, "Kentucky Avenue", 110));
     board.push_back(new Chance(22));
     board.push_back(new Property(20, 100, 300, 750, 925, 1100, 220, 23, "Indiana Avenue", 110));
