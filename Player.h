@@ -8,6 +8,7 @@
 #include <iostream>
 
 class Board;
+class Space;
 class Property;
 class Railroad;
 class Utility;
@@ -19,8 +20,10 @@ public:
     Player(string name);
     Player() = default;
 
-    int getSpace() const;
-    void setSpace(int space);
+    int getSpaceIndex() const;
+    void setSpace(int spaceIndex);
+
+    Space* getSpace();
 
     short getJailSentence();
     void setJailSentence(short jailSentence);
@@ -30,7 +33,7 @@ public:
     void decrementRailroadsOwned();
 
     void roll();
-    void move();
+    bool move();
 
     const int getDice() const;
     bool compareDice();
@@ -57,7 +60,7 @@ public:
 private:
     short railroadsOwned = 0;
     short jailSentence{};
-    int space = 0;
+    int spaceIndex = 0;
     int dice[2] = {0};
     int spaceHistory[40] = {0};
     double moves = 0;

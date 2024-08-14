@@ -12,12 +12,17 @@ Player::Player(string name) {
     this->name = name;
 }
 
-int Player::getSpace() const {
-    return space;
+int Player::getSpaceIndex() const {
+    return spaceIndex;
 }
 
-void Player::setSpace(int space) {
-    this->space = space;
+void Player::setSpace(int spaceIndex) {
+    this->spaceIndex = spaceIndex;
+}
+
+Space* Player::getSpace()
+{
+    return playerBoard.getSpace(spaceIndex);
 }
 
 short Player::getJailSentence()
@@ -58,16 +63,18 @@ bool Player::compareDice() {
     return dice[0] == dice[1];
 }
 
-void Player::move() {
+bool Player::move() {
     roll();
-    space += dice[0] + dice[1];
-    space %= 40;
-    spaceHistory[space]++;
+    spaceIndex += dice[0] + dice[1];
+    spaceIndex %= 40;
+    spaceHistory[spaceIndex]++;
 
     if(dice[0] != dice[1])
     {
         moves++;
+        return false; // Doubles were not rolled
     }
+    return true; // Doubles were rolled
 }
 
 const int *Player::getSpaceHistory() const {
