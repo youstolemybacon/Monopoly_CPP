@@ -8,5 +8,5 @@ CommunityChest::CommunityChest(const short spaceIndex) : Space(spaceIndex, "Comm
 
 void CommunityChest::spaceMenu(Player* player)
 {
-    cout << "Placeholder";
+    cout << "Community Chest" << endl;
 };
