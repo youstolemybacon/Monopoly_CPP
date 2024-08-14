@@ -17,13 +17,15 @@ private:
     short housePrice;
     enum class OwnedMenuOptions
     {
-        PAY = 1,
+        DEFAULT = 0,
+        PAY,
         MORTGAGE,
         END_TURN
     };
     enum class UnownedMenuOptions
     {
-        BUY = 1,
+        DEFAULT = 0,
+        BUY,
         AUCTION,
         MORTGAGE,
         END_TURN
@@ -36,7 +38,6 @@ public:
     void displayInfo() override;
     void spaceMenu(Player* currentPlayer);
     void unownedMenu(Player* currentPlayer);
-    void ownedMenu(Player* currentPlayer, Player* propertyOwner);
 };
 
 

@@ -63,7 +63,7 @@ void Property::spaceMenu(Player* currentPlayer)
 {
     Player* propertyOwner = getOwner();
 
-    cout << "You landed on " << getSpaceName() << ". ";
+    cout << endl << "You moved " << currentPlayer->getDice() << " spaces and landed on " << getSpaceName() << ". ";
     if(propertyOwner == nullptr)
     {
         unownedMenu(currentPlayer);
@@ -113,32 +113,6 @@ void Property::unownedMenu(Player* currentPlayer)
         }
         else
         {
-            cerr << "Invalid input!" << endl;
-        }
-    }
-}
-
-void Property::ownedMenu(Player* currentPlayer, Player* propertyOwner)
-{
-    short menuSelection = 0;
-
-    while(static_cast<OwnedMenuOptions>(menuSelection) != OwnedMenuOptions::END_TURN)
-    {
-        cout << "This property is owned by " << propertyOwner->name << ". The cost of rent is " << getRent() << ".\n "
-                    "The following actions are available: \n"
-                    "   [1] Pay\n"
-                    "   [2] Mortgage\n";
-        cin >> menuSelection;
-
-        switch(static_cast<OwnedMenuOptions>(menuSelection))
-        {
-        case OwnedMenuOptions::PAY:
-            currentPlayer->pay(this->getRent(), propertyOwner);
-            break;
-        case OwnedMenuOptions::MORTGAGE:
-            cout << "Mortgages are not implemented." << endl;
-            break;
-        default:
             cerr << "Invalid input!" << endl;
         }
     }
