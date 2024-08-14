@@ -29,6 +29,7 @@ public:
         JAIL,
         INCOME_TAX,
         LUXURY_TAX,
+        FREE_PARKING,
         OTHER
     };
 

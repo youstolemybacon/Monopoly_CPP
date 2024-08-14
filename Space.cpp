@@ -8,6 +8,7 @@
 
 #include "Chance.h"
 #include "CommunityChest.h"
+#include "FreeParking.h"
 #include "Go.h"
 #include "GoToJail.h"
 #include "IncomeTax.h"
@@ -27,7 +28,7 @@ Space::Space(short spaceIndex, string spaceName) : spaceIndex(spaceIndex), space
 
 void Space::spaceMenu(Player* player)
 {
-    cout << "This is a placeholder!";
+    cout << endl << player->name << ", you landed on " << this->getSpaceName() << ". " << endl;
 }
 
 string Space::getSpaceName()
@@ -90,6 +91,11 @@ Space::SpaceType Space::getType(Space* space)
     if (dynamic_cast<LuxuryTax*>(space) != nullptr)
     {
         return LUXURY_TAX;
+    }
+
+    if (dynamic_cast<FreeParking*>(space) != nullptr)
+    {
+        return FREE_PARKING;
     }
 
     cerr << "No type matches the object provided" << endl;
