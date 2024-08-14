@@ -36,8 +36,6 @@ public:
     short getHousePrice();
     short getRent() override;
     void displayInfo() override;
-    void spaceMenu(Player* currentPlayer);
-    void unownedMenu(Player* currentPlayer);
 };
 
 
