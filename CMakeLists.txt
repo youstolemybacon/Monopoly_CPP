@@ -40,4 +40,6 @@ add_executable(Monopoly_Sim main.cpp
         Chance.h
         Gameplay.cpp
         Gameplay.h
+        FreeParking.cpp
+        FreeParking.h
 )
