@@ -21,6 +21,8 @@ void Gameplay::turn(Player* player)
 {
     preRollMenu(player);
     spaceMenu(player);
+    cout << endl << "TURN ENDED" << endl;
+    cout << "-----------------------------------------------------------------------------" << endl << endl;
 }
 
 void Gameplay::spaceMenu(Player* player)
