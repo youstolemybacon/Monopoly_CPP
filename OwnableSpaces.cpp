@@ -62,7 +62,7 @@ void OwnableSpaces::auction(vector<Player*> playerList)
     if(highestBidder != nullptr)
     {
         cout << "Congratulations " << highestBidder->name << " you won the auction for " << this->getSpaceName()
-        << "at a price of $" << highestBid << "." << endl;
+        << " at a price of $" << highestBid << "." << endl;
         this->buy(highestBidder, highestBid);
     }
     else
@@ -117,7 +117,7 @@ void OwnableSpaces::spaceMenu(Player* currentPlayer)
 {
     Player* owner = getOwner();
 
-    cout << "You landed on " << getSpaceName() << ". ";
+    cout << "You landed on " << getSpaceName() << ". " << endl;
     if(owner == nullptr)
     {
         unownedMenu(currentPlayer);
@@ -128,11 +128,11 @@ void OwnableSpaces::spaceMenu(Player* currentPlayer)
     }
     else if(owner == currentPlayer)
     {
-        cout << "Enjoy your free parking!" << endl;
+        cout << "You are the ownder of this property. Enjoy your free parking!" << endl;
     }
     else
     {
-        cerr << "Could not determine owner.";
+        cerr << "Could not determine owner." << endl;
     }
 }
 
@@ -151,9 +151,11 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
         auto menuSelectionEnum = static_cast<UnownedMenuOptions>(menuSelection);
         if(menuSelectionEnum == UnownedMenuOptions::BUY)
         {
-            this->buy(currentPlayer);
-            menuSelection = 4; // End turn
-            cout << "Ending turn" << endl;
+            if(this->buy(currentPlayer) == true)
+            {
+                menuSelection = 4; // End turn
+                cout << "Ending turn" << endl;
+            }
         }
         else if(menuSelectionEnum == UnownedMenuOptions::AUCTION)
         {
@@ -174,20 +176,23 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
 
 void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
 {
-    short menuSelection = 0;
+    short userInput = 0;
+    OwnedMenuOptions menuSelection = OwnedMenuOptions::DEFAULT;
 
-    while(static_cast<OwnedMenuOptions>(menuSelection) != OwnedMenuOptions::END_TURN)
+    while(menuSelection != OwnedMenuOptions::END_TURN)
     {
         cout << "This property is owned by " << owner->name << ". The cost of rent is " << getRent() << ".\n "
                     "The following actions are available: \n"
                     "   [1] Pay\n"
                     "   [2] Mortgage\n";
-        cin >> menuSelection;
+        cin >> userInput;
+        menuSelection = static_cast<OwnedMenuOptions>(userInput);
 
-        switch(static_cast<OwnedMenuOptions>(menuSelection))
+        switch(menuSelection)
         {
         case OwnedMenuOptions::PAY:
             currentPlayer->pay(this->getRent(), owner);
+            menuSelection = OwnedMenuOptions::END_TURN;
             break;
         case OwnedMenuOptions::MORTGAGE:
             cout << "Mortgages are not implemented." << endl;

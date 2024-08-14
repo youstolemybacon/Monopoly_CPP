@@ -19,13 +19,15 @@ private:
     Player* owner = nullptr;
     enum class OwnedMenuOptions
     {
-        PAY = 1,
+        DEFAULT = 0,
+        PAY,
         MORTGAGE,
         END_TURN
     };
     enum class UnownedMenuOptions
     {
-        BUY = 1,
+        DEFAULT = 0,
+        BUY,
         AUCTION,
         MORTGAGE,
         END_TURN
@@ -46,7 +48,5 @@ public:
     void unownedMenu(Player* currentPlayer);
     void ownedMenu(Player* currentPlayer, Player* owner);
 };
-
-
 
 #endif //OWNABLESPACES_H
