@@ -4,14 +4,14 @@
 
 #ifndef LUXURYTAX_H
 #define LUXURYTAX_H
-#include "Space.h"
 
+#include "Space.h"
 
 class LuxuryTax : public Space {
 public:
     LuxuryTax();
     bool payTaxes(Player* taxPayer);
-    void spaceMenu(Player* player);
+    void spaceMenu(Player* player) override;
 };
 
 

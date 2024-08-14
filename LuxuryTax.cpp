@@ -19,5 +19,5 @@ bool LuxuryTax::payTaxes(Player* taxPayer)
 
 void LuxuryTax::spaceMenu(Player* player)
 {
-    cout << "Placeholder";
+    cout << "Luxury Tax" << endl;
 }

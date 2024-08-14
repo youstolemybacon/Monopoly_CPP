@@ -12,10 +12,10 @@ void GoToJail::arrest(Player* suspect)
 {
     suspect->setJailSentence(3);
     suspect->setSpace(10);
-    cout << "You have been arrested!" << endl;
+    cout << "GO TO JAIL!" << endl;
 }
 
 void GoToJail::spaceMenu(Player* player)
 {
-    cout << "Placeholder";
+    cout << "Go to Jail";
 }

@@ -19,5 +19,5 @@ bool IncomeTax::payTaxes(Player* taxPayer)
 
 void IncomeTax::spaceMenu(Player* player)
 {
-    cout << "Placeholder";
+    cout << "Income Tax " << endl;
 }

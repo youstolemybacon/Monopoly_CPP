@@ -52,13 +52,8 @@ void Utility::displayInfo()
 {
     cout << endl << "_______________________________________" << endl;
     cout << endl << getSpaceName() << endl;
-    cout << endl << " If one \"Utility\" is owned rent is 4\ntimes amount shown on dice." << endl;
-    cout << " If both \"Utilities\" are owned rent is\n10 times amount shown on dice." << endl;
+    cout << endl << " If one \"Utility\" is owned, rent is 4 \ntimes amount shown on dice." << endl;
+    cout << " If both \"Utilities\" are owned, rent is\n10 times amount shown on dice." << endl;
     cout << endl << "Mortgage Value: $" << this->getPrice() / 2 << endl;
     cout << endl << "_______________________________________" << endl;
-}
-
-void Utility::spaceMenu(Player* player)
-{
-    cout << "Placeholder";
 }

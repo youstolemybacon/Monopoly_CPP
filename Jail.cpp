@@ -21,5 +21,5 @@ void Jail::release(Player* prisoner)
 
 void Jail::spaceMenu(Player* player)
 {
-    cout << "Placeholder";
+    cout << "Jail" << endl;
 }
