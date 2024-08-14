@@ -79,8 +79,9 @@ void Gameplay::spaceMenu(Player* player)
 void Gameplay::preRollMenu(Player* player)
 {
     short menuSelection = 0;
-    cout << "\n_____________________________________________________________________\n" << endl;
+
     cout << player->name << ", it is your turn. The following actions are available: " << endl;
+
     while(static_cast<PreRollMenuOptions>(menuSelection) != PreRollMenuOptions::ROLL)
     {
         cout <<
