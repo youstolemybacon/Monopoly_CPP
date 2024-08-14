@@ -134,36 +134,37 @@ void OwnableSpaces::spaceMenu(Player* currentPlayer)
     {
         cerr << "Could not determine owner." << endl;
     }
+    cout << endl << "END TURN" << endl;
+    cout << "_____________________________________________________________________________" << endl;
 }
 
 void OwnableSpaces::unownedMenu(Player* currentPlayer)
 {
-    short menuSelection = 0;
+    short userInput = 0;
+    UnownedMenuOptions menuSelection = UnownedMenuOptions::DEFAULT;
 
     while(static_cast<UnownedMenuOptions>(menuSelection) != UnownedMenuOptions::END_TURN) {
         cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
         "   [3] Mortgage\n";
-        cin >> menuSelection;
+        cin >> userInput;
         cin.clear();
+        menuSelection = static_cast<UnownedMenuOptions>(userInput);
 
-        auto menuSelectionEnum = static_cast<UnownedMenuOptions>(menuSelection);
-        if(menuSelectionEnum == UnownedMenuOptions::BUY)
+        if(menuSelection == UnownedMenuOptions::BUY)
         {
             if(this->buy(currentPlayer) == true)
             {
-                menuSelection = 4; // End turn
-                cout << "Ending turn" << endl;
+                menuSelection = UnownedMenuOptions::END_TURN; // End turn
             }
         }
-        else if(menuSelectionEnum == UnownedMenuOptions::AUCTION)
+        else if(menuSelection == UnownedMenuOptions::AUCTION)
         {
             this->auction(Players::playerList);
-            menuSelection = 4; // End turn
-            cout << "Ending turn" << endl;
+            menuSelection = UnownedMenuOptions::END_TURN; // End turn
         }
-        else if (menuSelectionEnum == UnownedMenuOptions::MORTGAGE)
+        else if (menuSelection == UnownedMenuOptions::MORTGAGE)
         {
             cout << "Mortgages are not implemented." << endl;
         }
@@ -186,6 +187,7 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
                     "   [1] Pay\n"
                     "   [2] Mortgage\n";
         cin >> userInput;
+        cin.clear();
         menuSelection = static_cast<OwnedMenuOptions>(userInput);
 
         switch(menuSelection)
