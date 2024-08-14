@@ -128,7 +128,7 @@ void OwnableSpaces::spaceMenu(Player* currentPlayer)
     }
     else if(owner == currentPlayer)
     {
-        cout << "You are the ownder of this property. Enjoy your free parking!" << endl;
+        cout << "You are the owner of this space. Enjoy your free parking!" << endl;
     }
     else
     {
