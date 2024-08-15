@@ -35,6 +35,8 @@ public:
     void roll();
     bool move();
 
+    bool passGoCheck();
+
     const int getDice() const;
     bool compareDice();
 
@@ -47,12 +49,12 @@ public:
     bool pay(short cost, Player* beneficiary);
     bool pay(short cost);
 
-    bool buy(Property* property);
-    bool buy(Property* property, short price);
-    bool buy(Railroad* railroad);
-    bool buy(Railroad* railroad, short price);
-    bool buy(Utility* utility);
-    bool buy(Utility* utility, short price);
+    //bool buy(Property* property);
+    //bool buy(Property* property, short price);
+    //bool buy(Railroad* railroad);
+    //bool buy(Railroad* railroad, short price);
+    //bool buy(Utility* utility);
+    //bool buy(Utility* utility, short price);
 
     int money = 1500;
     string name;
