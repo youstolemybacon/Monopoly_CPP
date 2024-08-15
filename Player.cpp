@@ -117,59 +117,11 @@ bool Player::pay(const short cost)
     return false; // Player cannot afford
 }
 
-//bool Player::buy(Property* property)
-//{
-//    if(pay(property->getPrice()))
-//    {
-//        property->changeOwner(this);
-//        cout << "Congratulations, you are the proud ownder of " << property->getSpaceName() << "!" << endl;
-//        return true;
-//    }
-//    return false;
-//}
-//
-//bool Player::buy(Property* property, const short price)
-//{
-//    if(pay(price))
-//    {
-//        property->changeOwner(this);
-//        cout << "Congratulations, you are the proud ownder of " << property->getSpaceName() << "!" << endl;
-//        return true;
-//    }
-//    return false;
-//}
-//
-//bool Player::buy(Utility* utility)
-//{
-//    if(pay(utility->getPrice()))
-//    {
-//        utility->changeOwner(this);
-//        vector<Utility*> utilities = playerBoard.getOwnedUtilities(this);
-//        for(Utility* currentUtility : utilities)
-//        {
-//            currentUtility->setRent(utilities.size());
-//        }
-//        cout << "Congratulations, you are the proud ownder of " << utility->getSpaceName() << "!" << endl;
-//        return true;
-//    }
-//    return false;
-//}
-//
-//bool Player::buy(Utility* utility, short price)
-//{
-//    if(pay(price))
-//    {
-//        utility->changeOwner(this);
-//        vector<Utility*> utilities = playerBoard.getOwnedUtilities(this);
-//        for(Utility* currentUtility : utilities)
-//        {
-//            currentUtility->setRent(utilities.size());
-//        }
-//        cout << "Congratulations, you are the proud ownder of " << utility->getSpaceName() << "!" << endl;
-//        return true;
-//    }
-//    return false;
-//}
+void Player::income(short income)
+{
+    money += income;
+    printMoney();
+}
 
 void Player::printMoney() const
 {

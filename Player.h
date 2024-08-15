@@ -35,8 +35,6 @@ public:
     void roll();
     bool move();
 
-    bool passGoCheck();
-
     const int getDice() const;
     bool compareDice();
 
@@ -48,6 +46,8 @@ public:
 
     bool pay(short cost, Player* beneficiary);
     bool pay(short cost);
+
+    void income(short income);
 
     //bool buy(Property* property);
     //bool buy(Property* property, short price);
