@@ -3,6 +3,8 @@
 //
 
 #include "Property.h"
+
+#include "Board.h"
 #include "Player.h"
 #include "Players.h"
 
@@ -32,6 +34,10 @@ void Property::build(short buildHouses) {
 
 short Property::getRent()
 {
+    if (houses == 0 && Board::monopolyCheck(getOwner(), propertyGroup))
+    {
+        return rent[0] * 2;
+    }
     return rent[houses];
 }
 

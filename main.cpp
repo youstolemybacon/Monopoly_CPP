@@ -24,9 +24,12 @@ int main() {
     dynamic_cast<Railroad*>(Player::playerBoard.getSpace(35))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(28))->buy(Players::playerList[1]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->buy(Players::playerList[1]);
 
     cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BROWN) << endl;
+    cout << "Rent: " << dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->getRent() << endl;
     cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BLUE) << endl;
+    cout << "Rent: " << dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->getRent() << endl;
 
     Players::playerList[0]->printSpaces();
 
