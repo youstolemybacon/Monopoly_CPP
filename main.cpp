@@ -18,14 +18,17 @@ int main() {
     boardwalk.displayInfo();
     electric.displayInfo();
 
-    dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Property*>(Player::playerBoard.getSpace(3))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Property*>(Player::playerBoard.getSpace(6))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(5))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(15))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(25))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(35))->changeOwner(Players::playerList[1]);
-    dynamic_cast<Utility*>(Player::playerBoard.getSpace(28))->changeOwner(Players::playerList[1]);
+    Players::playerList[1]->pay(3000);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->buy(Players::playerList[1]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->buy(Players::playerList[1]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(3))->buy(Players::playerList[1]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(6))->buy(Players::playerList[1]);
+    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(5))->buy(Players::playerList[1]);
+    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(15))->buy(Players::playerList[1]);
+    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(25))->buy(Players::playerList[1]);
+    dynamic_cast<Railroad*>(Player::playerBoard.getSpace(35))->buy(Players::playerList[1]);
+    dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
+    dynamic_cast<Utility*>(Player::playerBoard.getSpace(28))->buy(Players::playerList[1]);
 
 
     Players::playerList[0]->printSpaces();
