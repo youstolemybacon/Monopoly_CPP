@@ -13,5 +13,4 @@ void Go::spaceMenu(Player* player)
 {
     cout << "COLLECT $200 SALARY AS YOU PASS GO" << endl;
     player->income(200);
-    player->printMoney();
 };
