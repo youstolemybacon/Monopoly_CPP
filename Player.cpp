@@ -121,7 +121,7 @@ void Player::income(short income)
 
 void Player::printMoney() const
 {
-    cout << this->name << " you have $" << this->money << endl;
+    cout << this->name << " you have $" << this->money << endl << endl;
 }
 
 void Player::printSpaces() const
