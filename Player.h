@@ -17,7 +17,6 @@ using namespace std;
 
 class Player {
 public:
-    Player(string name);
     Player() = default;
 
     int getSpaceIndex() const;

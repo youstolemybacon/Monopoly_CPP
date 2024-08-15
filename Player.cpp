@@ -3,14 +3,10 @@
 //
 
 #include "Player.h"
-#include "Property.h"
-#include "Railroad.h"
-#include "Utility.h"
+//#include "Property.h"
+//#include "Railroad.h"
+//#include "Utility.h"
 #include "Board.h"
-
-Player::Player(string name) {
-    this->name = name;
-}
 
 int Player::getSpaceIndex() const {
     return spaceIndex;
