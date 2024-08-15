@@ -11,10 +11,19 @@
 class OwnableSpaces;
 
 class Property : public OwnableSpaces {
+public:
+    enum class PropertyGroup
+    {
+        BROWN,
+        LIGHT_BLUE,
+        PINK,
+        ORANGE,
+        RED,
+        YELLOW,
+        GREEN,
+        BLUE
+    };
 private:
-    short rent[6];
-    short houses = 0;
-    short housePrice;
     enum class OwnedMenuOptions
     {
         DEFAULT = 0,
@@ -30,8 +39,12 @@ private:
         MORTGAGE,
         END_TURN
     };
+    short rent[6];
+    short houses = 0;
+    short housePrice;
+    PropertyGroup propertyGroup;
 public:
-    Property(short rent_1,short rent_2,short rent_3,short rent_4,short rent_5,short rent_6,short housePrice,short spaceIndex,string spaceName,short price);
+    Property(short rent_1,short rent_2,short rent_3,short rent_4,short rent_5,short rent_6,short housePrice,short spaceIndex,string spaceName,short price, PropertyGroup propertyGroup);
     void build(short buildHouses);
     short getHousePrice();
     short getRent() override;

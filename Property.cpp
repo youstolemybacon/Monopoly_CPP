@@ -6,9 +6,7 @@
 #include "Player.h"
 #include "Players.h"
 
-Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice,
-                   short spaceIndex, string spaceName, short price) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6},
-                                                                      housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName) {}
+Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice, short spaceIndex, string spaceName, short price, PropertyGroup propertyGroup) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6}, housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName), propertyGroup(propertyGroup) {}
 
 void Property::build(short buildHouses) {
     if(houses + buildHouses > 5) {
