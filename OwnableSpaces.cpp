@@ -180,10 +180,12 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
 
     while(menuSelection != OwnedMenuOptions::END_TURN)
     {
-        cout << "This property is owned by " << owner->name << ". The cost of rent is " << getRent() << ".\n "
-                    "The following actions are available: \n"
-                    "   [1] Pay\n"
-                    "   [2] Mortgage\n";
+        cout << "This property is owned by " << owner->name << ". The cost of rent is ";
+        short rent = getRent();
+        cout << "$" << rent << ".\n "
+                "The following actions are available: \n"
+                "   [1] Pay\n"
+                "   [2] Mortgage\n";
         cin >> userInput;
         cin.clear();
         menuSelection = static_cast<OwnedMenuOptions>(userInput);
@@ -191,7 +193,7 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
         switch(menuSelection)
         {
         case OwnedMenuOptions::PAY:
-            currentPlayer->pay(this->getRent(), owner);
+            currentPlayer->pay(rent, owner);
             menuSelection = OwnedMenuOptions::END_TURN;
             break;
         case OwnedMenuOptions::MORTGAGE:

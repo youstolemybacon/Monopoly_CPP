@@ -29,9 +29,12 @@ short Utility::getRent()
 {
     Dice dice;
     short rent = 0;
+
+    cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // clear cin buffer
+
     if(monopoloy)
     {
-        cout << "You landed on a utility! " << getOwner()->name << " owns both Utilities increasing the rent. Rent is determined by roll x 10." << endl;
+        cout << "determined by roll x 10." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
         dice.rollDice();
@@ -39,12 +42,15 @@ short Utility::getRent()
     }
     else
     {
-        cout << "You landed on a utility! Rent is determined by roll x 4." << endl;
+        cout << "determined by roll x 4." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
         dice.rollDice();
         rent = dice.getRoll() * 4;
     }
+
+    cout << "You rolled a " << dice.getRoll() << " making rent ";
+
     return rent;
 }
 
