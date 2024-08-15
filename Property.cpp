@@ -6,7 +6,6 @@
 
 #include "Board.h"
 #include "Player.h"
-#include "Players.h"
 
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice, short spaceIndex, string spaceName, short price, PropertyGroup propertyGroup) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6}, housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName), propertyGroup(propertyGroup) {}
 
@@ -60,5 +59,5 @@ void Property::displayInfo() {
     cout << "  Mortgage Value $" << getPrice() / 2 << endl;
     cout << "  Houses cost $" << getHousePrice() << " each" << endl;
     cout << "  Hotels, $" << getHousePrice() << " plus 4 houses" << endl;
-    cout << endl << "_______________________________________" << endl;
+    cout << endl << "_______________________________________" << endl << endl;
 }
