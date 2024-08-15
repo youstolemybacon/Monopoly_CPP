@@ -44,7 +44,7 @@ void Railroad::spaceMenu(Player* currentPlayer)
 
 bool Railroad::buy(Player* buyer, short price)
 {
-    bool paid = OwnableSpaces::buy(buyer, price);
+    const bool paid = OwnableSpaces::buy(buyer, price);
 
     if (paid)
     {
@@ -56,7 +56,7 @@ bool Railroad::buy(Player* buyer, short price)
 
 bool Railroad::buy(Player* buyer)
 {
-    bool paid = OwnableSpaces::buy(buyer);
+    const bool paid = OwnableSpaces::buy(buyer);
 
     if (paid)
     {
