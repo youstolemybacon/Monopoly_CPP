@@ -41,3 +41,27 @@ void Railroad::spaceMenu(Player* currentPlayer)
         cerr << "Could not determine owner of property.";
     }
 }
+
+bool Railroad::buy(Player* buyer, short price)
+{
+    bool paid = OwnableSpaces::buy(buyer, price);
+
+    if (paid)
+    {
+       buyer->incrementRailroadsOwned();
+    }
+
+    return paid;
+}
+
+bool Railroad::buy(Player* buyer)
+{
+    bool paid = OwnableSpaces::buy(buyer);
+
+    if (paid)
+    {
+        buyer->incrementRailroadsOwned();
+    }
+
+    return paid;
+}
