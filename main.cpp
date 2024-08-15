@@ -13,13 +13,8 @@ int main() {
     srand(time(nullptr));
     Players players;
     Gameplay game;
-    Property boardwalk(50, 200, 600, 1400, 1700, 2000, 400, 39, "Boardwalk", 400);
-    Utility electric(12, "Electric Company");
-    boardwalk.displayInfo();
-    electric.displayInfo();
 
-    Players::playerList[1]->pay(3000);
-    dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->buy(Players::playerList[1]);
+    Players::playerList[1]->income(3000);
     dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->buy(Players::playerList[1]);
     dynamic_cast<Property*>(Player::playerBoard.getSpace(3))->buy(Players::playerList[1]);
     dynamic_cast<Property*>(Player::playerBoard.getSpace(6))->buy(Players::playerList[1]);
@@ -30,6 +25,8 @@ int main() {
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(28))->buy(Players::playerList[1]);
 
+    cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BROWN) << endl;
+    cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BLUE) << endl;
 
     Players::playerList[0]->printSpaces();
 
