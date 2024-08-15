@@ -8,6 +8,8 @@
 #include "Property.h"
 #include "Railroad.h"
 #include <vector>
+
+#include "Player.h"
 #include "Utility.h"
 
 class Board {
@@ -21,6 +23,7 @@ public:
     static vector<Railroad*> getOwnedRailroads(const Player* player);
     static vector<Utility*> getOwnedUtilities(const Player* player);
     static vector<OwnableSpaces*> getOwnedSpaces(const Player* player);
+    static bool monopolyCheck(const Player* player, Property::PropertyGroup color);
 };
 
 

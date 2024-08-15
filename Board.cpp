@@ -126,3 +126,16 @@ vector<OwnableSpaces*> Board::getOwnedSpaces(const Player* player)
     }
     return ownableSpaces;
 }
+
+bool Board::monopolyCheck(const Player* player, Property::PropertyGroup color)
+{
+    for (Space* space : board)
+    {
+        auto property = dynamic_cast<Property*>(space);
+        if (property && property->getOwner() != player && property->propertyGroup == color)
+        {
+            return false; // Not a monopoloy
+        }
+    }
+    return true; // Monopoly
+}
