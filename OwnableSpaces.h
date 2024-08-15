@@ -30,6 +30,7 @@ private:
         BUY,
         AUCTION,
         MORTGAGE,
+        INFO,
         END_TURN
     };
 public:

@@ -145,29 +145,31 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
         cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
-        "   [3] Mortgage\n";
+        "   [3] Mortgage\n"
+        "   [4] Info\n";
         cin >> userInput;
         cin.clear();
         menuSelection = static_cast<UnownedMenuOptions>(userInput);
 
-        if(menuSelection == UnownedMenuOptions::BUY)
+        switch (menuSelection)
         {
-            if(this->buy(currentPlayer) == true)
+        case UnownedMenuOptions::BUY:
+            if (this->buy(currentPlayer))
             {
-                menuSelection = UnownedMenuOptions::END_TURN; // End turn
+                menuSelection = UnownedMenuOptions::END_TURN;
             }
-        }
-        else if(menuSelection == UnownedMenuOptions::AUCTION)
-        {
+            break;
+        case UnownedMenuOptions::AUCTION:
             this->auction(Players::playerList);
-            menuSelection = UnownedMenuOptions::END_TURN; // End turn
-        }
-        else if (menuSelection == UnownedMenuOptions::MORTGAGE)
-        {
+            menuSelection = UnownedMenuOptions::END_TURN;
+            break;
+        case UnownedMenuOptions::MORTGAGE:
             cout << "Mortgages are not implemented." << endl;
-        }
-        else
-        {
+            break;
+        case UnownedMenuOptions::INFO:
+            this->displayInfo();
+            break;
+        default:
             cerr << "Invalid input!" << endl;
         }
     }
