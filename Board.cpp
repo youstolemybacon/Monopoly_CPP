@@ -127,12 +127,57 @@ vector<OwnableSpaces*> Board::getOwnedSpaces(const Player* player)
     return ownableSpaces;
 }
 
-bool Board::monopolyCheck(const Player* player, Property::PropertyGroup color)
+vector<Property*> Board::getPropertyGroup(Property::PropertyGroup color)
 {
+    vector<Property*> groupProperties;
     for (Space* space : board)
     {
         auto property = dynamic_cast<Property*>(space);
-        if (property && property->getOwner() != player && property->propertyGroup == color)
+        if (property && property->propertyGroup == color)
+        {
+            groupProperties.push_back(property);
+        }
+    }
+    return groupProperties;
+}
+
+vector<Property*> Board::getMonopolies(const Player* player)
+{
+    vector<Property*> monopolies{};
+    constexpr Property::PropertyGroup colors[8] =
+        {
+        Property::PropertyGroup::BROWN, Property::PropertyGroup::LIGHT_BLUE, Property::PropertyGroup::PINK,
+        Property::PropertyGroup::ORANGE, Property::PropertyGroup::RED, Property::PropertyGroup::YELLOW,
+        Property::PropertyGroup::GREEN, Property::PropertyGroup::BLUE
+        };
+
+    // Go through each color group
+    for (const auto color : colors)
+    {
+        // Get the properties of the current color group
+        auto colorGroup = getPropertyGroup(color);
+
+
+        // Check if player has a monopoly on the color group. If it is a monopoly add properties to list of monopolies
+        if (monopolyCheck(player, color))
+        {
+            // Loop through colorGroup to add each property to the monopolies vector
+            for (auto property : colorGroup)
+            {
+                monopolies.push_back(property);
+            }
+        }
+    }
+    return monopolies;
+}
+
+bool Board::monopolyCheck(const Player* player, Property::PropertyGroup color)
+{
+    auto propertyGroup = getPropertyGroup(color);
+
+    for (Property* property : propertyGroup)
+    {
+        if (property->getOwner() != player)
         {
             return false; // Not a monopoloy
         }
