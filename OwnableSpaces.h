@@ -31,6 +31,7 @@ private:
         AUCTION,
         MORTGAGE,
         INFO,
+        OWNED,
         END_TURN
     };
 public:

@@ -146,7 +146,8 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
         "   [1] Buy\n"
         "   [2] Auction\n"
         "   [3] Mortgage\n"
-        "   [4] Info\n";
+        "   [4] Info\n"
+        "   [5] Owned\n";
         cin >> userInput;
         cin.clear();
         menuSelection = static_cast<UnownedMenuOptions>(userInput);
@@ -168,6 +169,9 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
             break;
         case UnownedMenuOptions::INFO:
             this->displayInfo();
+            break;
+        case UnownedMenuOptions::OWNED:
+            currentPlayer->printSpaces();
             break;
         default:
             cerr << "Invalid input!" << endl;
