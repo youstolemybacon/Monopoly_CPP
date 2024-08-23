@@ -31,7 +31,7 @@ int main() {
     cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BLUE) << endl;
     cout << "Rent: " << dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->getRent() << endl;
 
-    Players::playerList[0]->printSpaces();
+    OwnableSpaces::printSpaces(Board::getOwnedSpaces(Players::playerList[0]));
 
     while(true)
     {

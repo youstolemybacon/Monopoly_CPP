@@ -36,25 +36,25 @@ Board::Board()
     board.push_back(new Property(16, 80, 220, 600, 800, 1000, 100, 18, "Tennessee Avenue", 90, Property::PropertyGroup::ORANGE));
     board.push_back(new Property(18, 90, 250, 700, 875, 1050, 100, 19, "New York Avenue", 100, Property::PropertyGroup::ORANGE));
     board.push_back(new FreeParking());
-    board.push_back(new Property(18, 90, 250, 700, 875, 1050, 220, 21, "Kentucky Avenue", 110, Property::PropertyGroup::RED));
+    board.push_back(new Property(18, 90, 250, 700, 875, 1050, 150, 21, "Kentucky Avenue", 110, Property::PropertyGroup::RED));
     board.push_back(new Chance(22));
-    board.push_back(new Property(20, 100, 300, 750, 925, 1100, 220, 23, "Indiana Avenue", 110, Property::PropertyGroup::RED));
-    board.push_back(new Property(22, 110, 330, 800, 975, 1150, 240, 24, "Illinois Avenue", 120, Property::PropertyGroup::RED));
+    board.push_back(new Property(20, 100, 300, 750, 925, 1100, 150, 23, "Indiana Avenue", 110, Property::PropertyGroup::RED));
+    board.push_back(new Property(22, 110, 330, 800, 975, 1150, 150, 24, "Illinois Avenue", 120, Property::PropertyGroup::RED));
     board.push_back(new Railroad(25, "B. & O. Railroad"));
-    board.push_back(new Property(22, 110, 330, 800, 975, 1150, 260, 26, "Atlantic Avenue", 130, Property::PropertyGroup::YELLOW));
-    board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 260, 27, "Ventnor Avenue", 130, Property::PropertyGroup::YELLOW));
+    board.push_back(new Property(22, 110, 330, 800, 975, 1150, 150, 26, "Atlantic Avenue", 130, Property::PropertyGroup::YELLOW));
+    board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 150, 27, "Ventnor Avenue", 130, Property::PropertyGroup::YELLOW));
     board.push_back(new Utility(28, "Water Works"));
-    board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 280, 29, "Marvin Gardens", 140, Property::PropertyGroup::YELLOW));
+    board.push_back(new Property(24, 120, 360, 850, 1025, 1200, 150, 29, "Marvin Gardens", 140, Property::PropertyGroup::YELLOW));
     board.push_back(new GoToJail());
-    board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 31, "Pacific Avenue", 150, Property::PropertyGroup::GREEN));
-    board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 300, 32, "North Carolina Avenue", 150, Property::PropertyGroup::GREEN));
+    board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 200, 31, "Pacific Avenue", 150, Property::PropertyGroup::GREEN));
+    board.push_back(new Property(26, 130, 390, 900, 1100, 1275, 200, 32, "North Carolina Avenue", 150, Property::PropertyGroup::GREEN));
     board.push_back(new CommunityChest(33));
-    board.push_back(new Property(28, 150, 450, 1000, 1200, 1400, 320, 34, "Pennsylvania Avenue", 160, Property::PropertyGroup::GREEN));
+    board.push_back(new Property(28, 150, 450, 1000, 1200, 1400, 200, 34, "Pennsylvania Avenue", 160, Property::PropertyGroup::GREEN));
     board.push_back(new Railroad(35, "Short Line Railroad"));
     board.push_back(new Chance(36));
-    board.push_back(new Property(35, 175, 500, 1100, 1300, 1500, 350, 37, "Park Place", 350, Property::PropertyGroup::BLUE));
+    board.push_back(new Property(35, 175, 500, 1100, 1300, 1500, 200, 37, "Park Place", 350, Property::PropertyGroup::BLUE));
     board.push_back(new LuxuryTax());
-    board.push_back(new Property(50, 200, 600, 1400, 1700, 2000, 400, 39, "Boardwalk", 400, Property::PropertyGroup::BLUE));
+    board.push_back(new Property(50, 200, 600, 1400, 1700, 2000, 200, 39, "Boardwalk", 400, Property::PropertyGroup::BLUE));
 }
 
 Board::~Board()

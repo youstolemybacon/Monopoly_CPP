@@ -34,6 +34,7 @@ private:
         OWNED,
         END_TURN
     };
+
 public:
     OwnableSpaces(short price, short spaceIndex, string spaceName);
     void auction(vector<Player*> players);
@@ -49,6 +50,8 @@ public:
     void spaceMenu(Player* currentPlayer) override;
     void unownedMenu(Player* currentPlayer);
     void ownedMenu(Player* currentPlayer, Player* owner);
+
+    static void printSpaces(const vector<OwnableSpaces*>& spaces);
 };
 
 #endif //OWNABLESPACES_H

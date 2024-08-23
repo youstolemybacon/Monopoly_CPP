@@ -6,7 +6,9 @@
 #define MONOPOLY_SIM_PLAYER_H
 
 #include <iostream>
+#include <vector>
 
+class OwnableSpaces;
 class Board;
 class Space;
 class Property;
@@ -41,7 +43,6 @@ public:
     void displaySpaceHistory() const;
 
     void printMoney() const;
-    void printSpaces() const;
 
     bool pay(short cost, Player* beneficiary);
     bool pay(short cost);

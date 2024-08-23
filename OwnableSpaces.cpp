@@ -6,6 +6,8 @@
 #include "Players.h"
 #include "OwnableSpaces.h"
 
+#include "Board.h"
+
 OwnableSpaces::OwnableSpaces(short price, short spaceIndex, string spaceName)
     : Space(spaceIndex, std::move(spaceName))
 {
@@ -141,7 +143,7 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
     short userInput = 0;
     UnownedMenuOptions menuSelection = UnownedMenuOptions::DEFAULT;
 
-    while(static_cast<UnownedMenuOptions>(menuSelection) != UnownedMenuOptions::END_TURN) {
+    while(menuSelection != UnownedMenuOptions::END_TURN) {
         cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
@@ -171,7 +173,7 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
             this->displayInfo();
             break;
         case UnownedMenuOptions::OWNED:
-            currentPlayer->printSpaces();
+            OwnableSpaces::printSpaces(Board::getOwnedSpaces(currentPlayer));
             break;
         default:
             cerr << "Invalid input!" << endl;
@@ -207,6 +209,54 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
             break;
         default:
             cerr << "Invalid input!" << endl;
+        }
+    }
+}
+
+void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces)
+{
+    short userInput;
+    bool exitMenu = false;
+
+    if (spaces.empty())
+    {
+        cout << "You own nothing... that is pretty sad. I wish you luck in the remaining game you need it!" << endl;
+        return;
+    }
+
+    while (!exitMenu)
+    {
+        short spaceNumber = 1;
+
+        // Print the owned spaces
+        cout << endl << "You own the following: " << endl;
+        for (const auto space : spaces)
+        {
+            cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
+            spaceNumber++;
+        }
+        // Prompt user and get input
+        cout << endl << "Enter 0 to return to previous menu or the corresponding value to view the space info: " << endl;
+        cin >> userInput;
+        cin.clear();
+
+        // If user input is 0 no action is taken. If it is not zero use the input to reference the correspondings space info
+        if(userInput == 0)
+        {
+            exitMenu = true;
+        }
+        else
+        {
+            // Check if the user input is within the range of the vector
+            if (userInput > spaces.size())
+            {
+                cout << "The value entered is outside of the range." << endl;
+            }
+            // Display the space info
+            else
+            {
+                spaces[userInput - 1]->displayInfo();
+            }
         }
     }
 }
