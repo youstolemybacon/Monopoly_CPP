@@ -183,7 +183,7 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
             this->displayInfo();
             break;
         case OWNED:
-            printSpaces(Board::getOwnedSpaces(currentPlayer));
+            spaceInfoMenu(Board::getOwnedSpaces(currentPlayer));
             break;
         default:
             cerr << "Invalid input!" << endl;
@@ -231,7 +231,7 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
     }
 }
 
-void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces)
+void OwnableSpaces::spaceInfoMenu(const vector<OwnableSpaces*>& spaces)
 {
     short userInput;
     bool exitMenu = false;
@@ -244,16 +244,11 @@ void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces)
 
     while (!exitMenu)
     {
-        short spaceNumber = 1;
-
-        // Print the owned spaces
         cout << endl << "The spaces are printed below. Select the property to view more space info: \n"
-                        "[0] Back" << endl;
-        for (const auto space : spaces)
-        {
-            cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
-            spaceNumber++;
-        }
+                        "   [0] Back" << endl;
+
+        printSpaces(spaces, 1);
+
         // Get user input
         cin >> userInput;
         cin.clear();
@@ -276,5 +271,14 @@ void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces)
                 spaces[userInput - 1]->displayInfo();
             }
         }
+    }
+}
+
+void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber)
+{
+    for (const auto space : spaces)
+    {
+        cout << "   [" << menuNumber << "]" << " " << space->getSpaceName() << endl;
+        menuNumber++;
     }
 }

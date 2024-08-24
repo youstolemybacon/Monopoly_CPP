@@ -23,9 +23,6 @@ public:
     static vector<Railroad*> getOwnedRailroads(const Player* player);
     static vector<Utility*> getOwnedUtilities(const Player* player);
     static vector<OwnableSpaces*> getOwnedSpaces(const Player* player);
-    static vector<Property*> getPropertyGroup(Property::PropertyGroup color);
-    static vector<Property*> getMonopolies(const Player* player);
-    static bool monopolyCheck(const Player* player, Property::PropertyGroup color);
 };
 
 

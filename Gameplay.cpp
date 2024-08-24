@@ -42,7 +42,7 @@ void Gameplay::preRollMenu(Player* player)
             player->move();
             break;
         case PreRollMenuOptions::DEVELOP_PROPERTIES:
-            cout << "Developing properties requires further development." << endl;
+            Property::developPropertiesMenu(player);
             break;
         case PreRollMenuOptions::TRADE:
             cout << "Trading is not implemented" << endl;

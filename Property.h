@@ -25,21 +25,6 @@ public:
     };
     PropertyGroup propertyGroup;
 private:
-    enum class OwnedMenuOptions
-    {
-        DEFAULT = 0,
-        PAY,
-        MORTGAGE,
-        END_TURN
-    };
-    enum class UnownedMenuOptions
-    {
-        DEFAULT = 0,
-        BUY,
-        AUCTION,
-        MORTGAGE,
-        END_TURN
-    };
     short rent[6];
     short houses = 0;
     short housePrice;
@@ -49,6 +34,11 @@ public:
     short getHousePrice();
     short getRent() override;
     void displayInfo() override;
+
+    static vector<Property*> getPropertyGroup(PropertyGroup color);
+    static vector<Property*> getMonopolies(const Player* player);
+    static bool monopolyCheck(const Player* player, PropertyGroup color);
+    static void developPropertiesMenu(Player* player);
 };
 
 

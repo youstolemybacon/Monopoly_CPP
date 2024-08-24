@@ -24,14 +24,17 @@ int main() {
     dynamic_cast<Railroad*>(Player::playerBoard.getSpace(35))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(28))->buy(Players::playerList[1]);
-    dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->buy(Players::playerList[1]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->buy(Players::playerList[0]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(37))->buy(Players::playerList[0]);
 
-    cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BROWN) << endl;
+    cout << "Monopoly: " << Property::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BROWN) << endl;
     cout << "Rent: " << dynamic_cast<Property*>(Player::playerBoard.getSpace(1))->getRent() << endl;
-    cout << "Monopoly: " << Board::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BLUE) << endl;
+    cout << "Monopoly: " << Property::monopolyCheck(Players::playerList[1], Property::PropertyGroup::BLUE) << endl;
     cout << "Rent: " << dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->getRent() << endl;
 
-    OwnableSpaces::printSpaces(Board::getOwnedSpaces(Players::playerList[0]));
+    OwnableSpaces::spaceInfoMenu(Board::getOwnedSpaces(Players::playerList[0]));
+
+    Property::developPropertiesMenu(Players::playerList[1]);
 
     while(true)
     {

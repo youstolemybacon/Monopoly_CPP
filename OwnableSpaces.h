@@ -36,7 +36,8 @@ public:
     void unownedMenu(Player* currentPlayer);
     void ownedMenu(Player* currentPlayer, Player* owner);
 
-    static void printSpaces(const vector<OwnableSpaces*>& spaces);
+    static void spaceInfoMenu(const vector<OwnableSpaces*>& spaces);
+    static void printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber);
 };
 
 #endif //OWNABLESPACES_H
