@@ -15,27 +15,12 @@ class Space;
 
 class OwnableSpaces : public Space {
 private:
+
     short price;
     Player* owner = nullptr;
-    enum class OwnedMenuOptions
-    {
-        DEFAULT = 0,
-        PAY,
-        MORTGAGE,
-        END_TURN
-    };
-    enum class UnownedMenuOptions
-    {
-        DEFAULT = 0,
-        BUY,
-        AUCTION,
-        MORTGAGE,
-        INFO,
-        OWNED,
-        END_TURN
-    };
 
 public:
+
     OwnableSpaces(short price, short spaceIndex, string spaceName);
     void auction(vector<Player*> players);
     short getPrice();
