@@ -229,14 +229,14 @@ void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces)
         short spaceNumber = 1;
 
         // Print the owned spaces
-        cout << endl << "You own the following: " << endl;
+        cout << endl << "The spaces are printed below. Select the property to view more space info: \n"
+                        "[0] Back" << endl;
         for (const auto space : spaces)
         {
             cout << "[" << spaceNumber << "]" << " " << space->getSpaceName() << endl;
             spaceNumber++;
         }
-        // Prompt user and get input
-        cout << endl << "Enter 0 to return to previous menu or the corresponding value to view the space info: " << endl;
+        // Get user input
         cin >> userInput;
         cin.clear();
 
