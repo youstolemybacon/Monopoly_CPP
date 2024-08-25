@@ -39,6 +39,8 @@ public:
     static vector<Property*> getMonopolies(const Player* player);
     static bool monopolyCheck(const Player* player, PropertyGroup color);
     static void developPropertiesMenu(Player* player);
+
+    void displaySpace() override;
 };
 
 

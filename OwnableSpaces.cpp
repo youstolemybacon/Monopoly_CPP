@@ -278,7 +278,14 @@ void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces, short menu
 {
     for (const auto space : spaces)
     {
-        cout << "   [" << menuNumber << "]" << " " << space->getSpaceName() << endl;
+        cout << "   [" << menuNumber << "]" << " ";
+        space->displaySpace();
+        cout << endl;
         menuNumber++;
     }
+}
+
+void OwnableSpaces::displaySpace()
+{
+    cout << this->getSpaceName();
 }

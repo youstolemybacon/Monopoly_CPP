@@ -9,24 +9,41 @@
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice, short spaceIndex, string spaceName, short price, PropertyGroup propertyGroup) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6}, housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName), propertyGroup(propertyGroup) {}
 
 void Property::build(short buildHouses) {
-    if(houses + buildHouses > 5) {
-        cout << "You are attempting to exceed the house limit cheater!" << endl;
-    }
-    else {
-        houses += buildHouses;
-    }
-    if(houses == 1)
+    auto colorGroup = this->getPropertyGroup(propertyGroup);
+
+    for (auto property : colorGroup)
     {
-        cout << "There is now " << houses << " house on " << this->getSpaceName() << endl;
+        if (property->houses < this->houses)
+        {
+            cout << "You are unable to build on this property. The other properties in the of the color set must be further developed. \n";
+            return;
+        }
     }
-    else if(houses == 5)
+
+    if(houses + buildHouses > 5)
     {
-        cout << "There is now 1 hotel on " << this->getSpaceName() << endl;
+        cout << "This property is cannot be developed further." << endl;
     }
     else
     {
-        cout << "There are now " << houses << " houses on " << this->getSpaceName() << endl;
+        // Add the houses being built to the member variable
+        houses += buildHouses;
+
+        //// Print info for user
+        //if(houses == 1)
+        //{
+        //    cout << "There is now " << houses << " house on " << this->getSpaceName() << endl;
+        //}
+        //else if(houses == 5)
+        //{
+        //    cout << "There is now 1 hotel on " << this->getSpaceName() << endl;
+        //}
+        //else
+        //{
+        //    cout << "There are now " << houses << " houses on " << this->getSpaceName() << endl;
+        //}
     }
+
 
 }
 
@@ -189,5 +206,22 @@ void Property::developPropertiesMenu(Player* player)
                 }
             }
         }
+    }
+}
+
+void Property::displaySpace()
+{
+    OwnableSpaces::displaySpace();
+    if (this->houses == 5)
+    {
+        cout << " (HOTEL)";
+    }
+    else if (this->houses > 0)
+    {
+        cout << " (HOUSES: " << this->houses << ")";
+    }
+    else if (monopolyCheck(getOwner(), propertyGroup))
+    {
+        cout << " (MONOPOLY)";
     }
 }
