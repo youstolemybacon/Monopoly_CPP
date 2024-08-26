@@ -22,6 +22,9 @@ int main() {
     dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->buy(Players::playerList[0]);
     dynamic_cast<Property*>(Player::playerBoard.getSpace(37))->buy(Players::playerList[0]);
 
+    cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
+    Players::playerList[0]->money = 3000;
+
     while(true)
     {
         game.turn(Players::playerList[0]);

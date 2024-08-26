@@ -84,15 +84,24 @@ bool Player::pay(const short cost, Player* beneficiary)
 {
     if(this->money > cost)
     {
+        // Subtract cost from players money
         this->money -= cost;
+        // Add cost to players money
         beneficiary->money += cost;
 
-        cout << "The payment was made successfully! "  << endl;
-        this->printMoney();
-        beneficiary->printMoney();
-        return true; // Player can afford
+        // Print transaction details
+        cout << "\nPAYMENT SUCCESSFUL\n";
+        cout << "TRANSACTIONS: \n";
+        cout << "   " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
+        cout << "   " << beneficiary->name << ": $" << money - cost << " + $" << cost << " = $" << money << "\n\n";
+
+        // Player succuessfully paid
+        return true;
     }
-    cout << this->name << " is short: $" << cost - this->money << endl;
+
+    // Player could not afford payment
+    cout << "\nPAYMENT FAILED\n";
+    cout << "   TRANSACTION: $" << money << " - $" << cost << " = -$" << cost - money << "\n\n";
     return false; // Player cannot afford
 }
 
@@ -100,14 +109,21 @@ bool Player::pay(const short cost)
 {
     if (money > cost)
     {
+        // Subtract cost from players money
         this->money -= cost;
 
-        cout << "The payment was made successfully!" << endl;
-        this->printMoney();
-        return true; // Player can afford
+        // Print transaction details
+        cout << "\nPAYMENT SUCCESSFUL\n";
+        cout << "   TRANSACTION: $" << money + cost << " - $" << cost << " = $" << money << "\n\n";
+
+        // Player succuessfully paid
+        return true;
     }
-    cout << this->name << " is short: $" << cost - this->money << endl;
-    return false; // Player cannot afford
+
+    // Player could not afford payment
+    cout << "\nPAYMENT FAILED\n";
+    cout << "   TRANSACTION: $" << money << " - $" << cost << " = -$" << cost - money << "\n\n";
+    return false;
 }
 
 void Player::income(short income)
@@ -120,8 +136,6 @@ void Player::printMoney() const
 {
     cout << this->name << " you have $" << this->money << endl << endl;
 }
-
-
 
 void Player::displaySpaceHistory() const {
     cout << "Go: " << spaceHistory[0] / moves << "%" << endl;
