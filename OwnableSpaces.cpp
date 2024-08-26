@@ -3,9 +3,9 @@
 //
 
 #include <limits>
+
 #include "Players.h"
 #include "OwnableSpaces.h"
-
 #include "Board.h"
 
 OwnableSpaces::OwnableSpaces(short price, short spaceIndex, string spaceName)
@@ -244,7 +244,7 @@ void OwnableSpaces::spaceInfoMenu(const vector<OwnableSpaces*>& spaces)
 
     while (!exitMenu)
     {
-        cout << endl << "The spaces are printed below. Select the property to view more space info: \n"
+        cout << "The spaces are printed below. Select the property to view more space info: \n"
                         "   [0] Back" << endl;
 
         printSpaces(spaces, 1);
@@ -268,7 +268,7 @@ void OwnableSpaces::spaceInfoMenu(const vector<OwnableSpaces*>& spaces)
             // Display the space info
             else
             {
-                spaces[userInput - 1]->displayInfo();
+                spaces[userInput - 1]->spaceSelectedFromMenu();
             }
         }
     }
@@ -288,4 +288,9 @@ void OwnableSpaces::printSpaces(const vector<OwnableSpaces*>& spaces, short menu
 void OwnableSpaces::displaySpace()
 {
     cout << this->getSpaceName();
+}
+
+void OwnableSpaces::spaceSelectedFromMenu()
+{
+    displayInfo();
 }

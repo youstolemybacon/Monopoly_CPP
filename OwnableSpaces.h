@@ -39,6 +39,7 @@ public:
     static void spaceInfoMenu(const vector<OwnableSpaces*>& spaces);
     static void printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber);
     virtual void displaySpace();
+    virtual void spaceSelectedFromMenu();
 };
 
 #endif //OWNABLESPACES_H

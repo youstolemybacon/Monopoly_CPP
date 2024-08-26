@@ -9,42 +9,29 @@
 Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short rent_5, short rent_6, short housePrice, short spaceIndex, string spaceName, short price, PropertyGroup propertyGroup) : rent{rent_1, rent_2, rent_3, rent_4, rent_5, rent_6}, housePrice(housePrice), OwnableSpaces(price, spaceIndex, spaceName), propertyGroup(propertyGroup) {}
 
 void Property::build(short buildHouses) {
+
     auto colorGroup = this->getPropertyGroup(propertyGroup);
+    auto propertyOwner = this->getOwner();
+    short buildPrice = housePrice * buildHouses;
 
     for (auto property : colorGroup)
     {
         if (property->houses < this->houses)
         {
-            cout << "You are unable to build on this property. The other properties in the of the color set must be further developed. \n";
+            cout << "You are unable to build on this property. The other properties of the color set must be further developed. \n";
             return;
         }
     }
 
     if(houses + buildHouses > 5)
     {
-        cout << "This property is cannot be developed further." << endl;
+        cout << "This property cannot be developed further." << endl;
     }
-    else
+    else if (propertyOwner->pay(buildPrice))
     {
         // Add the houses being built to the member variable
         houses += buildHouses;
-
-        //// Print info for user
-        //if(houses == 1)
-        //{
-        //    cout << "There is now " << houses << " house on " << this->getSpaceName() << endl;
-        //}
-        //else if(houses == 5)
-        //{
-        //    cout << "There is now 1 hotel on " << this->getSpaceName() << endl;
-        //}
-        //else
-        //{
-        //    cout << "There are now " << houses << " houses on " << this->getSpaceName() << endl;
-        //}
     }
-
-
 }
 
 short Property::getRent()
@@ -56,7 +43,7 @@ short Property::getRent()
     return rent[houses];
 }
 
-short Property::getHousePrice()
+short Property::getHousePrice() const
 {
     return housePrice;
 }
@@ -151,7 +138,7 @@ void Property::developPropertiesMenu(Player* player)
     else
     {
         bool exitMenu = false;
-        short userInput;
+        short userPropertySelection;
 
         while (!exitMenu)
         {
@@ -161,20 +148,20 @@ void Property::developPropertiesMenu(Player* player)
             printSpaces(monopolies, 1);
 
             // Get user input
-            cin >> userInput;
+            cin >> userPropertySelection;
             cin.clear();
 
             // If user input is 0 no action is taken. If it is not zero use the input to reference the correspondings space info
-            if(userInput == 0)
+            if(userPropertySelection == 0)
             {
                 exitMenu = true;
             }
             else
             {
                 // Check if the user input is within the range of the vector
-                if (userInput > monopolies.size())
+                if (userPropertySelection > monopolies.size())
                 {
-                    cout << "The value entered is outside of the range." << endl;
+                    cout << "Invalid input!" << endl;
                 }
                 // Display the space info and building menu
                 else
@@ -182,17 +169,18 @@ void Property::developPropertiesMenu(Player* player)
                     bool returnToPropertySelection = false;
                     while (!returnToPropertySelection)
                     {
-                        auto propertySelected = dynamic_cast<Property*>(monopolies[userInput - 1]);
+                        short userBuildSelection;
+                        auto propertySelected = dynamic_cast<Property*>(monopolies[userPropertySelection - 1]);
                         propertySelected->displayInfo();
 
                         cout << "The following actions are available: \n"
                                 "   [0] Back \n"
                                 "   [1] Build House \n";
                         // Get user input
-                        cin >> userInput;
+                        cin >> userBuildSelection;
                         cin.clear();
 
-                        switch (userInput)
+                        switch (userBuildSelection)
                         {
                         case 1:
                             propertySelected->build(1);
@@ -201,7 +189,9 @@ void Property::developPropertiesMenu(Player* player)
                             break;
                         default:
                             cout << "Invalid input! \n";
+                            break;
                         }
+                        cout << "\n";
                     }
                 }
             }
@@ -223,5 +213,73 @@ void Property::displaySpace()
     else if (monopolyCheck(getOwner(), propertyGroup))
     {
         cout << " (MONOPOLY)";
+    }
+    else
+    {
+        cout << " (";
+        switch (propertyGroup)
+        {
+        case PropertyGroup::BROWN:
+            cout << "BROWN";
+            break;
+        case PropertyGroup::LIGHT_BLUE:
+            cout << "LIGHT BLUE";
+            break;
+        case PropertyGroup::PINK:
+            cout << "PINK";
+            break;
+        case PropertyGroup::ORANGE:
+            cout << "ORANGE";
+            break;
+        case PropertyGroup::RED:
+            cout << "RED";
+            break;
+        case PropertyGroup::YELLOW:
+            cout << "YELLOW";
+            break;
+        case PropertyGroup::GREEN:
+            cout << "GREEN";
+            break;
+        case PropertyGroup::BLUE:
+            cout << "BLUE";
+            break;
+        }
+        cout << ")";
+    }
+}
+
+void Property::spaceSelectedFromMenu()
+{
+    if(monopolyCheck(getOwner(), propertyGroup))
+    {
+        bool returnToPropertySelection = false;
+        while (!returnToPropertySelection)
+        {
+            short userBuildSelection;
+            displayInfo();
+
+            cout << "The following actions are available: \n"
+                    "   [0] Back \n"
+                    "   [1] Build House \n";
+            // Get user input
+            cin >> userBuildSelection;
+            cin.clear();
+
+            switch (userBuildSelection)
+            {
+            case 1:
+                build(1);
+            case 0:
+                returnToPropertySelection = true;
+                break;
+            default:
+                cout << "Invalid input! \n";
+                break;
+            }
+        }
+    }
+    else
+    {
+        displayInfo();
     }
 }
