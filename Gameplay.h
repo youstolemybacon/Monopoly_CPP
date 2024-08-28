@@ -11,13 +11,6 @@ class Space;
 
 class Gameplay {
 private:
-    enum class PreRollMenuOptions
-    {
-        ROLL = 1,
-        DEVELOP_PROPERTIES,
-        TRADE,
-        MORTGAGE
-    };
 public:
     void turn(Player* player);
     static void spaceMenu(Player* player);
