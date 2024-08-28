@@ -250,36 +250,50 @@ void Property::displaySpace()
 
 void Property::spaceSelectedFromMenu()
 {
-    if(monopolyCheck(getOwner(), propertyGroup))
+    bool exitMenu = false;
+    short menuSelection;
+    enum menuOptions
     {
-        bool returnToPropertySelection = false;
-        while (!returnToPropertySelection)
+        BACK,
+        INFO,
+        MORTGAGE,
+        BUILD
+    };
+    while(!exitMenu)
+    {
+        // Print menu options
+        cout << "The following actions are available:\n"
+                "   [0] Back\n"
+                "   [1] Info\n"
+                "   [2] Mortgage\n"
+                "   [3] Build\n";
+
+        // Get user input
+        cin >> menuSelection;
+        cin.clear();
+
+        switch (static_cast<menuOptions>(menuSelection))
         {
-            short userBuildSelection;
+        case BACK:
+            exitMenu = true;
+            break;
+        case INFO:
             displayInfo();
-
-            cout << "The following actions are available: \n"
-                    "   [0] Back \n"
-                    "   [1] Build House \n";
-            // Get user input
-            cin >> userBuildSelection;
-            cin.clear();
-
-            switch (userBuildSelection)
+            break;
+        case MORTGAGE:
+            if (getMortgage())
             {
-            case 1:
-                build(1);
-            case 0:
-                returnToPropertySelection = true;
-                break;
-            default:
-                cout << "Invalid input! \n";
-                break;
+                unmortgageSpace();
             }
+            else
+            {
+                mortgageSpace();
+            }
+            break;
+        case BUILD:
+            build(1);
+        default:
+            cout << "Invalid input\n";
         }
-    }
-    else
-    {
-        displayInfo();
     }
 }
