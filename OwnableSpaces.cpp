@@ -73,6 +73,39 @@ void OwnableSpaces::auction(vector<Player*> playerList)
     }
 }
 
+void OwnableSpaces::mortgageSpace()
+{
+    // Check that the property is not mortgaged
+    if (mortgaged == false)
+    {
+        const short mortgageAmount = getPrice() / 2;
+        // Pay the player the mortgage amount
+        owner->income(mortgageAmount);
+        mortgaged = true;
+    }
+    else
+    {
+        cout << "This property is already mortgaged.";
+    }
+}
+
+void OwnableSpaces::unmortgageSpace()
+{
+    if (mortgaged == true)
+    {
+        // If player can pay mortgage value plus 10%
+        if (owner->pay(getPrice() / 2 + getPrice() * 0.1))
+        {
+            mortgaged = false;
+        }
+    }
+    else
+    {
+        cout << "This property is not mortgaged.";
+    }
+
+}
+
 short OwnableSpaces::getPrice()
 {
     return price;
@@ -92,6 +125,17 @@ Player* OwnableSpaces::getOwner() const
 {
     return this->owner;
 }
+
+bool OwnableSpaces::getMortgage() const
+{
+    return mortgaged;
+}
+
+void OwnableSpaces::setMortgage(bool mortgaged)
+{
+    this->mortgaged = mortgaged;
+}
+
 
 bool OwnableSpaces::buy(Player* buyer, short price)
 {
@@ -292,5 +336,47 @@ void OwnableSpaces::displaySpace()
 
 void OwnableSpaces::spaceSelectedFromMenu()
 {
-    displayInfo();
+    short menuSelection;
+    bool exitMenu = false;
+    enum menuOptions
+    {
+        BACK,
+        INFO,
+        MORTGAGE
+    };
+
+    while (!exitMenu)
+    {
+        // Print menu options
+        cout << "The following actions are available:\n"
+                "   [0] Back\n"
+                "   [1] Info\n"
+                "   [2] Mortgage\n";
+
+        // Get user input
+        cin >> menuSelection;
+        cin.clear();
+
+        switch (static_cast<menuOptions>(menuSelection))
+        {
+        case BACK:
+            exitMenu = true;
+            break;
+        case INFO:
+            displayInfo();
+            break;
+        case MORTGAGE:
+            if (mortgaged)
+            {
+                unmortgageSpace();
+            }
+            else
+            {
+                mortgageSpace();
+            }
+            break;
+        default:
+            cout << "Invalid input\n";
+        }
+    }
 }

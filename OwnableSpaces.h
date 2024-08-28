@@ -17,17 +17,22 @@ class OwnableSpaces : public Space {
 private:
 
     short price;
+    bool mortgaged = false;
     Player* owner = nullptr;
 
 public:
 
     OwnableSpaces(short price, short spaceIndex, string spaceName);
     void auction(vector<Player*> players);
+    void mortgageSpace();
+    void unmortgageSpace();
     short getPrice();
     bool isOwned();
     void changeOwner(Player* newOwner);
     Player* getOwner() const;
     virtual short getRent() = 0;
+    bool getMortgage() const;
+    void setMortgage(bool mortgaged);
     virtual void displayInfo() = 0;
     virtual bool buy(Player* buyer, short price);
     virtual bool buy(Player* buyer);
