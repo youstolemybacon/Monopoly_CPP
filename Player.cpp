@@ -129,7 +129,8 @@ bool Player::pay(const short cost)
 void Player::income(short income)
 {
     money += income;
-    printMoney();
+    cout << "\nPAYMENT SUCCESSFUL\n";
+    cout << "   TRANSACTION: $" << money - income << " + $" << income << " = $" << money << "\n\n";
 }
 
 void Player::printMoney() const
