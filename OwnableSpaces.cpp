@@ -189,7 +189,6 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
     DEFAULT = 0,
     BUY,
     AUCTION,
-    MORTGAGE,
     INFO,
     OWNED,
     END_TURN
@@ -201,9 +200,8 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
         cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
-        "   [3] Mortgage\n"
-        "   [4] Info\n"
-        "   [5] Owned\n";
+        "   [3] Info\n"
+        "   [4] Owned\n";
         cin >> userInput;
         cin.clear();
         menuSelection = static_cast<UnownedMenuOptions>(userInput);
@@ -219,9 +217,6 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
         case AUCTION:
             this->auction(Players::playerList);
             menuSelection = END_TURN;
-            break;
-        case MORTGAGE:
-            cout << "Mortgages are not implemented." << endl;
             break;
         case INFO:
             this->displayInfo();
