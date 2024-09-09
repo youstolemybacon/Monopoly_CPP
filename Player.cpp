@@ -91,9 +91,9 @@ bool Player::pay(const short cost, Player* beneficiary)
 
         // Print transaction details
         cout << "\nPAYMENT SUCCESSFUL\n";
-        cout << "TRANSACTIONS: \n";
-        cout << "   " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
-        cout << "   " << beneficiary->name << ": $" << money - cost << " + $" << cost << " = $" << money << "\n\n";
+        cout << "   TRANSACTIONS: \n";
+        cout << "      " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
+        cout << "      " << beneficiary->name << ": $" << money - cost << " + $" << cost << " = $" << money << "\n\n";
 
         // Player succuessfully paid
         return true;
