@@ -291,7 +291,15 @@ void Property::spaceSelectedFromMenu()
             }
             break;
         case BUILD:
-            build(1);
+            if (monopolyCheck(getOwner(), propertyGroup))
+            {
+                build(1);
+            }
+            else
+            {
+                cout << "You do not have a monopoly of this color set.\n\"You Egg!\" - Ethan\n\n";
+            }
+            break;
         default:
             cout << "Invalid input\n";
         }
