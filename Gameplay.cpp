@@ -12,7 +12,6 @@ void Gameplay::turn(Player* player)
     do
     {
         preRollMenu(player);
-        player->setSpace(38);
         spaceMenu(player);
     } while (player->getDoubles());
     cout << endl << "TURN ENDED" << endl;
