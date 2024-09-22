@@ -13,6 +13,4 @@ public:
     void spaceMenu(Player* player) override;
 };
 
-
-
 #endif //GOTOJAIL_H
