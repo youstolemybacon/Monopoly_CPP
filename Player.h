@@ -34,7 +34,7 @@ public:
     void decrementRailroadsOwned();
 
     void roll();
-    bool move();
+    void move();
 
     const int getDice() const;
     bool compareDice();
@@ -43,16 +43,21 @@ public:
     void displaySpaceHistory() const;
 
     void printMoney() const;
+    void printPlayerInfo() const;
 
     bool pay(short cost, Player* beneficiary);
     bool pay(short cost);
 
     void income(short income);
 
+    void setDoubles(short doubles);
+    short getDoubles() const;
+
     int money = 1500;
     string name;
     static Board playerBoard;
 private:
+    short doubles = 0;
     short railroadsOwned = 0;
     short jailSentence{};
     int spaceIndex = 0;

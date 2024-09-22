@@ -10,6 +10,7 @@
 #include "Jail.h"
 #include "LuxuryTax.h"
 #include "Go.h"
+#include "IncomeTax.h"
 
 vector<Space*> Board::board;
 
@@ -19,7 +20,7 @@ Board::Board()
     board.push_back(new Property(2,10,30,90,160,250,50,1,"Mediterranean Avenue", 60, Property::PropertyGroup::BROWN));
     board.push_back(new CommunityChest(2));
     board.push_back(new Property(4, 20, 60, 180, 320, 450, 50, 3, "Baltic Avenue", 60, Property::PropertyGroup::BROWN));
-    board.push_back(new LuxuryTax());
+    board.push_back(new IncomeTax());
     board.push_back(new Railroad(5, "Reading Railroad"));
     board.push_back(new Property(6, 30, 90, 270, 400, 550, 50, 6, "Oriental Avenue", 100, Property::PropertyGroup::LIGHT_BLUE));
     board.push_back(new Chance(7));
@@ -65,7 +66,7 @@ Board::~Board()
     }
 }
 
-Space* Board::getSpace(const short spaceIndex) const
+Space* Board::getSpace(const short spaceIndex)
 {
     return board[spaceIndex];
 }

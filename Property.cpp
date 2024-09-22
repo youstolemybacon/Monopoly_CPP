@@ -10,28 +10,83 @@ Property::Property(short rent_1, short rent_2, short rent_3, short rent_4, short
 
 void Property::build(short buildHouses) {
 
-    auto colorGroup = this->getPropertyGroup(propertyGroup);
     auto propertyOwner = this->getOwner();
     short buildPrice = housePrice * buildHouses;
 
-    for (auto property : colorGroup)
+    if (buildHouseCheck(propertyGroup, buildHouses))
     {
-        if (property->houses < this->houses)
+        if(houses + buildHouses > 5)
         {
-            cout << "You are unable to build on this property. The other properties of the color set must be further developed. \n";
-            return;
+            cout << "This property cannot be developed further." << endl;
+        }
+        else if (propertyOwner->pay(buildPrice))
+        {
+            // Add the houses being built to the member variable
+            houses += buildHouses;
         }
     }
+}
 
-    if(houses + buildHouses > 5)
+void Property::demo()
+{
+    auto propertyOwner = this->getOwner();
+    short houseCost = housePrice / 2;
+
+    if (this->houses != 0 & demoHouseCheck(propertyGroup, -1))
     {
-        cout << "This property cannot be developed further." << endl;
+        // Remove the houses being demoed to the member variable
+        houses--;
+        propertyOwner->income(houseCost);
     }
-    else if (propertyOwner->pay(buildPrice))
+}
+
+bool Property::buildHouseCheck(PropertyGroup colorSet, short houses) const
+{
+    auto colorGroup = getPropertyGroup(colorSet);
+
+    // Building a house
+    if (this->houses + houses < 6)
     {
-        // Add the houses being built to the member variable
-        houses += buildHouses;
+        for (auto property : colorGroup)
+        {
+            // Check if the current property will have a delta of more then 1 house when compared to other properties in the set
+            if (this->houses - property->houses + houses > 1)
+            {
+                // Build criteria is not met
+                cout << "This property is over developed compared to the other properties in the Color Set. \n";
+                return false;
+            }
+        }
+        // Building criteria met
+        return true;
     }
+    // Build criteria is not met
+    return false;
+}
+
+bool Property::demoHouseCheck(PropertyGroup colorSet, short houses) const
+{
+    auto colorGroup = getPropertyGroup(colorSet);
+
+    // Building a house
+    if (this->houses + houses > -1)
+    {
+        for (const auto property : colorGroup)
+        {
+            // Check if the current property will have a delta of more then 1 house when compared to other properties in the set
+            if (this->houses - property->houses + houses > 1)
+            {
+                // Build criteria is not met
+                cout << "This property is over developed compared to the other properties in the Color Set. \n";
+                return false;
+            }
+        }
+        // Building criteria met
+        return true;
+    }
+    // Build criteria is not met
+    cout << "There are no houses to demo on this property. \n";
+    return false;
 }
 
 short Property::getRent()
@@ -202,50 +257,53 @@ void Property::developPropertiesMenu(Player* player)
 void Property::displaySpace()
 {
     OwnableSpaces::displaySpace();
+
+    // Open parentheses for extra info
+    cout << " (";
+
+    // Print info on is there are houses or if it is a monopoly
     if (this->houses == 5)
     {
-        cout << " (HOTEL)";
+        cout << "HOTEL, ";
     }
     else if (this->houses > 0)
     {
-        cout << " (HOUSES: " << this->houses << ")";
+        cout << "HOUSES: " << this->houses << ", ";
     }
     else if (monopolyCheck(getOwner(), propertyGroup))
     {
-        cout << " (MONOPOLY)";
+        cout << "MONOPOLY, ";
     }
-    else
+
+    // Print property group
+    switch (propertyGroup)
     {
-        cout << " (";
-        switch (propertyGroup)
-        {
-        case PropertyGroup::BROWN:
-            cout << "BROWN";
-            break;
-        case PropertyGroup::LIGHT_BLUE:
-            cout << "LIGHT BLUE";
-            break;
-        case PropertyGroup::PINK:
-            cout << "PINK";
-            break;
-        case PropertyGroup::ORANGE:
-            cout << "ORANGE";
-            break;
-        case PropertyGroup::RED:
-            cout << "RED";
-            break;
-        case PropertyGroup::YELLOW:
-            cout << "YELLOW";
-            break;
-        case PropertyGroup::GREEN:
-            cout << "GREEN";
-            break;
-        case PropertyGroup::BLUE:
-            cout << "BLUE";
-            break;
-        }
-        cout << ")";
+    case PropertyGroup::BROWN:
+        cout << "BROWN";
+        break;
+    case PropertyGroup::LIGHT_BLUE:
+        cout << "LIGHT BLUE";
+        break;
+    case PropertyGroup::PINK:
+        cout << "PINK";
+        break;
+    case PropertyGroup::ORANGE:
+        cout << "ORANGE";
+        break;
+    case PropertyGroup::RED:
+        cout << "RED";
+        break;
+    case PropertyGroup::YELLOW:
+        cout << "YELLOW";
+        break;
+    case PropertyGroup::GREEN:
+        cout << "GREEN";
+        break;
+    case PropertyGroup::BLUE:
+        cout << "BLUE";
+        break;
     }
+    cout << ")";
 }
 
 void Property::spaceSelectedFromMenu()
@@ -257,7 +315,8 @@ void Property::spaceSelectedFromMenu()
         BACK,
         INFO,
         MORTGAGE,
-        BUILD
+        BUILD,
+        DEMO
     };
     while(!exitMenu)
     {
@@ -266,7 +325,9 @@ void Property::spaceSelectedFromMenu()
                 "   [0] Back\n"
                 "   [1] Info\n"
                 "   [2] Mortgage\n"
-                "   [3] Build\n";
+                "   [3] Build\n"
+                "   [4] Demo\n";
+
 
         // Get user input
         cin >> menuSelection;
@@ -299,6 +360,9 @@ void Property::spaceSelectedFromMenu()
             {
                 cout << "You do not have a monopoly of this color set.\n\"You Egg!\" - Ethan\n\n";
             }
+            break;
+        case DEMO:
+            demo();
             break;
         default:
             cout << "Invalid input\n";

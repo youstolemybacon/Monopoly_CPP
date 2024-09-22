@@ -44,8 +44,11 @@ void Player::decrementRailroadsOwned()
 }
 
 void Player::roll() {
+
     dice[0] = rand() % 6 + 1;
     dice[1] = rand() % 6 + 1;
+    cout << "ROLL:\n"
+         << "   " << dice[0] << " + " << dice[1] << " = " << dice[0] + dice[1] << "\n\n";
 }
 
 const int Player::getDice() const {
@@ -56,24 +59,38 @@ bool Player::compareDice() {
     return dice[0] == dice[1];
 }
 
-bool Player::move() {
+void Player::move() {
     roll();
-    spaceIndex += dice[0] + dice[1];
 
+    doubles = 0;
+    // Check for doubles
+    if (dice[0] == dice[1])
+    {
+        doubles++;
+        if (doubles == 3)
+        {
+            setJailSentence(3);
+        }
+    }
+
+    // Check if in jail
+    if (jailSentence != 0)
+    {
+        if (doubles != 0)
+        {
+            cout << "You rolled doubles you escaped from Jail! \n";
+            setJailSentence(0);
+        }
+        
+    }
+
+    spaceIndex += dice[0] + dice[1];
     if (spaceIndex > 39)
     {
         playerBoard.getSpace(0)->spaceMenu(this); // Calling passing go menu
     }
 
     spaceIndex %= 40;
-    spaceHistory[spaceIndex]++;
-
-    if(dice[0] != dice[1])
-    {
-        moves++;
-        return false; // Doubles were not rolled
-    }
-    return true; // Doubles were rolled
 }
 
 const int *Player::getSpaceHistory() const {
@@ -133,9 +150,27 @@ void Player::income(short income)
     cout << "   TRANSACTION: $" << money - income << " + $" << income << " = $" << money << "\n\n";
 }
 
+void Player::setDoubles(short doubles)
+{
+    this->doubles = doubles;
+}
+
+short Player::getDoubles() const
+{
+    return doubles;
+}
+
 void Player::printMoney() const
 {
     cout << this->name << " you have $" << this->money << endl << endl;
+}
+
+void Player::printPlayerInfo() const
+{
+    Space* currentSpace = Board::getSpace(spaceIndex);
+    cout << name << ": \n"
+         << "   Money: $" << money << "\n"
+         << "   Space: " << currentSpace->getSpaceName() << "\n\n";
 }
 
 void Player::displaySpaceHistory() const {

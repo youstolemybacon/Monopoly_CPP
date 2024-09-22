@@ -9,8 +9,12 @@
 
 void Gameplay::turn(Player* player)
 {
-    preRollMenu(player);
-    spaceMenu(player);
+    do
+    {
+        preRollMenu(player);
+        player->setSpace(38);
+        spaceMenu(player);
+    } while (player->getDoubles());
     cout << endl << "TURN ENDED" << endl;
     cout << "-----------------------------------------------------------------------------" << endl << endl;
 }
@@ -31,11 +35,11 @@ void Gameplay::preRollMenu(Player* player)
     };
     short menuSelection = 0;
 
-    cout << player->name << ", it is your turn. The following actions are available: " << endl;
-
     while(static_cast<PreRollMenuOptions>(menuSelection) != ROLL)
     {
+        player->printPlayerInfo();
         cout <<
+            "The following actions are available: \n"
             "   [1] Roll\n"
             "   [2] Owned\n"
             "   [3] Trade\n";

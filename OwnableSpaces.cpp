@@ -242,12 +242,11 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
 
     short userInput = 0;
     OwnedMenuOptions menuSelection = DEFAULT;
+    short rent = getRent();
 
     while(menuSelection != END_TURN)
     {
-        cout << "This property is owned by " << owner->name << ". The cost of rent is ";
-        short rent = getRent();
-        cout << "$" << rent << ".\n "
+        cout << "This property is owned by " << owner->name << ". The cost of rent is $" << rent << ". \n\n "
                 "The following actions are available: \n"
                 "   [1] Pay\n"
                 "   [2] Mortgage\n";
@@ -258,8 +257,10 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
         switch(menuSelection)
         {
         case PAY:
-            currentPlayer->pay(rent, owner);
-            menuSelection = END_TURN;
+            if (currentPlayer->pay(rent, owner))
+            {
+                menuSelection = END_TURN;
+            }
             break;
         case MORTGAGE:
             cout << "Mortgages are not implemented." << endl;

@@ -3,7 +3,10 @@
 //
 
 #include "Dice.h"
+#include "iostream"
 #include <ctime>
+
+using namespace std;
 
 bool Dice::rollDice()
 {
@@ -11,6 +14,9 @@ bool Dice::rollDice()
     short dice1 = rand() % 6 + 1;
     short dice2 = rand() % 6 + 1;
     roll = dice1 + dice2;
+
+    cout << "ROLL:\n"
+         << "   " << dice1 << " + " << dice2 << " = " << dice1 + dice2 << "\n\n";
 
     // Check for doubles
     if(dice1 == dice2)

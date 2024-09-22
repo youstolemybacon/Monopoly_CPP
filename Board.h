@@ -18,7 +18,7 @@ public:
     Board();
     ~Board();
     static vector<Space*> board;
-    Space* getSpace(short spaceIndex) const;
+    static Space* getSpace(short spaceIndex);
     static vector<Property*> getOwnedProperties(const Player* player);
     static vector<Railroad*> getOwnedRailroads(const Player* player);
     static vector<Utility*> getOwnedUtilities(const Player* player);
