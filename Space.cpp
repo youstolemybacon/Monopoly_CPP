@@ -28,7 +28,7 @@ Space::Space(short spaceIndex, string spaceName) : spaceIndex(spaceIndex), space
 
 void Space::spaceMenu(Player* player)
 {
-    cout << endl << player->name << ", you landed on " << this->getSpaceName() << ". " << endl;
+    cout << player->name << ", you landed on " << this->getSpaceName() << ". " << endl;
 }
 
 string Space::getSpaceName()
