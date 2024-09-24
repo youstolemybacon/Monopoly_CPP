@@ -7,7 +7,7 @@
 #include "Player.h"
 #include "OwnableSpaces.h"
 
-IncomeTax::IncomeTax() : Space(4, "Luxury Tax") {}
+IncomeTax::IncomeTax() : Space(4, "Income Tax") {}
 
 bool IncomeTax::payTaxes(Player* taxPayer)
 {
