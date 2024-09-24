@@ -12,8 +12,8 @@
 class Jail : public Space {
 public:
     Jail();
-    void bail(Player* prisoner);
-    void release(Player* prisoner);
+    static void bail(Player* prisoner);
+    static void release(Player* prisoner);
     void spaceMenu(Player* player);
 };
 
