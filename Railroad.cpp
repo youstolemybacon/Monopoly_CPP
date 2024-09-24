@@ -23,7 +23,7 @@ void Railroad::spaceMenu(Player* currentPlayer)
 {
     Player* propertyOwner = getOwner();
 
-    cout << endl << "You landed on " << getSpaceName() << ". ";
+    cout << "You landed on " << getSpaceName() << ". ";
     if(propertyOwner == nullptr)
     {
         unownedMenu(currentPlayer);
