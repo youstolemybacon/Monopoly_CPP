@@ -40,7 +40,6 @@ public:
     bool compareDice();
 
     const int *getSpaceHistory() const;
-    void displaySpaceHistory() const;
 
     void printMoney() const;
     void printPlayerInfo() const;
