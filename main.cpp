@@ -24,10 +24,14 @@ int main() {
 
     cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     Players::playerList[0]->money = 3000;
+    Players::playerList[0]->setJailSentence(3);
 
     while(true)
     {
-        game.turn(Players::playerList[0]);
+        for (auto player : Players::playerList)
+        {
+            game.turn(player);
+        }
     }
 
     return 0;
