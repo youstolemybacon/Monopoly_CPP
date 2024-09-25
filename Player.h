@@ -39,8 +39,6 @@ public:
     const int getDice() const;
     bool compareDice();
 
-    const int *getSpaceHistory() const;
-
     void printMoney() const;
     void printPlayerInfo() const;
 
