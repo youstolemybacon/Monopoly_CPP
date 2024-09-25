@@ -104,10 +104,6 @@ void Player::move() {
     spaceIndex %= 40;
 }
 
-const int *Player::getSpaceHistory() const {
-    return spaceHistory;
-}
-
 bool Player::pay(const short cost, Player* beneficiary)
 {
     if(this->money > cost)

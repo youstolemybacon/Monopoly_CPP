@@ -59,7 +59,6 @@ private:
     short jailSentence{};
     int spaceIndex = 0;
     int dice[2] = {0};
-    int spaceHistory[40] = {0};
     double moves = 0;
 };
 #endif //MONOPOLY_SIM_PLAYER_H
