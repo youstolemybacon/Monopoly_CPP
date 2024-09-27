@@ -23,9 +23,6 @@ int main() {
     dynamic_cast<Property*>(Player::playerBoard.getSpace(37))->buy(Players::playerList[0]);
 
     cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
-    Players::playerList[0]->money = 3000;
-    Players::playerList[0]->setSpace(30);
-    Gameplay::spaceMenu(Players::playerList[0]);
 
 
     while(true)

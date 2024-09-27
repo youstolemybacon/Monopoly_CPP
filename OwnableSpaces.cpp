@@ -52,7 +52,11 @@ void OwnableSpaces::auction(vector<Player*> playerList)
             {
                 playerList.erase(playerList.begin() + i);
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                i++; // Increment for loop index
+                if (playerList.size() == 1)
+                {
+                    break;
+                }
+                i %= playerList.size(); // Reset index to 0 if at the max value in the lsit
             }
             else
             {
