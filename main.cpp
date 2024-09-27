@@ -24,7 +24,9 @@ int main() {
 
     cout << "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n";
     Players::playerList[0]->money = 3000;
-    Players::playerList[0]->setJailSentence(3);
+    Players::playerList[0]->setSpace(30);
+    Gameplay::spaceMenu(Players::playerList[0]);
+
 
     while(true)
     {

@@ -26,8 +26,9 @@ public:
 
     Space* getSpace();
 
-    short getJailSentence();
+    short getJailSentence() const;
     void setJailSentence(short jailSentence);
+    bool isJailed() const ;
 
     short getRailroadsOwned() const;
     void incrementRailroadsOwned();

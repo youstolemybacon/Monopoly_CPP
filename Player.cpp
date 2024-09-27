@@ -19,7 +19,7 @@ Space* Player::getSpace()
     return playerBoard.getSpace(spaceIndex);
 }
 
-short Player::getJailSentence()
+short Player::getJailSentence() const
 {
     return jailSentence;
 }
@@ -28,6 +28,16 @@ void Player::setJailSentence(short jailSentence)
 {
     this->jailSentence = jailSentence;
 }
+
+bool Player::isJailed() const
+{
+    if (this->getJailSentence() > 0)
+    {
+        return true;
+    }
+    return false;
+}
+
 
 short Player::getRailroadsOwned() const
 {
@@ -75,13 +85,13 @@ void Player::move() {
     }
 
     // Check if in jail
-    if (jailSentence < 0)
+    if (this->isJailed())
     {
         if (jailSentence == 1)
         {
             Jail::bail(this);
         }
-        if (doubles != 0)
+        else if (doubles != 0)
         {
             cout << "You rolled doubles you escaped from Jail! \n";
             setJailSentence(0);

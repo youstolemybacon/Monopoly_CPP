@@ -47,6 +47,12 @@ void Gameplay::preRollMenu(Player* player)
         switch (static_cast<PreRollMenuOptions>(menuSelection))
         {
         case ROLL:
+            // If player wants to go back
+            if (!Jail::bailMenuOption(player))
+            {
+                menuSelection = 0;
+                break;
+            }
             player->move();
             break;
         case OWNED:
