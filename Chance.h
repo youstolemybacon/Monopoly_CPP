@@ -18,7 +18,7 @@ public:
     static Deck chanceDeck;
     void spaceMenu(Player* player) override;
     void getCardEffect(Player* player);
-    bool passGoCheck(int currentSpace, int NewSpace);
+    void passGoCheck(Player* player, int NewSpace);
     void payMenu(Player* player, short cost);
     void payMenu(Player* payer, Player* receiver, short cost);
 
@@ -38,9 +38,6 @@ public:
     void tripToReadingRailroad(Player* player);
     void electedChairman(Player* player);
     void buildingLoanMatures(Player* player);
-
-
-    void DELETE(Player* player, short card);
 };
 
 #endif //CHANCE_H

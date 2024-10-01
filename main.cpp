@@ -18,18 +18,23 @@ int main() {
     dynamic_cast<Railroad*>(Player::playerBoard.getSpace(15))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
 
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(39))->buy(Players::playerList[0]);
+    dynamic_cast<Property*>(Player::playerBoard.getSpace(37))->buy(Players::playerList[0]);
+    Players::playerList[0]->income(3000);
+    Players::playerList[0]->setSpace(10);
+
 
     //chance.DELETE(players.playerList[0], 2);
     //chance.DELETE(players.playerList[0], 3);
     //chance.DELETE(players.playerList[0], 4);
-    chance.DELETE(players.playerList[0], 5);
-    chance.DELETE(players.playerList[0], 6);
-    chance.DELETE(players.playerList[0], 7);
-    chance.DELETE(players.playerList[0], 8);
-    chance.DELETE(players.playerList[0], 9);
-    chance.DELETE(players.playerList[0], 10);
-    chance.DELETE(players.playerList[0], 11);
-    chance.DELETE(players.playerList[0], 12);
+    //chance.DELETE(players.playerList[0], 5);
+    //chance.DELETE(players.playerList[0], 6);
+    //chance.DELETE(players.playerList[0], 7);
+    //chance.DELETE(players.playerList[0], 8);
+    //chance.DELETE(players.playerList[0], 9);
+    //chance.DELETE(players.playerList[0], 10);
+    //chance.DELETE(players.playerList[0], 11);
+    //chance.DELETE(players.playerList[0], 12);
     chance.DELETE(players.playerList[0], 13);
     chance.DELETE(players.playerList[0], 14);
     chance.DELETE(players.playerList[0], 15);

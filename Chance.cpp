@@ -152,13 +152,12 @@ void Chance::getCardEffect(Player* player)
     }
 }
 
-bool Chance::passGoCheck(int currentSpace, int NewSpace)
+void Chance::passGoCheck(Player* player, int newSpace)
 {
-    if (currentSpace > NewSpace)
+    if (player->getSpaceIndex() > newSpace)
     {
-        return true;
+        Board::getSpace(0)->spaceMenu(player); // Calling passing go menu
     }
-    return false;
 }
 
 void Chance::advanceToBoardwalk(Player* player)
@@ -178,10 +177,9 @@ void Chance::advanceToGo(Player* player)
 void Chance::advanceToIllinoisAve(Player* player)
 {
     cout << "Advance to Illinois Avenue. If you pass Go, collect $200. \n\n";
-    if (passGoCheck(player->getSpaceIndex(), 24))
-    {
-        Board::getSpace(0)->spaceMenu(player); // Calling passing go menu
-    }
+
+    passGoCheck(player, 24);
+
     player->setSpace(24);
     Gameplay::spaceMenu(player);
 }
@@ -189,18 +187,16 @@ void Chance::advanceToIllinoisAve(Player* player)
 void Chance::advnaceToStCharlesPlace(Player* player)
 {
     cout << "Advance to St. Charles Place. If you pass Go, collect $200. \n\n";
-    if (passGoCheck(player->getSpaceIndex(), 11))
-    {
-        Board::getSpace(0)->spaceMenu(player); // Calling passing go menu
-    }
+    passGoCheck(player, 11);
     player->setSpace(11);
     Gameplay::spaceMenu(player);
 }
 
 void Chance::advanceToNearestRailroad(Player* player)
 {
-    cout << "Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay wonder twice the rental to which they are otherwise entitled. \n\n";
+    cout << "Advance to the nearest Railroad. If unowned, you may buy it from the Bank. If owned, pay ownerr twice the rental to which they are otherwise entitled. \n\n";
     int currentSpace = player->getSpaceIndex();
+    int newSpace;
 
     // Set modifier so railroad is double
     player->setChanceModifier(true);
@@ -208,29 +204,29 @@ void Chance::advanceToNearestRailroad(Player* player)
     // Reading Railroad
     if (currentSpace >= 35 || currentSpace < 5)
     {
-        player->setSpace(5);
+        newSpace = 5;
     }
     // Short Line
     else if (currentSpace >= 25)
     {
-        player->setSpace(35);
+        newSpace = 35;
     }
     // B. &. O. Railroad
     else if (currentSpace >= 15)
     {
-        player->setSpace(25);
+        newSpace = 25;
     }
     // Pennsylvania Railroad
     else
     {
-        player->setSpace(15);
+        newSpace = 15;
     }
 
-    if (passGoCheck(currentSpace, player->getSpaceIndex()))
-    {
-        Board::getSpace(0)->spaceMenu(player); // Calling passing go menu
-    }
+    passGoCheck(player, newSpace);
+
     Gameplay::spaceMenu(player);
+
+    player->setChanceModifier(false);
 }
 
 void Chance::advanceToNearestUtility(Player* player)
@@ -238,6 +234,7 @@ void Chance::advanceToNearestUtility(Player* player)
     cout << "Advance token to nearest Utility. If unowned, you may buy it from the Bank. \n"
             "If owned, throw dice and pay owner a total ten times amount thrown. \n\n";
     int currentSpace = player->getSpaceIndex();
+    int newSpace;
 
     // Set modifier so utility is x10
     player->setChanceModifier(true);
@@ -245,18 +242,17 @@ void Chance::advanceToNearestUtility(Player* player)
     // Electric Company
     if (currentSpace >= 28 || currentSpace < 12)
     {
-        player->setSpace(12);
+        newSpace = 12;
     }
     // Water Works
     else
     {
         player->setSpace(28);
+        newSpace = 28;
     }
 
-    if (passGoCheck(currentSpace, player->getSpaceIndex()))
-    {
-        Board::getSpace(0)->spaceMenu(player); // Calling passing go menu
-    }
+    passGoCheck(player, newSpace);
+
     Gameplay::spaceMenu(player);
 
     // Turn off modifier
@@ -352,7 +348,7 @@ void Chance::generalRepairs(Player* player)
         cout << "You do not own any houses or hotels. You owe nothing for repairs. \n";
         return;
     }
-    player->pay(totalRepairs);
+    payMenu(player, totalRepairs);
 }
 
 void Chance::speedingFine(Player* player)
@@ -367,11 +363,10 @@ void Chance::tripToReadingRailroad(Player* player)
 {
     cout << "Take a trip to Reading Railroad. If you pass Go, collect $200. \n\n";
 
-    if (passGoCheck(player->getSpaceIndex(), 5))
-    {
-        player->setSpace(5);
-        Gameplay::spaceMenu(player);
-    }
+    passGoCheck(player, 5);
+
+    player->setSpace(5);
+    Gameplay::spaceMenu(player);
 }
 
 void Chance::electedChairman(Player* player)
@@ -390,60 +385,4 @@ void Chance::buildingLoanMatures(Player* player)
 {
     cout << "Your building loan matures. Collect $150 \n\n";
     player->income(150);
-}
-
-void Chance::DELETE(Player* player, short card)
-{
-
-    switch (card)
-    {
-    case 0:
-        advanceToBoardwalk(player);
-        break;
-    case 1:
-        advanceToGo(player);
-        break;
-    case 2:
-        advanceToIllinoisAve(player);
-        break;
-    case 3:
-        advnaceToStCharlesPlace(player);
-        break;
-    case 4:
-    case 5:
-        advanceToNearestRailroad(player);
-        break;
-    case 6:
-        advanceToNearestUtility(player);
-        break;
-    case 7:
-        bankPaysDividend(player);
-        break;
-    case 8:
-        getOutOfJail(player);
-        break;
-    case 9:
-        goBackThreeSpaces(player);
-        break;
-    case 10:
-        goToJail(player);
-        break;
-    case 11:
-        generalRepairs(player);
-        break;
-    case 12:
-        speedingFine(player);
-        break;
-    case 13:
-        tripToReadingRailroad(player);
-        break;
-    case 14:
-        electedChairman(player);
-        break;
-    case 15:
-        buildingLoanMatures(player);
-        break;
-    default:
-        cerr << "Invalid Chance card drawn. \n";
-    }
 }
