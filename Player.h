@@ -51,10 +51,20 @@ public:
     void setDoubles(short doubles);
     short getDoubles() const;
 
+    void setChanceModifier(bool chanceModifier);
+    bool getChanceModifier();
+
+    void setGetOutOfJailFree(short count);
+    short getGetOutOfJailFree() const;
+
+    bool operator==(const Player& player) const;
+
     int money = 1500;
     string name;
     static Board playerBoard;
 private:
+    bool chanceModifier = false; // Used when a chance card affects rent values
+    short getOutOfJailFree = 0;
     short doubles = 0;
     short railroadsOwned = 0;
     short jailSentence{};
@@ -62,4 +72,6 @@ private:
     int dice[2] = {0};
     double moves = 0;
 };
+
+
 #endif //MONOPOLY_SIM_PLAYER_H

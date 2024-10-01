@@ -14,10 +14,8 @@ public:
     Jail();
     static bool bail(Player* prisoner);
     static void release(Player* prisoner);
-    void spaceMenu(Player* player);
+    void spaceMenu(Player* player) override;
     static bool bailMenuOption(Player* player);
 };
-
-
 
 #endif //JAIL_H

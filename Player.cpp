@@ -106,9 +106,11 @@ void Player::move() {
     }
 
     spaceIndex += dice[0] + dice[1];
-    if (spaceIndex > 39)
+
+    // Pass go check
+    if (spaceIndex > 39 && spaceIndex != 0)
     {
-        playerBoard.getSpace(0)->spaceMenu(this); // Calling passing go menu
+        Board::getSpace(0)->spaceMenu(this); // Calling passing go menu
     }
 
     spaceIndex %= 40;
@@ -127,7 +129,7 @@ bool Player::pay(const short cost, Player* beneficiary)
         cout << "\nPAYMENT SUCCESSFUL\n";
         cout << "   TRANSACTIONS: \n";
         cout << "      " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
-        cout << "      " << beneficiary->name << ": $" << money - cost << " + $" << cost << " = $" << money << "\n\n";
+        cout << "      " << beneficiary->name << ": $" << beneficiary->money - cost << " + $" << cost << " = $" << beneficiary->money << "\n\n";
 
         // Player succuessfully paid
         return true;
@@ -175,6 +177,30 @@ void Player::setDoubles(short doubles)
 short Player::getDoubles() const
 {
     return doubles;
+}
+
+void Player::setChanceModifier(bool chanceModifier)
+{
+    this->chanceModifier = chanceModifier;
+}
+
+bool Player::getChanceModifier()
+{
+    return chanceModifier;
+}
+
+void Player::setGetOutOfJailFree(short count)
+{
+    this->getOutOfJailFree = count;
+}
+short Player::getGetOutOfJailFree() const
+{
+    return getOutOfJailFree;
+}
+
+bool Player::operator==(const Player& other) const
+{
+    return this->name == other.name;
 }
 
 void Player::printMoney() const

@@ -25,20 +25,23 @@ void Utility::setRent(short ownedUtilities)
     }
 }
 
-short Utility::getRent()
+short Utility::getRent(Player* player)
 {
     Dice dice;
     short rent = 0;
 
-    cin.ignore(numeric_limits<std::streamsize>::max(), '\n'); // clear cin buffer
 
-    if(monopoloy)
+    cin.ignore(); // clear cin buffer
+
+    // If it is a monopoly of chance modification
+    if(monopoloy || player->getChanceModifier())
     {
         cout << "determined by roll x 10." << endl;
         cout << "Hit enter to roll for rent!" << endl;
         cin.get();
         dice.rollDice();
         rent = dice.getRoll() * 10;
+        player->setChanceModifier(false);
     }
     else
     {

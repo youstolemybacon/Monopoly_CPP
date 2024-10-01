@@ -9,9 +9,17 @@
 
 Railroad::Railroad(short spaceIndex, string spaceName) : OwnableSpaces(200, spaceIndex, std::move(spaceName)) {}
 
-short Railroad::getRent()
+short Railroad::getRent(Player* player)
 {
-    return std::pow( 2, getOwner()->getRailroadsOwned()) * 25 / 2;
+    short rent = std::pow( 2, getOwner()->getRailroadsOwned()) * 25 / 2;
+
+    // Check if rent is doubled from chance card
+    if (player->getChanceModifier())
+    {
+        rent *= 2;
+        player->setChanceModifier(false);
+    }
+    return rent;
 }
 
 void Railroad::displayInfo()

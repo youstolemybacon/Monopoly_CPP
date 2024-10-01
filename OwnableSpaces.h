@@ -30,17 +30,15 @@ public:
     bool isOwned();
     void changeOwner(Player* newOwner);
     Player* getOwner() const;
-    virtual short getRent() = 0;
+    virtual short getRent(Player* player) = 0;
     bool getMortgage() const;
     void setMortgage(bool mortgaged);
     virtual void displayInfo() = 0;
     virtual bool buy(Player* buyer, short price);
     virtual bool buy(Player* buyer);
-
     void spaceMenu(Player* currentPlayer) override;
     void unownedMenu(Player* currentPlayer);
     void ownedMenu(Player* currentPlayer, Player* owner);
-
     static void spaceInfoMenu(const vector<OwnableSpaces*>& spaces);
     static void printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber);
     virtual void displaySpace();

@@ -12,7 +12,7 @@ class Utility : public OwnableSpaces {
 public:
     Utility(short spaceIndex, string spaceName) : OwnableSpaces(150, spaceIndex, std::move(spaceName)) {}
     void setRent(short ownedUtilities);
-    short getRent();
+    short getRent(Player* player) override;
     void displayInfo() override;
 };
 

@@ -14,7 +14,7 @@ private:
     //short rent{};
 public:
     Railroad(short spaceIndex, string spaceName);
-    short getRent() override;
+    short getRent(Player* player) override;
     void displayInfo() override;
     void spaceMenu(Player* currentPlayer) override;
     bool buy(Player* buyer, short price) override;

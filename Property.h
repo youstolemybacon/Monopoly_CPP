@@ -30,12 +30,13 @@ private:
     short housePrice;
 public:
     Property(short rent_1,short rent_2,short rent_3,short rent_4,short rent_5,short rent_6,short housePrice,short spaceIndex,string spaceName,short price, PropertyGroup propertyGroup);
+    short getHouses() const;
     void build(short buildHouses);
     void demo();
     bool buildHouseCheck(PropertyGroup colorSet, short houses) const;
     bool demoHouseCheck(PropertyGroup colorSet, short houses) const;
     short getHousePrice() const;
-    short getRent() override;
+    short getRent(Player* player) override;
     void displayInfo() override;
 
     static vector<Property*> getPropertyGroup(PropertyGroup color);

@@ -127,3 +127,58 @@ vector<OwnableSpaces*> Board::getOwnedSpaces(const Player* player)
     }
     return ownableSpaces;
 }
+
+void Board::spaceInfoMenu(Player* player)
+{
+    auto spaces = getOwnedSpaces(player);
+    short userInput;
+    bool exitMenu = false;
+
+    if (spaces.empty())
+    {
+        cout << "You own nothing... that is pretty sad. I wish you luck in the remaining game you need it!" << endl;
+        return;
+    }
+
+    while (!exitMenu)
+    {
+        cout << "The spaces are printed below. Select the property to view more space info: \n"
+                        "   [0] Back" << endl;
+
+        printSpaces(spaces, 1);
+
+        // Get user input
+        cin >> userInput;
+        cin.clear();
+
+        // If user input is 0 no action is taken. If it is not zero use the input to reference the correspondings space info
+        if(userInput == 0)
+        {
+            exitMenu = true;
+        }
+        else
+        {
+            // Check if the user input is within the range of the vector
+            if (userInput > spaces.size())
+            {
+                cout << "The value entered is outside of the range." << endl;
+            }
+            // Display the space info
+            else
+            {
+                spaces[userInput - 1]->spaceSelectedFromMenu();
+            }
+        }
+    }
+}
+
+void Board::printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber)
+{
+    for (const auto space : spaces)
+    {
+        cout << "   [" << menuNumber << "]" << " ";
+        space->displaySpace();
+        cout << endl;
+        menuNumber++;
+    }
+}

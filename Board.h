@@ -23,6 +23,9 @@ public:
     static vector<Railroad*> getOwnedRailroads(const Player* player);
     static vector<Utility*> getOwnedUtilities(const Player* player);
     static vector<OwnableSpaces*> getOwnedSpaces(const Player* player);
+    static void spaceInfoMenu(Player* player);
+    static void printSpaces(const vector<OwnableSpaces*>& spaces, short menuNumber);
+
 };
 
 

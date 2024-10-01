@@ -12,7 +12,7 @@ class Space;
 class Gameplay {
 private:
 public:
-    void turn(Player* player);
+    static void turn(Player* player);
     static void spaceMenu(Player* player);
     static void preRollMenu(Player* player);
 };
