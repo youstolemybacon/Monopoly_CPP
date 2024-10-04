@@ -65,6 +65,10 @@ bool Property::buildHouseCheck(PropertyGroup colorSet, short houses) const
         // Building criteria met
         return true;
     }
+    else
+    {
+        cout << "You are attempting to build past the limit. \n";
+    }
     // Build criteria is not met
     return false;
 }
