@@ -229,6 +229,7 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
             spaceInfoMenu(Board::getOwnedSpaces(currentPlayer));
             break;
         default:
+            menuSelection = DEFAULT;
             cerr << "Invalid input!" << endl;
         }
     }
@@ -270,6 +271,7 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
         spaceInfoMenu(Board::getOwnedSpaces(currentPlayer));
             break;
         default:
+            menuSelection = DEFAULT;
             cerr << "Invalid input!" << endl;
         }
     }

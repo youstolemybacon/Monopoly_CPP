@@ -51,6 +51,7 @@ void Chance::payMenu(Player* player, short cost)
             Board::spaceInfoMenu(player);
             break;
         default:
+            menuSelection = DEFAULT;
             cerr << "Invalid input!" << endl;
         }
     }
@@ -90,6 +91,7 @@ void Chance::payMenu(Player* payer, Player* receiver, short cost)
             Board::spaceInfoMenu(payer);
             break;
         default:
+            menuSelection = DEFAULT;
             cerr << "Invalid input!" << endl;
         }
     }
@@ -224,6 +226,7 @@ void Chance::advanceToNearestRailroad(Player* player)
 
     passGoCheck(player, newSpace);
 
+    player->setSpace(newSpace);
     Gameplay::spaceMenu(player);
 
     player->setChanceModifier(false);
@@ -295,6 +298,8 @@ void Chance::goBackThreeSpaces(Player* player)
 
 void Chance::goToJail(Player* player)
 {
+    cout << "Go to Jail. Go directly to jail, do not pass Go, do not collet $200";
+
     // Set space to go to jail
     player->setSpace(30);
 
