@@ -42,7 +42,7 @@ void CommunityChest::payMenu(Player* player, short cost)
         switch(menuSelection)
         {
         case PAY:
-            if (player->pay(cost))
+            if (player(cost))
             {
                 menuSelection = END_TURN;
             }
@@ -172,7 +172,7 @@ void CommunityChest::bankError(Player* player)
 void CommunityChest::doctorFee(Player* player)
 {
     cout << "Doctor's fee (Pay $50). \n";
-    player->pay(50);
+    payMenu(player, 50);
 }
 
 void CommunityChest::sellStocks(Player* player)
@@ -221,6 +221,7 @@ void CommunityChest::birthday(Player* player)
     {
         if (player != selectedPlayer)
         {
+            selectedPlayer->printPlayerInfo();
             payMenu(selectedPlayer, player, 10);
         }
     }
@@ -237,14 +238,13 @@ void CommunityChest::hospitalFee(Player* player)
 {
     cout << "Pay hospital fees (Pay $100) \n";
 
-    player->pay(100);
+    payMenu(player, 100);
 }
 
 void CommunityChest::schoolFee(Player* player)
 {
     cout << "Pay school fees (Pay $50). \n";
-
-    player->pay(50);
+    payMenu(player, 50);
 }
 
 void CommunityChest::consultancyFee(Player* player)
@@ -256,8 +256,6 @@ void CommunityChest::consultancyFee(Player* player)
 
 void CommunityChest::streetRepair(Player* player)
 {
-    cout << "You are assessed for street repair. $40 per house. $115 per hotel \n";
-
     auto ownedProperties = Board::getOwnedProperties(player);
     short houses = 0;
     short hotels = 0;

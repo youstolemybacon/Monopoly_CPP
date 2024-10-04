@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Board.h"
 #include "Chance.h"
+#include "CommunityChest.h"
 #include "Dice.h"
 #include "Gameplay.h"
 #include "Players.h"
@@ -13,7 +14,7 @@ int main() {
     srand(time(nullptr));
     Players players;
 
-    Chance chance(42);
+    CommunityChest communityChest(42);
 
     dynamic_cast<Railroad*>(Player::playerBoard.getSpace(15))->buy(Players::playerList[1]);
     dynamic_cast<Utility*>(Player::playerBoard.getSpace(12))->buy(Players::playerList[1]);
@@ -23,23 +24,14 @@ int main() {
     Players::playerList[0]->income(3000);
     Players::playerList[0]->setSpace(10);
 
-
-    //chance.DELETE(players.playerList[0], 2);
-    //chance.DELETE(players.playerList[0], 3);
-    //chance.DELETE(players.playerList[0], 4);
-    //chance.DELETE(players.playerList[0], 5);
-    //chance.DELETE(players.playerList[0], 6);
-    //chance.DELETE(players.playerList[0], 7);
-    //chance.DELETE(players.playerList[0], 8);
-    //chance.DELETE(players.playerList[0], 9);
-    //chance.DELETE(players.playerList[0], 10);
-    //chance.DELETE(players.playerList[0], 11);
-    //chance.DELETE(players.playerList[0], 12);
-    chance.DELETE(players.playerList[0], 13);
-    chance.DELETE(players.playerList[0], 14);
-    chance.DELETE(players.playerList[0], 15);
-
-
+    communityChest.birthday(Players::playerList[0]);
+    communityChest.lifeInsurance(Players::playerList[0]);
+    communityChest.hospitalFee(Players::playerList[0]);
+    communityChest.schoolFee(Players::playerList[0]);
+    communityChest.consultancyFee(Players::playerList[0]);
+    communityChest.streetRepair(Players::playerList[0]);
+    communityChest.beautyConstest(Players::playerList[0]);
+    communityChest.inheritance(Players::playerList[0]);
 
 
     //Players::playerList[1]->income(3000);
