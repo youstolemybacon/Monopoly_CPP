@@ -20,6 +20,7 @@ public:
     static void displayPlayers();
     static void setPlayerNumber();
     static void setPlayerNames();
+    static std::vector<Player*> getOtherPlayers(Player* player);
 };
 
 

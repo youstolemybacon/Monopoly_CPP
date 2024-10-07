@@ -24,7 +24,7 @@ Players::~Players()
 
 void Players::setPlayerNumber()
 {
-    short numberOfPlayers = 4;
+    short numberOfPlayers = 2;
     cout << "How many players will be playing: " << endl;
     //cin >> numberOfPlayers; // Removed for testing
     playerList.resize(numberOfPlayers);
@@ -32,7 +32,7 @@ void Players::setPlayerNumber()
 
 void Players::setPlayerNames()
 {
-    string names[4] = {"Zack", "Ethan", "Chase", "Tori"}; // Added for testing
+    string names[2] = {"Zack", "Matthew"}; // Added for testing
     for(int i = 0; i < playerList.size(); i++)
     {
         playerList[i] = new Player;
@@ -40,6 +40,19 @@ void Players::setPlayerNames()
         //cin >> name; Removed for testing
         playerList[i]->name = names[i];
     }
+}
+
+std::vector<Player*> Players::getOtherPlayers(Player* player)
+{
+    std::vector<Player*> otherPlayers;
+    for (auto currentPlayer : playerList)
+    {
+        if (player != currentPlayer)
+        {
+            otherPlayers.push_back(currentPlayer);
+        }
+    }
+    return otherPlayers;
 }
 
 void Players::randomizePlayerOrder()
