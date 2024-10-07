@@ -42,7 +42,7 @@ void CommunityChest::payMenu(Player* player, short cost)
         switch(menuSelection)
         {
         case PAY:
-            if (player(cost))
+            if (player->pay(cost))
             {
                 menuSelection = END_TURN;
             }
@@ -217,13 +217,11 @@ void CommunityChest::taxRefund(Player* player)
 void CommunityChest::birthday(Player* player)
 {
     cout << "It is your birthday (Collect $10 from each player). \n\n";
-    for (auto selectedPlayer : Players::playerList)
+    for (auto selectedPlayer : Players::getOtherPlayers(player))
     {
-        if (player != selectedPlayer)
-        {
-            selectedPlayer->printPlayerInfo();
-            payMenu(selectedPlayer, player, 10);
-        }
+
+        selectedPlayer->printPlayerInfo();
+        payMenu(selectedPlayer, player, 10);
     }
 }
 

@@ -377,12 +377,9 @@ void Chance::tripToReadingRailroad(Player* player)
 void Chance::electedChairman(Player* player)
 {
     cout << "You have been elected Chairman of the Board. Pay each player $50. \n\n";
-    for (auto selectedPlayer : Players::playerList)
+    for (auto selectedPlayer : Players::getOtherPlayers(player))
     {
-        if (player != selectedPlayer)
-        {
-            payMenu(player, selectedPlayer, 50);
-        }
+        payMenu(player, selectedPlayer, 50);
     }
 }
 
