@@ -36,13 +36,24 @@ void Jail::spaceMenu(Player* player)
 
 bool Jail::bailMenuOption(Player* player)
 {
+    string paymentOption;
     if (player->isJailed())
     {
         int bailSelection = -1;
         while (true)
         {
-            cout << "You are currently in Jail. Would you like to pay bail ($50) to escape early: \n"
-                    "   [0] Back \n"
+            // Player has a get out of jail free card
+            if (player->getGetOutOfJailFree() > 0)
+            {
+                paymentOption = "Get out of jail free card";
+            }
+            // Player does not have a get out of jail free card
+            else
+            {
+                paymentOption = "$50";
+            }
+            cout << "You are currently in Jail. Would you like to pay bail ( " << paymentOption << ") to escape early: \n";
+            cout << "   [0] Back \n"
                     "   [1] Yes \n"
                     "   [2] No \n";
             cin >> bailSelection;
