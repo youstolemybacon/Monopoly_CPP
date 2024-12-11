@@ -6,6 +6,7 @@
 #include "Jail.h"
 #include "Property.h"
 #include "Board.h"
+#include "Trade.h"
 
 void Gameplay::turn(Player* player)
 {
@@ -44,6 +45,8 @@ void Gameplay::preRollMenu(Player* player)
             "   [3] Trade\n";
         cin >> menuSelection;
 
+        Trade trade(player);
+
         switch (static_cast<PreRollMenuOptions>(menuSelection))
         {
         case ROLL:
@@ -59,9 +62,9 @@ void Gameplay::preRollMenu(Player* player)
             OwnableSpaces::spaceInfoMenu(Board::getOwnedSpaces(player));
             break;
         case TRADE:
-            cout << "Trading is not implemented" << endl;
+            trade.trade();
             break;
-            default:
+        default:
                 cerr << "Invalid input!" << endl;
         }
     }

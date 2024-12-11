@@ -24,7 +24,7 @@ Players::~Players()
 
 void Players::setPlayerNumber()
 {
-    short numberOfPlayers = 2;
+    short numberOfPlayers = 3;
     cout << "How many players will be playing: " << endl;
     //cin >> numberOfPlayers; // Removed for testing
     playerList.resize(numberOfPlayers);
@@ -32,7 +32,7 @@ void Players::setPlayerNumber()
 
 void Players::setPlayerNames()
 {
-    string names[2] = {"Zack", "Matthew"}; // Added for testing
+    string names[3] = {"Zack", "Tori", "Chase"}; // Added for testing
     for(int i = 0; i < playerList.size(); i++)
     {
         playerList[i] = new Player;

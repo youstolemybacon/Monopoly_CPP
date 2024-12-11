@@ -57,6 +57,10 @@ public:
     void setGetOutOfJailFree(short count);
     short getGetOutOfJailFree() const;
 
+    void trade();
+    std::vector<OwnableSpaces*> tradeOwnedMenu(Player* tradingPlayer);
+    std::vector<OwnableSpaces*> tradeOwnedPropertiesSelection();
+
     bool operator==(const Player& player) const;
 
     int money = 1500;
