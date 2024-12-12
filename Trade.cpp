@@ -38,7 +38,7 @@ void Trade::trade()
         BACK = 0,
         OWNED = 1,
         MONEY = 2,
-        OFFER = 3
+        PREVIEW = 3
     };
 
     while(static_cast<MenuOptions>(menuSelection) != BACK)
@@ -48,7 +48,7 @@ void Trade::trade()
                 "   [0] Back \n"
                 "   [1] Owned \n"
                 "   [2] Money \n"
-                "   [3] Offer \n";
+                "   [3] Preview \n";
 
         cin >> menuSelection;
         cin.clear();
@@ -62,7 +62,8 @@ void Trade::trade()
             break;
         case MONEY:
             break;
-        case OFFER:
+        case PREVIEW:
+            previewTrade();
             break;
         default:
             cout << "Invalid input... please try again \n";
@@ -86,10 +87,10 @@ void Trade::ownedMenu()
     case 0:
         break;
     case 1:
-        initiatorOwnedOffer = this->ownedPropertiesSelection();
+        initiatorOwnedOffer = this->ownedPropertiesSelection(tradeInitiator);
         break;
     case 2:
-        receiverOwnedOffer = this->ownedPropertiesSelection();
+        receiverOwnedOffer = this->ownedPropertiesSelection(tradeReceiver);
         break;
     default:
         cout << "Invalid input... please try again \n";
@@ -97,11 +98,34 @@ void Trade::ownedMenu()
     }
 }
 
-std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection()
+void Trade::previewTrade()
+{
+    short index = 1;
+    cout << tradeInitiator->name << " -> " << tradeReceiver->name << ": " << endl;
+    cout << "   Properties: " << endl;
+    for (auto property : initiatorOwnedOffer)
+    {
+        cout << "      [" << index << "] " << property->getSpaceName() << endl;
+        index++;
+    }
+    cout << endl;
+
+    index = 1;
+    cout << tradeReceiver->name << " -> " << tradeInitiator->name << ": " << endl;
+    cout << "   Properties: " << endl;
+    for (auto property : receiverOwnedOffer)
+    {
+        cout << "      [" << index << "] " << property->getSpaceName() << endl;
+        index++;
+    }
+    cout << endl;
+}
+
+std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection(Player* player)
 {
     short userInput;
     bool exitMenu = false;
-    auto ownedSpaces = Board::getOwnedSpaces(tradeInitiator);
+    auto ownedSpaces = Board::getOwnedSpaces(player);
         std::vector<OwnableSpaces*> spacesToTrade = {};
 
      if (ownedSpaces.empty())
@@ -136,9 +160,25 @@ std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection()
             // Add space to lists of spaces to trade
             else
             {
-                spacesToTrade.push_back(ownedSpaces[userInput - 1]);
+                int index = 0;
+                bool match = false;
+                auto newSpace = ownedSpaces[userInput - 1];
+                for (auto space : spacesToTrade)
+                {
+                    if (newSpace == space)
+                    {
+                        spacesToTrade.erase(spacesToTrade.begin() + index);
+                        match = true;
+                        break;
+                    }
+                    index++;
+                }
+                if (!match)
+                {
+                    spacesToTrade.push_back(ownedSpaces[userInput - 1]);
+                }
             }
         }
     }
-    return spacesToTrade = {};
+    return spacesToTrade;
 }

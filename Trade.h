@@ -16,7 +16,8 @@ public:
 
     void trade();
     void ownedMenu();
-    std::vector<OwnableSpaces*> ownedPropertiesSelection();
+    void previewTrade();
+    std::vector<OwnableSpaces*> ownedPropertiesSelection(Player* player);
 
     Player* tradeInitiator = nullptr;
     std::vector<OwnableSpaces*> initiatorOwnedOffer{};
