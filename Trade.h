@@ -15,9 +15,11 @@ public:
     Trade(Player* tradeInitiator);
 
     void trade();
+    Player* playerSelection();
     void ownedMenu();
     void previewTrade();
-    std::vector<OwnableSpaces*> ownedPropertiesSelection(Player* player);
+    void ownedPropertiesSelection();
+    int moneySelection(Player* player = nullptr);
 
     Player* tradeInitiator = nullptr;
     std::vector<OwnableSpaces*> initiatorOwnedOffer{};

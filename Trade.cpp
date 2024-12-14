@@ -58,9 +58,10 @@ void Trade::trade()
         case BACK:
             return;
         case OWNED:
-            ownedMenu();
+            ownedPropertiesSelection();
             break;
         case MONEY:
+            moneySelection();
             break;
         case PREVIEW:
             previewTrade();
@@ -68,6 +69,33 @@ void Trade::trade()
         default:
             cout << "Invalid input... please try again \n";
         }
+    }
+}
+
+Player* Trade::playerSelection()
+{
+    int menuSelection = -1;
+    cout << "Select player: \n"
+            "   [0] Back \n"
+            "   [1] " << this->tradeInitiator->name << "\n"
+            "   [2] " << this->tradeReceiver->name << "\n";
+    cin >> menuSelection;
+    cin.clear();
+
+    switch (menuSelection)
+    {
+    case 0:
+        break;
+    case 1:
+        return tradeInitiator;
+        break;
+    case 2:
+        return tradeReceiver;
+        break;
+    default:
+        cout << "Invalid input... please try again \n";
+        playerSelection();
+        break;
     }
 }
 
@@ -87,10 +115,10 @@ void Trade::ownedMenu()
     case 0:
         break;
     case 1:
-        initiatorOwnedOffer = this->ownedPropertiesSelection(tradeInitiator);
+        //initiatorOwnedOffer = this->ownedPropertiesSelection(tradeInitiator);
         break;
     case 2:
-        receiverOwnedOffer = this->ownedPropertiesSelection(tradeReceiver);
+        //receiverOwnedOffer = this->ownedPropertiesSelection(tradeReceiver);
         break;
     default:
         cout << "Invalid input... please try again \n";
@@ -102,7 +130,9 @@ void Trade::previewTrade()
 {
     short index = 1;
     cout << tradeInitiator->name << " -> " << tradeReceiver->name << ": " << endl;
-    cout << "   Properties: " << endl;
+    cout << "   Money: " << endl << ""
+            "      $" << initiatorMoney << endl << ""
+            "   Properties: " << endl;
     for (auto property : initiatorOwnedOffer)
     {
         cout << "      [" << index << "] " << property->getSpaceName() << endl;
@@ -112,7 +142,9 @@ void Trade::previewTrade()
 
     index = 1;
     cout << tradeReceiver->name << " -> " << tradeInitiator->name << ": " << endl;
-    cout << "   Properties: " << endl;
+    cout << "   Money: " << endl << ""
+            "      $" << receiverMoney << endl << ""
+            "   Properties: " << endl;
     for (auto property : receiverOwnedOffer)
     {
         cout << "      [" << index << "] " << property->getSpaceName() << endl;
@@ -121,17 +153,32 @@ void Trade::previewTrade()
     cout << endl;
 }
 
-std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection(Player* player)
+void Trade::ownedPropertiesSelection()
 {
     short userInput;
     bool exitMenu = false;
-    auto ownedSpaces = Board::getOwnedSpaces(player);
-        std::vector<OwnableSpaces*> spacesToTrade = {};
 
+    Player* player = playerSelection();
+    std::vector<OwnableSpaces*>* ownedOffer = nullptr;
+    if (player == tradeInitiator)
+    {
+        ownedOffer = &initiatorOwnedOffer;
+    }
+    else if (player == tradeReceiver)
+    {
+        ownedOffer = &receiverOwnedOffer;
+    }
+    else
+    {
+        cout << "Invalid player" << endl;
+        return;
+    }
+
+    auto ownedSpaces = Board::getOwnedSpaces(player);
      if (ownedSpaces.empty())
      {
          cout << "You own nothing... that is pretty sad. I wish you luck in the remaining game you need it!" << endl;
-         return spacesToTrade;
+         return;
      }
 
      while (!exitMenu)
@@ -163,11 +210,11 @@ std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection(Player* player)
                 int index = 0;
                 bool match = false;
                 auto newSpace = ownedSpaces[userInput - 1];
-                for (auto space : spacesToTrade)
+                for (auto space : *ownedOffer)
                 {
                     if (newSpace == space)
                     {
-                        spacesToTrade.erase(spacesToTrade.begin() + index);
+                        ownedOffer->erase(ownedOffer->begin() + index);
                         match = true;
                         break;
                     }
@@ -175,10 +222,38 @@ std::vector<OwnableSpaces*> Trade::ownedPropertiesSelection(Player* player)
                 }
                 if (!match)
                 {
-                    spacesToTrade.push_back(ownedSpaces[userInput - 1]);
+                    ownedOffer->push_back(ownedSpaces[userInput - 1]);
                 }
             }
         }
     }
-    return spacesToTrade;
+}
+
+int Trade::moneySelection(Player* player)
+{
+    // Check if player is null
+    if (!player)
+    {
+        player = playerSelection();
+    }
+
+    player->printMoney();
+
+    // Get amount of money for offer
+    int moneyOffer = 0;
+    cout << "Enter the amount of money to offer:" << endl;
+    cin >> moneyOffer;
+    cin.clear();
+
+    // Ensure offer is valid
+    if(moneyOffer <= player->money && moneyOffer >= 0)
+    {
+        return moneyOffer;
+    }
+    else
+    {
+        cout << "Invalid value, please try again." << endl;
+        moneySelection(player);
+    }
+
 }
