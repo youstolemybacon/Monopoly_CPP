@@ -15,7 +15,7 @@ class Trade {
 public:
     Trade(Player* tradeInitiator);
 
-    // Player specfic trade data
+    // Player specific trade data
     struct TradeData
     {
         std::vector<OwnableSpaces*> assetOffer;
@@ -33,7 +33,5 @@ private:
     Player* tradeReceiver = nullptr;
     std::map<Player*, TradeData> tradeData;
 };
-
-
 
 #endif //TRADE_H
