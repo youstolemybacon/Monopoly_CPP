@@ -103,33 +103,6 @@ Player* Trade::playerSelection()
     }
 }
 
-void Trade::ownedMenu()
-{
-    std::vector<OwnableSpaces*> spacesToTrade = {};
-    int menuSelection = -1;
-    cout << "Select player: \n"
-            "   [0] Back \n"
-            "   [1] " << this->tradeInitiator->name << "\n"
-            "   [2] " << this->tradeReceiver->name << "\n";
-    cin >> menuSelection;
-    cin.clear();
-
-    switch (menuSelection)
-    {
-    case 0:
-        break;
-    case 1:
-        //initiatorOwnedOffer = this->ownedPropertiesSelection(tradeInitiator);
-        break;
-    case 2:
-        //receiverOwnedOffer = this->ownedPropertiesSelection(tradeReceiver);
-        break;
-    default:
-        cout << "Invalid input... please try again \n";
-        break;
-    }
-}
-
 void Trade::previewTrade()
 {
     short index = 1;

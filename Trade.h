@@ -24,7 +24,6 @@ public:
 
     void trade();
     Player* playerSelection();
-    void ownedMenu();
     void previewTrade();
     void ownedPropertiesSelection();
     void moneySelection(Player* player = nullptr);
