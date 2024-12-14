@@ -10,7 +10,10 @@
 
 using namespace std;
 
-Trade::Trade(Player* tradeInitiator) : tradeInitiator(tradeInitiator) {}
+Trade::Trade(Player* tradeInitiator) : tradeInitiator(tradeInitiator)
+{
+    tradeData[tradeInitiator] = TradeData{};
+}
 
 void Trade::trade()
 {
@@ -31,6 +34,7 @@ void Trade::trade()
     cin >> menuSelection;
     cin.clear();
     tradeReceiver = otherPlayers[menuSelection - 1];
+    tradeData[tradeReceiver] = TradeData{};
 
     enum MenuOptions
     {
@@ -131,9 +135,9 @@ void Trade::previewTrade()
     short index = 1;
     cout << tradeInitiator->name << " -> " << tradeReceiver->name << ": " << endl;
     cout << "   Money: " << endl << ""
-            "      $" << initiatorMoney << endl << ""
+            "      $" << tradeData[tradeInitiator].money << endl << ""
             "   Properties: " << endl;
-    for (auto property : initiatorOwnedOffer)
+    for (auto property : tradeData[tradeInitiator].assetOffer)
     {
         cout << "      [" << index << "] " << property->getSpaceName() << endl;
         index++;
@@ -143,9 +147,9 @@ void Trade::previewTrade()
     index = 1;
     cout << tradeReceiver->name << " -> " << tradeInitiator->name << ": " << endl;
     cout << "   Money: " << endl << ""
-            "      $" << receiverMoney << endl << ""
+            "      $" << tradeData[tradeReceiver].money << endl << ""
             "   Properties: " << endl;
-    for (auto property : receiverOwnedOffer)
+    for (auto property : tradeData[tradeReceiver].assetOffer)
     {
         cout << "      [" << index << "] " << property->getSpaceName() << endl;
         index++;
@@ -159,20 +163,6 @@ void Trade::ownedPropertiesSelection()
     bool exitMenu = false;
 
     Player* player = playerSelection();
-    std::vector<OwnableSpaces*>* ownedOffer = nullptr;
-    if (player == tradeInitiator)
-    {
-        ownedOffer = &initiatorOwnedOffer;
-    }
-    else if (player == tradeReceiver)
-    {
-        ownedOffer = &receiverOwnedOffer;
-    }
-    else
-    {
-        cout << "Invalid player" << endl;
-        return;
-    }
 
     auto ownedSpaces = Board::getOwnedSpaces(player);
      if (ownedSpaces.empty())
@@ -192,7 +182,7 @@ void Trade::ownedPropertiesSelection()
         cin >> userInput;
         cin.clear();
 
-        // If user input is 0 no action is taken. If it is not zero use the input to reference the correspondings space info
+        // If user input is 0 no action is taken. If it is not zero use the input to reference the corresponding space info
         if(userInput == 0)
         {
             exitMenu = true;
@@ -210,11 +200,12 @@ void Trade::ownedPropertiesSelection()
                 int index = 0;
                 bool match = false;
                 auto newSpace = ownedSpaces[userInput - 1];
-                for (auto space : *ownedOffer)
+                for (auto space : tradeData[player].assetOffer)
                 {
+                    // If in assetOffer already remove it from the list
                     if (newSpace == space)
                     {
-                        ownedOffer->erase(ownedOffer->begin() + index);
+                        tradeData[player].assetOffer.erase(tradeData[player].assetOffer.begin() + index);
                         match = true;
                         break;
                     }
@@ -222,14 +213,14 @@ void Trade::ownedPropertiesSelection()
                 }
                 if (!match)
                 {
-                    ownedOffer->push_back(ownedSpaces[userInput - 1]);
+                    tradeData[player].assetOffer.push_back(newSpace);
                 }
             }
         }
     }
 }
 
-int Trade::moneySelection(Player* player)
+void Trade::moneySelection(Player* player)
 {
     // Check if player is null
     if (!player)
@@ -237,10 +228,9 @@ int Trade::moneySelection(Player* player)
         player = playerSelection();
     }
 
-    player->printMoney();
-
     // Get amount of money for offer
     int moneyOffer = 0;
+    player->printMoney();
     cout << "Enter the amount of money to offer:" << endl;
     cin >> moneyOffer;
     cin.clear();
@@ -248,7 +238,7 @@ int Trade::moneySelection(Player* player)
     // Ensure offer is valid
     if(moneyOffer <= player->money && moneyOffer >= 0)
     {
-        return moneyOffer;
+        tradeData[player].money = moneyOffer;
     }
     else
     {

@@ -5,6 +5,7 @@
 #ifndef TRADE_H
 #define TRADE_H
 
+#include <map>
 #include <vector>
 
 class Player;
@@ -14,22 +15,24 @@ class Trade {
 public:
     Trade(Player* tradeInitiator);
 
+    // Player specfic trade data
+    struct TradeData
+    {
+        std::vector<OwnableSpaces*> assetOffer;
+        int money = 0;
+    };
+
     void trade();
     Player* playerSelection();
     void ownedMenu();
     void previewTrade();
     void ownedPropertiesSelection();
-    int moneySelection(Player* player = nullptr);
+    void moneySelection(Player* player = nullptr);
 
+private:
     Player* tradeInitiator = nullptr;
-    std::vector<OwnableSpaces*> initiatorOwnedOffer{};
-    int initiatorMoney = 0;
-
     Player* tradeReceiver = nullptr;
-    std::vector<OwnableSpaces*> receiverOwnedOffer{};
-    int receiverMoney = 0;
-
-
+    std::map<Player*, TradeData> tradeData;
 };
 
 
