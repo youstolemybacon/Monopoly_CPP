@@ -4,6 +4,7 @@
 
 #include "Trade.h"
 #include <iostream>
+#include <iomanip>
 
 #include "Players.h"
 #include "Board.h"
@@ -50,9 +51,9 @@ void Trade::trade()
         menuSelection = -1;
         cout << "The following actions are available: \n"
                 "   [0] Back \n"
-                "   [1] Owned \n"
+                "   [1] Real Estate \n"
                 "   [2] Money \n"
-                "   [3] Preview \n";
+                "   [3] Preview Trade\n";
 
         cin >> menuSelection;
         cin.clear();
@@ -68,7 +69,10 @@ void Trade::trade()
             moneySelection();
             break;
         case PREVIEW:
-            previewTrade();
+            if (previewTrade())
+            {
+                return;
+            }
             break;
         default:
             cout << "Invalid input... please try again \n";
@@ -89,6 +93,7 @@ Player* Trade::playerSelection()
     switch (menuSelection)
     {
     case 0:
+        return {};
         break;
     case 1:
         return tradeInitiator;
@@ -103,7 +108,7 @@ Player* Trade::playerSelection()
     }
 }
 
-void Trade::previewTrade()
+bool Trade::previewTrade()
 {
     short index = 1;
     cout << tradeInitiator->name << " -> " << tradeReceiver->name << ": " << endl;
@@ -128,6 +133,26 @@ void Trade::previewTrade()
         index++;
     }
     cout << endl;
+
+    int menuSelection = -1;
+    cout << "Is this the final offer: " << endl
+         << "   [1] Yes" << endl
+         << "   [2] No" << endl;
+    cin >> menuSelection;
+
+    if (menuSelection == 1)
+    {
+        if (signature(tradeInitiator) && signature(tradeReceiver))
+        {
+            cout << "Congratulations on the successful trade agreement. May each of you be richer as a result!" << endl;
+            exchangeAssets();
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
 void Trade::ownedPropertiesSelection()
@@ -136,6 +161,10 @@ void Trade::ownedPropertiesSelection()
     bool exitMenu = false;
 
     Player* player = playerSelection();
+    if (player == nullptr)
+    {
+        return;
+    }
 
     auto ownedSpaces = Board::getOwnedSpaces(player);
      if (ownedSpaces.empty())
@@ -199,6 +228,10 @@ void Trade::moneySelection(Player* player)
     if (!player)
     {
         player = playerSelection();
+        if (!player)
+        {
+            return;
+        }
     }
 
     // Get amount of money for offer
@@ -219,4 +252,45 @@ void Trade::moneySelection(Player* player)
         moneySelection(player);
     }
 
+}
+
+bool Trade::signature(Player *player)
+{
+    cout << player->name << " sign your name below to agree to the offer" << endl << "Sign Here: X ";
+    string signature;
+    cin >> signature;
+
+    if (signature == player->name)
+    {
+        return true;
+    }
+    else
+    {
+        cout << "Trade agreement failed" << endl;
+        return false;
+    }
+}
+
+void Trade::exchangeAssets() {
+    // Transfer asset ownership
+    for (auto asset : tradeData[tradeInitiator].assetOffer)
+    {
+        asset->buy(tradeReceiver, 0);
+    }
+    for (auto asset : tradeData[tradeReceiver].assetOffer)
+    {
+        asset->buy(tradeInitiator, 0);
+    }
+
+    // Transfer funds
+    if (tradeData[tradeInitiator].money > 0)
+    {
+        tradeInitiator->pay(tradeData[tradeInitiator].money, tradeReceiver);
+    }
+    if (tradeData[tradeReceiver].money > 0)
+    {
+        tradeReceiver->pay(tradeData[tradeReceiver].money, tradeInitiator);
+    }
+
+    cout << "The transaction is complete." << endl;
 }

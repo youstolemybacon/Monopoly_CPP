@@ -24,9 +24,11 @@ public:
 
     void trade();
     Player* playerSelection();
-    void previewTrade();
     void ownedPropertiesSelection();
     void moneySelection(Player* player = nullptr);
+    bool previewTrade();
+    bool signature(Player* player);
+    void exchangeAssets();
 
 private:
     Player* tradeInitiator = nullptr;
