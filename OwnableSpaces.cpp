@@ -80,7 +80,7 @@ void OwnableSpaces::auction(vector<Player*> playerList)
 void OwnableSpaces::mortgageSpace()
 {
     // Check that the property is not mortgaged
-    if (mortgaged == false)
+    if (!mortgaged)
     {
         const short mortgageAmount = getPrice() / 2;
         // Pay the player the mortgage amount
@@ -242,6 +242,7 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
         DEFAULT = 0,
         PAY,
         OWNED,
+        BANKRUPTCY,
         END_TURN
     };
 
@@ -251,25 +252,33 @@ void OwnableSpaces::ownedMenu(Player* currentPlayer, Player* owner)
 
     while(menuSelection != END_TURN)
     {
-        cout << "This property is owned by " << owner->name << ". The cost of rent is $" << rent << ". \n\n "
-                "The following actions are available: \n"
-                "   [1] Pay\n"
-                "   [2] Owned\n";
+        cout << "This property is owned by " << owner->name << ". The cost of rent is $" << rent << "." << endl << endl
+                << "The following actions are available:" << endl
+                << "   [1] Pay\n"
+                << "   [2] Owned" << endl
+                << "   [3] Declare Bankruptcy" << endl;
+
         cin >> userInput;
         cin.clear();
         menuSelection = static_cast<OwnedMenuOptions>(userInput);
 
         switch(menuSelection)
         {
-        case PAY:
-            if (currentPlayer->pay(rent, owner))
-            {
-                menuSelection = END_TURN;
-            }
-            break;
-        case OWNED:
-        spaceInfoMenu(Board::getOwnedSpaces(currentPlayer));
-            break;
+            case PAY:
+                if (currentPlayer->pay(rent, owner))
+                {
+                    menuSelection = END_TURN;
+                }
+                break;
+            case OWNED:
+                spaceInfoMenu(Board::getOwnedSpaces(currentPlayer));
+                break;
+            case BANKRUPTCY:
+                if (currentPlayer->bankruptcy(owner))
+                {
+                    menuSelection = END_TURN;
+                }
+                break;
         default:
             menuSelection = DEFAULT;
             cerr << "Invalid input!" << endl;

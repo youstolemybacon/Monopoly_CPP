@@ -57,15 +57,14 @@ public:
     void setGetOutOfJailFree(short count);
     short getGetOutOfJailFree() const;
 
-    void trade();
-    std::vector<OwnableSpaces*> tradeOwnedMenu(Player* tradingPlayer);
-    std::vector<OwnableSpaces*> tradeOwnedPropertiesSelection();
+    bool bankruptcy(Player* creditor);
 
     bool operator==(const Player& player) const;
 
     int money = 1500;
     string name;
     static Board playerBoard;
+    bool bankrupt = false;
 private:
     bool chanceModifier = false; // Used when a chance card affects rent values
     short getOutOfJailFree = 0;

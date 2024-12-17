@@ -10,6 +10,7 @@
 
 void Gameplay::turn(Player* player)
 {
+    if (!player->bankrupt)
     do
     {
         preRollMenu(player);

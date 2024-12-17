@@ -27,16 +27,16 @@ void Property::build(short buildHouses) {
     }
 }
 
-void Property::demo()
+void Property::demo(short demos)
 {
     auto propertyOwner = this->getOwner();
     short houseCost = housePrice / 2;
 
-    if (this->houses != 0 & demoHouseCheck(propertyGroup, -1))
+    if (this->houses != 0 & demoHouseCheck(propertyGroup, -demos))
     {
         // Remove the houses being demoed to the member variable
-        houses--;
-        propertyOwner->income(houseCost);
+        houses -= demos;
+        propertyOwner->income(houseCost * demos);
     }
 }
 
@@ -184,84 +184,6 @@ bool Property::monopolyCheck(const Player* player, PropertyGroup color)
     }
     return true; // Monopoly
 }
-
-//void Property::developPropertiesMenu(Player* player)
-//{
-//    auto monopoliesProperties = getMonopolies(player);
-//    vector<OwnableSpaces*> monopolies;
-//
-//    for (auto property : monopoliesProperties)
-//    {
-//        monopolies.push_back(property);
-//    }
-//
-//    if (monopolies.empty())
-//    {
-//        cout << "You currently do not have any monopolies." << endl;
-//    }
-//    else
-//    {
-//        bool exitMenu = false;
-//        short userPropertySelection;
-//
-//        while (!exitMenu)
-//        {
-//            cout << "Your monopolies are printed below. Select the property to develop: \n"
-//                "   [0] Back \n";
-//
-//            printSpaces(monopolies, 1);
-//
-//            // Get user input
-//            cin >> userPropertySelection;
-//            cin.clear();
-//
-//            // If user input is 0 no action is taken. If it is not zero use the input to reference the correspondings space info
-//            if(userPropertySelection == 0)
-//            {
-//                exitMenu = true;
-//            }
-//            else
-//            {
-//                // Check if the user input is within the range of the vector
-//                if (userPropertySelection > monopolies.size())
-//                {
-//                    cout << "Invalid input!" << endl;
-//                }
-//                // Display the space info and building menu
-//                else
-//                {
-//                    bool returnToPropertySelection = false;
-//                    while (!returnToPropertySelection)
-//                    {
-//                        short userBuildSelection;
-//                        auto propertySelected = dynamic_cast<Property*>(monopolies[userPropertySelection - 1]);
-//                        propertySelected->displayInfo();
-//
-//                        cout << "The following actions are available: \n"
-//                                "   [0] Back \n"
-//                                "   [1] Build House \n";
-//                        // Get user input
-//                        cin >> userBuildSelection;
-//                        cin.clear();
-//
-//                        switch (userBuildSelection)
-//                        {
-//                        case 1:
-//                            propertySelected->build(1);
-//                        case 0:
-//                            returnToPropertySelection = true;
-//                            break;
-//                        default:
-//                            cout << "Invalid input! \n";
-//                            break;
-//                        }
-//                        cout << "\n";
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
 
 void Property::displaySpace()
 {

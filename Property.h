@@ -32,7 +32,7 @@ public:
     Property(short rent_1,short rent_2,short rent_3,short rent_4,short rent_5,short rent_6,short housePrice,short spaceIndex,string spaceName,short price, PropertyGroup propertyGroup);
     short getHouses() const;
     void build(short buildHouses);
-    void demo();
+    void demo(short demos = 1);
     bool buildHouseCheck(PropertyGroup colorSet, short houses) const;
     bool demoHouseCheck(PropertyGroup colorSet, short houses) const;
     short getHousePrice() const;

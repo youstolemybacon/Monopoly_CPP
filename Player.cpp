@@ -119,7 +119,7 @@ void Player::move() {
 
 bool Player::pay(const short cost, Player* beneficiary)
 {
-    if(this->money > cost)
+    if(this->money >= cost)
     {
         // Subtract cost from players money
         this->money -= cost;
@@ -215,4 +215,63 @@ void Player::printPlayerInfo() const
     cout << name << ": \n"
          << "   Money: $" << money << "\n"
          << "   Space: " << currentSpace->getSpaceName() << "\n\n";
+}
+
+bool Player::bankruptcy(Player* creditor) {
+    cout << "Are you sure you want to declare bankruptcy: " << endl
+         << "   [1] Yes" << endl
+         << "   [2] No " << endl;
+    int menuSelection = 0;
+    cin >> menuSelection;
+    cin.clear();
+
+    // Does not want to declare bankruptcy exit method
+    if (menuSelection == 2)
+    {
+        return false;
+    }
+    else if (menuSelection != 1)
+    {
+        cerr << "Invalid Input" << endl;
+        bankruptcy(creditor);
+    }
+
+    // Sell all houses and mortgage all properties
+    auto properties = Board::getOwnedProperties(this);
+    for (auto property : properties)
+    {
+        property->demo(property->getHouses());
+        if (!property->getMortgage())
+        {
+            property->mortgageSpace();
+        }
+        property->changeOwner(creditor);
+    }
+
+    // Mortgage railroads
+    auto railroads = Board::getOwnedRailroads(this);
+    for (auto railroad : railroads)
+    {
+        if (!railroad->getMortgage())
+        {
+            railroad->mortgageSpace();
+        }
+        railroad->changeOwner(creditor);
+    }
+
+    // Mortgage Utilities
+    auto utilities = Board::getOwnedUtilities(this);
+    for (auto utility : utilities)
+    {
+        if (!utility->getMortgage())
+        {
+            utility->mortgageSpace();
+        }
+        utility->changeOwner(creditor);
+    }
+
+    this->pay(this->money, creditor);
+    cout << "Bankrupt" << endl;
+    bankrupt = true;
+    return true;
 }
