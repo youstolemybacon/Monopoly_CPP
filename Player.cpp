@@ -121,17 +121,20 @@ bool Player::pay(const short cost, Player* beneficiary)
 {
     if(this->money >= cost)
     {
-        // Subtract cost from players money
-        this->money -= cost;
-        // Add cost to players money
-        beneficiary->money += cost;
+        if (cost > 0)
+        {
+            // Subtract cost from players money
+            this->money -= cost;
+            // Add cost to players money
+            beneficiary->money += cost;
 
-        // Print transaction details
-        cout << "\nPAYMENT SUCCESSFUL\n";
-        cout << "   TRANSACTIONS: \n";
-        cout << "      " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
-        cout << "      " << beneficiary->name << ": $" << beneficiary->money - cost << " + $" << cost << " = $" << beneficiary->money << "\n\n";
+            // Print transaction details
+            cout << "\nPAYMENT SUCCESSFUL\n";
+            cout << "   TRANSACTIONS: \n";
+            cout << "      " << name << ": $" << money + cost << " - $" << cost << " = $" << money << "\n";
+            cout << "      " << beneficiary->name << ": $" << beneficiary->money - cost << " + $" << cost << " = $" << beneficiary->money << "\n\n";
 
+        }
         // Player succuessfully paid
         return true;
     }
