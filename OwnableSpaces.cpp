@@ -201,7 +201,7 @@ void OwnableSpaces::unownedMenu(Player* currentPlayer)
     UnownedMenuOptions menuSelection = DEFAULT;
 
     while(menuSelection != END_TURN) {
-        cout << this->getSpaceName() << " is unowned. The following actions are available: \n"
+        cout << this->getSpaceName() << " ($" << this->getPrice() << ") is unowned. The following actions are available: \n"
         "   [1] Buy\n"
         "   [2] Auction\n"
         "   [3] Info\n"
