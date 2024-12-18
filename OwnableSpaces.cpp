@@ -146,7 +146,7 @@ bool OwnableSpaces::buy(Player* buyer, short price)
     if(buyer->pay(price))
     {
         this->changeOwner(buyer);
-        cout << "Congratulations, you are the proud ownder of " << this->getSpaceName() << "!" << endl;
+        cout << "Congratulations, " << buyer->name << " you are the proud owner of " << this->getSpaceName() << "!" << endl;
         return true;
     }
     return false;
@@ -157,7 +157,7 @@ bool OwnableSpaces::buy(Player* buyer)
     if(buyer->pay(this->getPrice()))
     {
         this->changeOwner(buyer);
-        cout << "Congratulations, you are the proud ownder of " << this->getSpaceName() << "!" << endl;
+        cout << "Congratulations, " << buyer->name << " you are the proud owner of " << this->getSpaceName() << "!" << endl;
         return true;
     }
     return false;
