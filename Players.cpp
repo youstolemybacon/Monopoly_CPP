@@ -24,21 +24,21 @@ Players::~Players()
 
 void Players::setPlayerNumber()
 {
-    short numberOfPlayers = 3;
+    short numberOfPlayers;
     cout << "How many players will be playing: " << endl;
-    //cin >> numberOfPlayers; // Removed for testing
+    cin >> numberOfPlayers;
     playerList.resize(numberOfPlayers);
 }
 
 void Players::setPlayerNames()
 {
-    string names[3] = {"Zack", "Tori", "Chase"}; // Added for testing
+    string name;
     for(int i = 0; i < playerList.size(); i++)
     {
         playerList[i] = new Player;
         cout << "Player " << i + 1 << " enter your name: " << endl;
-        //cin >> name; Removed for testing
-        playerList[i]->name = names[i];
+        cin >> name;
+        playerList[i]->name = name;
     }
 }
 
